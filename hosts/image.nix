@@ -1,16 +1,20 @@
-{ pkgs, modulesPath, lib, ... }: {
+{ pkgs, modulesPath, config, ... }: 
+{
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
-
   networking = {
-    hostName = "liveUSB"; # Define your hostname.
+    hostName = "liveUSB";
     nameservers = [ "8.8.8.8" ];
   };
+   
+  #in case of proprietary wireless drivers
+  nixpkgs.config.allowUnfree = true;
+  hardware.enableRedistributableFirmware = true;
+  boot.kernelModules = [ "wl" ];
+  boot.extraModulePackages = [ "config.boot.kernelPackages.broadcom_sta" ];
+
 
   time.timeZone = "Europe/Copenhagen";
 
@@ -33,6 +37,8 @@
     doas
     git
     wget
+    nixFlakes
+    zsh
   ];
 
   # Enable the OpenSSH daemon.
@@ -55,8 +61,6 @@
 	      keepEnv = true;
 	    }];
     };
-  };
-
-  #system.stateVersion = "22.05"; 
+  }; 
 }
 

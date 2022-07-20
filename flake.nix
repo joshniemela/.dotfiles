@@ -1,5 +1,5 @@
 {
-  description = "Server and usb config flake";
+  description = "Josh's NixOS flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.05";
     home-manager.url = "github:nix-community/home-manager/release-22.05";
@@ -38,7 +38,7 @@
         inherit system;
         
 	      modules = [
-	      ./system/configuration.nix
+	      ./hosts/server/configuration.nix
 	      ];
       };
 
@@ -46,7 +46,7 @@
         inherit system;
         
 	      modules = [
-    	  ./system/image.nix
+    	  ./hosts/iso/image.nix
       	];
       };
     };

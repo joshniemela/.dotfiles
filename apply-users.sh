@@ -1,5 +1,5 @@
 #!/bin/sh
-pushd ~/nixfiles
+pushd ~/.dotfiles/
 nix build .#homeManagerConfigurations.josh.activationPackage
 ./result/activate
 popd

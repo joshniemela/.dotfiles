@@ -83,9 +83,22 @@
     extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
 
     initialPassword = "1234";
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@josharch"];
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@josharch" ];
+  };
+  users.users.peter = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "docker" ]; 
+
+    initialPassword = "1234";
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFykQFb2WstNq1Iv1KL3spNY3Y6udyuk6F0hmbFvKN2r user@deepthought "];
   };
 
+  users.users.temp = {
+    isNormalUser = true; 
+
+    initialPassword = "1234";
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGE25fqTdjP3b4ZysN9p5YNmY5YWm5Gp0RGGtALCzlb MacSlash "];
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

@@ -1,5 +1,5 @@
 {
-  description = "Server config flake";
+  description = "Server and usb config flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.05";
     home-manager.url = "github:nix-community/home-manager/release-22.05";
@@ -42,7 +42,13 @@
 	      ];
       };
 
-      
+      liveISO = lib.nixosSystem {
+        inherit system;
+        
+	      modules = [
+    	  ./system/image.nix
+      	];
+      };
     };
   };
 }

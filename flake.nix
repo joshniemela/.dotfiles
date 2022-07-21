@@ -1,8 +1,8 @@
 {
   description = "Josh's NixOS flake";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.05";
-    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { nixpkgs, home-manager,  ... }:
@@ -49,6 +49,10 @@
     	  ./hosts/iso/image.nix
       	];
       };
+     desktop = lib.nixosSystem {
+       inherit system;
+       modules = [./hosts/desktop/configuration.nix]; 
+     };
     };
   };
 }

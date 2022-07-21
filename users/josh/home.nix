@@ -2,23 +2,45 @@
 
 {
   programs.home-manager.enable = true;
-  home.username = "josh";
-  home.homeDirectory = "/home/josh";
-
-  home.packages = with pkgs; [
-    git
-    neofetch
-    htop
-  ];
+  home = {
+    username = "josh";
+    homeDirectory = "/home/josh";
+    stateVersion = "22.05";
+    packages = with pkgs; [
+      git
+      neofetch
+      htop
+      lxappearance
+      flameshot
+      firefox
+      mpv
+      arandr
+      discord
+      polymc
+      pavucontrol
+      alacritty
+      thunderbird
+      youtube-dl
+      gimp
+      viewnior
+   ];
+  };
   programs.vscode = {
-  enable = true;
-  package = pkgs.vscodium;
-  extensions = with pkgs.vscode-extensions; [
-    vscode-extensions.james-yu.latex-workshop
-    vscode-extensions.bbenoist.nix
-    vscode-extensions.julialang.julia
-  ];
-};
-  home.file = {};
-}
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      james-yu.latex-workshop
+      bbenoist.nix
+      #julialang.julia
+    ];
+  };
 
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -l";
+    };
+  };
+  
+}
+  

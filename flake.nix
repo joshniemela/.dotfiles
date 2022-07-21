@@ -6,7 +6,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { nixpkgs, home-manager,  ... }:
-
   let 
     system = "x86_64-linux";
 
@@ -20,19 +19,6 @@
     lib = nixpkgs.lib;
 
   in{
-    homeManagerConfigurations = {
-      josh = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
-        username = "josh";
-        homeDirectory = "/home/josh";
-        stateVersion = "22.05";
-        configuration = {
-          imports = [
-            ./users/josh/home.nix
-          ];
-        };
-      };
-    };
     nixosConfigurations = {
       server = lib.nixosSystem {
         inherit system;
@@ -46,12 +32,22 @@
         inherit system;
         
 	      modules = [
-    	  ./hosts/iso/image.nix
+    	  ./hosts/image.nix
       	];
       };
      desktop = lib.nixosSystem {
        inherit system;
-       modules = [./hosts/desktop/configuration.nix]; 
+       modules = [
+        ./hosts/desktop/configuration.nix
+        home-manager.nixosModules.home-manager 
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.josh = import ./users/josh/home.nix;
+          };
+        }
+       ]; 
      };
     };
   };

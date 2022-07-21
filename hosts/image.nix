@@ -13,9 +13,9 @@
   nixpkgs.config.allowUnfree = true;
   hardware.enableRedistributableFirmware = true;
   boot.kernelModules = [ "wl" ];
-  boot.extraModulePackages = [ "config.boot.kernelPackages.broadcom_sta" ];
-
-
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+  boot.initrd.kernelModules = [ "wl" ];
+  
   time.timeZone = "Europe/Copenhagen";
 
   i18n.defaultLocale = "en_DK.UTF-8";

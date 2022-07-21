@@ -39,6 +39,7 @@
        inherit system;
        modules = [
         ./hosts/desktop/configuration.nix
+        #./shell.nix
         home-manager.nixosModules.home-manager 
         {
           home-manager = {

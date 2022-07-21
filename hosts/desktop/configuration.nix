@@ -95,12 +95,27 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    #SYSTEM TOOLS
     wget
     git
     htop
     neofetch
     unison
     julia-bin
+    #PYTHON
+    (let 
+      my-python-packages = python-packages: with python-packages; [ 
+        pandas
+        scipy
+        matplotlib
+        pyarrow
+        numpy
+        scikitlearn
+      ];
+      python-with-my-packages = python3.withPackages my-python-packages;
+      in
+      python-with-my-packages
+    )
   ];
   environment.pathsToLink = [ "/libexec" ];
 

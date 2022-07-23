@@ -125,6 +125,8 @@
     unison
     docker-compose
     cryptsetup
+    ffmpeg
+    glob
   ];
 
   services.openssh.enable = true;

@@ -5,7 +5,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, home-manager,  ... }:
+  outputs = { nixpkgs, home-manager, ... }:
   let 
     system = "x86_64-linux";
 
@@ -39,7 +39,6 @@
        inherit system;
        modules = [
         ./hosts/desktop/configuration.nix
-        #./shell.nix
         home-manager.nixosModules.home-manager 
         {
           home-manager = {

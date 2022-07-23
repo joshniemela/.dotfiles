@@ -65,32 +65,62 @@
       extraPackages = with pkgs; [
        dmenu
        dunst
-       feh 
        i3status
       ];
+      extraSessionCommands = "exec .dotfiles/screen.sh";
     };
   };
-  hardware.opengl.enable = true;
-  programs.thunar.enable = true;
-  programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  security.rtkit.enable = true;
-  services.pipewire = {
+  hardware.opengl = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    # extraPackages = [ pkgs.mesa.drivers ];
+    # driSupport32Bit = true;
   };
+  # PROGRAMS
+  programs = {
+    git = {
+      enable = true;
+    };
+    
+    htop = {
+      enable = true;
+      settings = {
+        hide_kernel_threads = true;
+        hide_userland_threads = true;
+        show_cpu_frequency = true;
+        show_cpu_temperature = true;
+      };
+    };
+    iotop.enable = true;
+
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+      };
+
+    dconf.enable = true;
+
+    steam.enable = true;
+  };
+
+  services = {
+    gvfs.enable = true;
+    tumbler.enable = true;
+    printing.enable = true;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      #jack.enable = true; if jack is required
+    };
+  };
+
   users.users.josh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     initialPassword = "1234";
+    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -102,6 +132,8 @@
     neofetch
     unison
     julia-bin
+    glxinfo
+    docker-compose
     #PYTHON
     (let 
       my-python-packages = python-packages: with python-packages; [ 
@@ -120,6 +152,7 @@
   environment.pathsToLink = [ "/libexec" ];
 
   security = {
+    rtkit.enable = true;
     sudo.enable = false;
     doas = {
       enable = true;
@@ -130,7 +163,12 @@
 	    } ];
     };
   };
-  programs.steam.enable = true;
+  virtualisation = {
+    docker = {
+      enableNvidia = true;
+      enable = true;
+    }; 
+  };
   system.stateVersion = "22.05";
 }
 

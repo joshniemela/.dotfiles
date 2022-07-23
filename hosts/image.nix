@@ -30,7 +30,7 @@
     extraGroups = [ "wheel" "networkmanager" ];
 
     initialPassword = "1234";
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@josharch"];
+    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop"];
   };
 
   environment.systemPackages = with pkgs; [
@@ -38,7 +38,6 @@
     git
     wget
     nixFlakes
-    zsh
   ];
 
   # Enable the OpenSSH daemon.

@@ -67,7 +67,7 @@
        dunst
        i3status
       ];
-      extraSessionCommands = "exec .dotfiles/screen.sh";
+      #extraSessionCommands = "exec .dotfiles/screen.sh";
     };
   };
   hardware.opengl = {
@@ -77,6 +77,7 @@
   };
   # PROGRAMS
   programs = {
+    
     git = {
       enable = true;
     };
@@ -127,8 +128,6 @@
   environment.systemPackages = with pkgs; [
     #SYSTEM TOOLS
     wget
-    git
-    htop
     neofetch
     unison
     julia-bin
@@ -149,8 +148,10 @@
       python-with-my-packages
     )
   ];
-  environment.pathsToLink = [ "/libexec" ];
-
+  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
+  #environment.sessionVariables.TERMINAL = [ "alacritty" ];
+  #environment.sessionVariables.EDITOR = [ "codium" ];
+  
   security = {
     rtkit.enable = true;
     sudo.enable = false;

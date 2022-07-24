@@ -6,27 +6,41 @@
     username = "josh";
     homeDirectory = "/home/josh";
     stateVersion = "22.05";
+
+    file.".config/i3/config" = {
+      source = ./configs/i3_config
+    };
+
     packages = with pkgs; [
       neofetch
       lxappearance
       flameshot
-      firefox
-      mpv
       arandr
       discord
       polymc
       pavucontrol
-      alacritty
       thunderbird
       youtube-dl
       gimp
       viewnior
       libreoffice
+      cmatrix
+      easyeffects
    ];
   };
 
   programs = {
+    texlive = { 
+      enable = true; 
+      #extraPackages = [];
+    };
+    mpv = { enable = true; };
 
+    firefox = { enable = true; };
+
+    alacritty = {
+      enable = true;
+    };
     vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -42,18 +56,17 @@
       autocd = true;
       dotDir = ".config/zsh";
       enableAutosuggestions = true;
-      enableCompletion = true;
+      enableSyntaxHighlighting = true;
       zplug = {
         enable = true;
         plugins = [
-          { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
           { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
         ];
       };
       shellAliases = {
         ll = "ls -l";
         lag = "ls -ag";
-        applySystem = "exec ~/.dotfiles/apply-system.sh";
+        applySystem = "source ~/.dotfiles/apply-system.sh";
         dir="dir --color='auto'";
         grep="grep --color='auto'";
         unison="unison -ui text";
@@ -63,7 +76,7 @@
         bindkey "^[[F" end-of-line
         bindkey "^[[1;5D" backward-word
         bindkey "^[[1;5C" forward-word
-        source ~/.config/zsh/.p10k.zsh
+        source ./configs/p10k.zsh
       '';
     };
   };

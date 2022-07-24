@@ -84,9 +84,9 @@
   };
 
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/".options = [ "compress=zstd" "discard" ];
+    "/home".options = [ "compress=zstd" "discard" ];
+    "/nix".options = [ "compress=zstd" "noatime" "discard" ];
   };
   zramSwap = {
     enable=true;
@@ -125,6 +125,8 @@
     unison
     docker-compose
     cryptsetup
+    ffmpeg
+    glob
   ];
 
   services.openssh.enable = true;

@@ -1,25 +1,23 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
+{ config, pkgs, out, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  
+  boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true; 
+  };
 
   networking = {
     hostName = "desktop"; 
-    #domain = "jniemela.dk"; 
     nameservers = [ "8.8.8.8" ];
     defaultGateway = "192.168.1.1";
     interfaces.eth0.ipv4.addresses = [ {
@@ -33,10 +31,8 @@
   i18n.defaultLocale = "en_DK.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkbOptions in tty.
+    useXkbConfig = true;
   };
-
-  # Enable the X11 windowing system.
   
   fileSystems = {
     "/".options = [ "compress=zstd" ];
@@ -47,8 +43,6 @@
     enable=true;
     memoryPercent=100;
   };
-
-  # Configure keymap in X11
   
   services.xserver = {
     enable = true;
@@ -58,84 +52,124 @@
       xterm.enable = false;
     };
     displayManager = {
-      #startx.enable = true;
       defaultSession = "none+i3";
+      lightdm.enable = true;
+      autoLogin = {
+        enable = true;
+        user = "josh";
+      };
     };
     
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-       dmenu 
+       dmenu
+       dunst
        i3status
       ];
-   };
+      #extraSessionCommands = "exec .dotfiles/screen.sh";
+    };
   };
-  hardware.opengl.enable = true;
-  programs.thunar.enable = true;
-  programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  hardware.opengl = {
+    enable = true;
+    # extraPackages = [ pkgs.mesa.drivers ];
+    # driSupport32Bit = true;
+  };
+  # PROGRAMS
+  programs = {
+    
+    git = {
+      enable = true;
+    };
+    
+    htop = {
+      enable = true;
+      settings = {
+        hide_kernel_threads = true;
+        hide_userland_threads = true;
+        show_cpu_frequency = true;
+        show_cpu_temperature = true;
+      };
+    };
+    iotop.enable = true;
 
-  # Enable sound.
-  security.rtkit.enable = true;
-services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  # If you want to use JACK applications, uncomment this
-  #jack.enable = true;
-};
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+      };
+
+    dconf.enable = true;
+
+    steam.enable = true;
+  };
+
+  services = {
+    gvfs.enable = true;
+    tumbler.enable = true;
+    printing.enable = true;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      #jack.enable = true; if jack is required
+    };
+  };
+
   users.users.josh = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ];
     initialPassword = "1234";
-    packages = with pkgs; [
-      firefox
-      thunderbird
-      alacritty
-      pavucontrol
-    ];
+    shell = pkgs.zsh;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #SYSTEM TOOLS
     wget
-    git
-    htop
     neofetch
     unison
-    lxappearance
-    vscodium
-    viewnior
-    discord
+    julia-bin
+    glxinfo
+    docker-compose
+    #PYTHON
+    (let 
+      my-python-packages = python-packages: with python-packages; [ 
+        pandas
+        scipy
+        matplotlib
+        pyarrow
+        numpy
+        scikitlearn
+      ];
+      python-with-my-packages = python3.withPackages my-python-packages;
+      in
+      python-with-my-packages
+    )
   ];
-  environment.pathsToLink = [ "/libexec" ];
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
+  #environment.sessionVariables.TERMINAL = [ "alacritty" ];
+  #environment.sessionVariable.EDITOR = [ "codium" ];
+  
   security = {
+    rtkit.enable = true;
     sudo.enable = false;
     doas = {
       enable = true;
-      extraRules = [{
+      extraRules = [ {
         groups = [ "wheel" ]; 
         persist = true;
-	  keepEnv = true;
-	}];
+	      keepEnv = true;
+	    } ];
     };
   };
-  system.stateVersion = "22.05"; # Did you read the comment?
-
+  virtualisation = {
+    docker = {
+      enableNvidia = true;
+      enable = true;
+    }; 
+  };
+  system.stateVersion = "22.05";
 }
 

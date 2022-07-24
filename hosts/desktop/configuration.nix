@@ -149,8 +149,8 @@
     )
   ];
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
-  #environment.sessionVariables.TERMINAL = [ "alacritty" ];
-  #environment.sessionVariables.EDITOR = [ "codium" ];
+  environment.sessionVariables.TERMINAL = [ "alacritty" ];
+  environment.sessionVariables.EDITOR = [ "codium" ];
   
   security = {
     rtkit.enable = true;

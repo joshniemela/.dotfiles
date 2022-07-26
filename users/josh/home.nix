@@ -3,23 +3,12 @@
 {
   programs.home-manager.enable = true;
   home = {
-    username = "josh";
-    homeDirectory = "/home/josh";
-    stateVersion = "22.05";
-
-    #file = {
-    #  ".config/i3/config".source = ../../configs/i3;
-    #  ".config/zsh/.p10k.zsh".source = "../../configs/p10k.zsh";
-    #};
-    #file.".config/zsh/.p10k.zsh" = {
-    #  source = .dotfiles/configs/p10k;
-    #};
-
+    file = {
+      ".unison/default.prf".source  = ../../configs/default.prf;
+    };
     packages = with pkgs; [
       neofetch
       lxappearance
-      flameshot
-      arandr
       discord
       polymc
       pavucontrol
@@ -28,19 +17,81 @@
       gimp
       viewnior
       libreoffice
-      cmatrix
-      easyeffects
+      unison
+      tree
    ];
   };
+  services = {
+    flameshot.enable = true;
+    easyeffects.enable = true;
 
+    dunst = {
+      enable = true;
+      settings = {
+        global = {
+          width = 300;
+          height = 300;
+          offset = "30x50";
+          origin = "top-right";
+          transparency = 10;
+          frame_color = "#5F676A";
+          font = "Droid Sans 9";
+          separator_height = 2;
+          padding = 8;
+          frame_width = 3;
+        };
+
+        urgency_low = {
+          background = "#222222";
+          foreground = "#888888";
+          timeout = 10;
+        };
+        urgency_normal = {
+          background = "#402F65";
+          foreground = "#FFFFFF";
+          frame_color = "#5F676A";
+          timeout = 10;
+        };
+        urgency_criticall = {
+          background = "#900000";
+          foreground = "#FFFFFF";
+          frame_color = "#FF0000";
+          timeout = 0;
+        };
+      };  
+
+    };
+  };
   programs = {
+    autorandr = {
+      enable = true;
+      profiles = {
+        "desktop" = {
+          fingerprint = {
+            DVI-D-0 = "00ffffffffffff0004720e0464883060031a010380351e782a0ef5a555509e26105054b30c00714f818081c081009500b300d1c00101023a801871382d40582c4500132b2100001e000000fd00374c1e5311000a202020202020000000ff0054314d4545303034343230300a000000fc0041636572204b323432484c0a200097";
+            HDMI-0 = "00ffffffffffff0005e37024e95c0000071b010380341d782a2ac5a4564f9e280f5054bfef00d1c0b30095008180814081c001010101023a801871382d40582c450009252100001e000000fd00324c1e5311000a202020202020000000fc0032343730570a20202020202020000000ff0047474a48324841303233373835016802031ef14b101f051404130312021101230907078301000065030c0010008c0ad08a20e02d10103e9600092521000018011d007251d01e206e28550009252100001e8c0ad08a20e02d10103e96000925210000188c0ad090204031200c405500092521000018023a801871382d40582c450009252100001e00000000000000d1";
+            HDMI-1 = "00ffffffffffff005a632238010101011013010380341d782eeed5a555489b26125054bfef80d1c0b300a9409500904081808140714f023a801871382d40582c450008222100001e000000ff005234463039313630333138330a000000fd00324b0f5212000a202020202020000000fc00565832343333776d0a202020200133020325f152900504030207060f0e1f141e1d1312111601230907078301000065030c001000023a801871382d40582c450008222100001e011d8018711c1620582c250008222100009e011d007251d01e206e28550008222100001e023a80d072382d40102c458008222100001e8c0ad08a20e02d10103e9600082221000018e3";
+          };
+          config = {
+            HDMI-1 = {
+              enable = true;
+            };
+          };
+        };
+      };
+     
+    };
     texlive = { 
       enable = true; 
       #extraPackages = [];
     };
-    mpv = { enable = true; };
+    mpv = { 
+      enable = true; 
+    };
 
-    firefox = { enable = true; };
+    firefox = { 
+      enable = true; 
+    };
 
     alacritty = {
       enable = true;
@@ -66,7 +117,7 @@
       zplug = {
         enable = true;
         plugins = [
-          { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
+          { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
         ];
       };
       shellAliases = {
@@ -94,6 +145,7 @@
           enable = true;
           config = let mod = "Mod1"; in {
             modifier = mod;
+            defaultWorkspace = "workspace number 1";
 
 
             #resize mode
@@ -182,7 +234,7 @@
               "${mod}+Shift+r" = "restart";
 
               # Exit i3 
-              #"${mod}+Shift+e" = "exec "" not done yet
+              "${mod}+Shift+e" = ''exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"'';
 
               # Enter resize mode
               "${mod}+r" = "mode resize";
@@ -229,7 +281,7 @@
             colors = {
               focused = {
                 border =      "#402F65";
-                background =  "#2F343A";
+                background =  "#402F65";
                 text =        "#FFFFFF";
                 indicator =   "#190040";
                 childBorder = "#402F62";
@@ -239,5 +291,7 @@
         };
       };
     };
+
+    home.stateVersion = "22.05";
 }
   

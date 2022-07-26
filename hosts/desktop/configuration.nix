@@ -64,15 +64,12 @@
       enable = true;
       extraPackages = with pkgs; [
        dmenu
-       dunst
        i3status
       ];
-      #extraSessionCommands = "exec .dotfiles/screen.sh";
     };
   };
   hardware.opengl = {
     enable = true;
-    # extraPackages = [ pkgs.mesa.drivers ];
     # driSupport32Bit = true;
   };
   # PROGRAMS
@@ -107,16 +104,14 @@
     gvfs.enable = true;
     tumbler.enable = true;
     printing.enable = true;
-
+    
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      #jack.enable = true; if jack is required
     };
   };
-
   users.users.josh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -129,7 +124,6 @@
     #SYSTEM TOOLS
     wget
     neofetch
-    unison
     julia-bin
     glxinfo
     docker-compose
@@ -165,9 +159,12 @@
     };
   };
   virtualisation = {
+    virtualbox.host = {
+      enable = true;
+    };
     docker = {
       enableNvidia = true;
-      enable = true;
+      enable = false;
     }; 
   };
   system.stateVersion = "22.05";

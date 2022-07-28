@@ -124,8 +124,6 @@
     wget
     neofetch
     julia-bin
-    docker-compose
-    python
   ];
 
   # Environment

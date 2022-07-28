@@ -130,7 +130,7 @@
   ];
 
   services.openssh.enable = true;
-
+  services.smartd.enable = true;
   virtualisation.docker.enable = true;
   # Open ports in the firewall.
 

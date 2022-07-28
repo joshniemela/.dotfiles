@@ -127,20 +127,7 @@
     julia-bin
     glxinfo
     docker-compose
-    #PYTHON
-    (let 
-      my-python-packages = python-packages: with python-packages; [ 
-        pandas
-        scipy
-        matplotlib
-        pyarrow
-        numpy
-        scikitlearn
-      ];
-      python-with-my-packages = python3.withPackages my-python-packages;
-      in
-      python-with-my-packages
-    )
+    python
   ];
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
   environment.sessionVariables.TERMINAL = [ "alacritty" ];

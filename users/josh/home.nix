@@ -19,6 +19,7 @@
       libreoffice
       unison
       tree
+      texlive.combined.scheme-full
    ];
   };
   services = {
@@ -63,34 +64,66 @@
     };
   };
   programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     autorandr = {
       enable = true;
-      profiles = {
-        "desktop" = {
-          fingerprint = {
-            DVI-D-0 = "00ffffffffffff0004720e0464883060031a010380351e782a0ef5a555509e26105054b30c00714f818081c081009500b300d1c00101023a801871382d40582c4500132b2100001e000000fd00374c1e5311000a202020202020000000ff0054314d4545303034343230300a000000fc0041636572204b323432484c0a200097";
-            HDMI-0 = "00ffffffffffff0005e37024e95c0000071b010380341d782a2ac5a4564f9e280f5054bfef00d1c0b30095008180814081c001010101023a801871382d40582c450009252100001e000000fd00324c1e5311000a202020202020000000fc0032343730570a20202020202020000000ff0047474a48324841303233373835016802031ef14b101f051404130312021101230907078301000065030c0010008c0ad08a20e02d10103e9600092521000018011d007251d01e206e28550009252100001e8c0ad08a20e02d10103e96000925210000188c0ad090204031200c405500092521000018023a801871382d40582c450009252100001e00000000000000d1";
-            HDMI-1 = "00ffffffffffff005a632238010101011013010380341d782eeed5a555489b26125054bfef80d1c0b300a9409500904081808140714f023a801871382d40582c450008222100001e000000ff005234463039313630333138330a000000fd00324b0f5212000a202020202020000000fc00565832343333776d0a202020200133020325f152900504030207060f0e1f141e1d1312111601230907078301000065030c001000023a801871382d40582c450008222100001e011d8018711c1620582c250008222100009e011d007251d01e206e28550008222100001e023a80d072382d40102c458008222100001e8c0ad08a20e02d10103e9600082221000018e3";
-          };
-          config = {
-            HDMI-1 = {
-              enable = true;
-            };
-          };
-        };
-      };
-     
+      profiles = import ../../modules/autorandr/desktop.nix;
     };
-    texlive = { 
-      enable = true; 
-      #extraPackages = [];
-    };
+
     mpv = { 
       enable = true; 
     };
 
     firefox = { 
       enable = true; 
+      /* profiles.default = {
+        id = 0;
+        name = "Default";
+        settings = {
+          # Enable HTTPS-Only Mode
+          "dom.security.https_only_mode" = true;
+          "dom.security.https_only_mode_ever_enabled" = true;
+
+          # Privacy settings
+          "privacy.donottrackheader.enabled" = true;
+          "privacy.trackingprotection.enabled" = true;
+          "privacy.trackingprotection.socialtracking.enabled" = true;
+          "privacy.partition.network_state.ocsp_cache" = true;
+
+          # Disable all sorts of telemetry
+          "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+          "browser.newtabpage.activity-stream.telemetry" = false;
+          "browser.ping-centre.telemetry" = false;
+          "toolkit.telemetry.archive.enabled" = false;
+          "toolkit.telemetry.bhrPing.enabled" = false;
+          "toolkit.telemetry.enabled" = false;
+          "toolkit.telemetry.firstShutdownPing.enabled" = false;
+          "toolkit.telemetry.hybridContent.enabled" = false;
+          "toolkit.telemetry.newProfilePing.enabled" = false;
+          "toolkit.telemetry.reportingpolicy.firstRun" = false;
+          "toolkit.telemetry.shutdownPingSender.enabled" = false;
+          "toolkit.telemetry.unified" = false;
+          "toolkit.telemetry.updatePing.enabled" = false;
+
+          # As well as Firefox 'experiments'
+          "experiments.activeExperiment" = false;
+          "experiments.enabled" = false;
+          "experiments.supported" = false;
+          "network.allow-experiments" = false;
+
+          # Disable Pocket Integration
+          "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+          "extensions.pocket.enabled" = false;
+          "extensions.pocket.api" = "";
+          "extensions.pocket.oAuthConsumerKey" = "";
+          "extensions.pocket.showHome" = false;
+          "extensions.pocket.site" = "";
+        };
+      };
+      */
     };
 
     alacritty = {

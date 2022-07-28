@@ -28,39 +28,7 @@
 
     dunst = {
       enable = true;
-      settings = {
-        global = {
-          width = 300;
-          height = 300;
-          offset = "30x50";
-          origin = "top-right";
-          transparency = 10;
-          frame_color = "#5F676A";
-          font = "Droid Sans 9";
-          separator_height = 2;
-          padding = 8;
-          frame_width = 3;
-        };
-
-        urgency_low = {
-          background = "#222222";
-          foreground = "#888888";
-          timeout = 10;
-        };
-        urgency_normal = {
-          background = "#402F65";
-          foreground = "#FFFFFF";
-          frame_color = "#5F676A";
-          timeout = 10;
-        };
-        urgency_criticall = {
-          background = "#900000";
-          foreground = "#FFFFFF";
-          frame_color = "#FF0000";
-          timeout = 0;
-        };
-      };  
-
+      settings = import ../../modules/home-manager/dunst.nix
     };
   };
   programs = {
@@ -70,7 +38,7 @@
     };
     autorandr = {
       enable = true;
-      profiles = import ../../modules/autorandr/desktop.nix;
+      profiles = import ../../modules/home-manager/autorandr/desktop.nix;
     };
 
     mpv = { 
@@ -176,12 +144,12 @@
       windowManager = {
         i3 = {
           enable = true;
-          config = let mod = "Mod1"; in {
-            modifier = mod;
+          config = {
+            modifier = "Mod4"; # Use alt instead of super
             defaultWorkspace = "workspace number 1";
 
 
-            #resize mode
+            # Resize mode
             modes.resize = {
               Left   = "resize shrink width 10 px or 1 ppt";
               Down   = "resize grow height 10 px or 1 ppt";
@@ -192,6 +160,7 @@
               "${mod}+r" = "mode default";
             };
 
+            #keybindings = import ../../modules/home-manager/i3.nix;
             keybindings = {
               # Lauch dmenu
               "${mod}+d" = ''exec --no-startup-id "dmenu_run -sb '#402F65'"'';

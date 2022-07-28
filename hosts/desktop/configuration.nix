@@ -9,7 +9,8 @@
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
-  
+  nixpkgs.config.allowUnfree = true;
+
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     loader.systemd-boot.enable = true;
@@ -96,7 +97,6 @@
       };
 
     dconf.enable = true;
-
     steam.enable = true;
   };
 
@@ -119,19 +119,24 @@
     shell = pkgs.zsh;
   };
 
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    #SYSTEM TOOLS
+    # SYSTEM TOOLS
     wget
     neofetch
     julia-bin
-    glxinfo
     docker-compose
     python
   ];
-  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
-  environment.sessionVariables.TERMINAL = [ "alacritty" ];
-  environment.sessionVariables.EDITOR = [ "codium" ];
+
+  # Environment
+  environment = {
+    pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
+    sessionVariables = {
+      TERMINAL = [ "alacritty" ];
+      EDITOR = [ "codium" ];
+      };
+    
+  };
   
   security = {
     rtkit.enable = true;
@@ -145,6 +150,7 @@
 	    } ];
     };
   };
+
   virtualisation = {
     virtualbox.host = {
       enable = true;

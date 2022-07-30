@@ -30,7 +30,7 @@
     };
     timers.clear-log = {
       wantedBy = [ "timers.target" ];
-      partOf = ["clear-log.service" ];
+      partOf = [ "clear-log.service" ];
       timerConfig.OnCalendar = "weekly UTC";
     };
   };
@@ -46,13 +46,13 @@
     domain = "jniemela.dk";
     nameservers = [ "8.8.8.8" ];
     defaultGateway = "192.168.1.1";
-    interfaces.eth0.ipv4.addresses = [ {
+    interfaces.eth0.ipv4.addresses = [{
       address="192.168.1.2";
       prefixLength = 24;
-    } ];
+    }];
 
     firewall = {
-      allowedTCPPorts = [ 42069 25565 ];
+      allowedTCPPorts = [ 42069 25565 80 443 ];
       allowedUDPPorts = [ 19132 34197 ];
       enable = true;
     };
@@ -120,30 +120,48 @@
   environment.systemPackages = with pkgs; [
     nano
     wget
-    docker
     doas
     unison
     docker-compose
-    cryptsetup
-    ffmpeg
-    glob
   ];
+  services = {
+    openssh.enable = true;
+    smartd.enable = true;
+    nginx = {
+      enable = true;
+      virtualHosts."jniemela.dk" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."jniemela.dk".index = "home.html";
+        extraConfig = ''
+          if ($request_uri ~ ^/(.*)\.html) {
+              return 302 /$1;
+              }
+              try_files $uri $uri.html $uri/ =404;
+        '';
+        root = "/var/www/website";
+      };
+    };
+  };
+  
 
-  services.openssh.enable = true;
-  services.smartd.enable = true;
   virtualisation.docker.enable = true;
   # Open ports in the firewall.
 
   # Doas config
   security = {
+    acme = {
+      acceptTerms = true;
+      certs."jniemela.dk".email = "josh@jniemela.dk";
+    };
     sudo.enable = false;
     doas = {
       enable = true;
       extraRules = [{
         groups = [ "wheel" ]; 
         persist = true;
-	keepEnv = true;
-	}];
+        keepEnv = true;
+      }];
     };
   };
 

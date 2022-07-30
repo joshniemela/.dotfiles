@@ -75,11 +75,8 @@
   };
   # PROGRAMS
   programs = {
-    
-    git = {
-      enable = true;
-    };
-    
+    nix-ld.enable = true; # Dynamic binaries for Julia
+    git.enable = true;    
     htop = {
       enable = true;
       settings = {
@@ -123,7 +120,6 @@
     # SYSTEM TOOLS
     wget
     neofetch
-    julia-bin
   ];
 
   # Environment

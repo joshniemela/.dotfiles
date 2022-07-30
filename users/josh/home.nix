@@ -1,5 +1,10 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
+let
+  lib = pkgs.lib;
+  julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
+  julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
+in 
 {
   programs.home-manager.enable = true;
   home = {
@@ -21,6 +26,8 @@
       tree
       texlive.combined.scheme-full
       docker-compose
+      darktable
+      julia-wrapper
    ];
   };
   services = {
@@ -33,6 +40,13 @@
     };
   };
   programs = {
+    git = {
+      enable = true;
+      lfs.enable = true;
+      userName = "Joshua Niemelä";
+      userEmail = "josh@jniemela.dk";
+    };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -56,7 +70,8 @@
     };
     vscode = {
       enable = true;
-      package = pkgs.vscodium;
+      package = pkgs.vscode;
+      #package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
         james-yu.latex-workshop
         bbenoist.nix

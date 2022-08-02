@@ -1,11 +1,13 @@
 {
   description = "Josh's NixOS flake";
   inputs = {
+    nixpkgs-small.url = "nixpkgs/nixos-unstable-small";
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, nixpkgs-small, home-manager, ... }:
   let 
     system = "x86_64-linux";
 
@@ -17,10 +19,10 @@
     };
     
     lib = nixpkgs.lib;
-
+    lib-small = nixpkgs-small.lib;
   in{
     nixosConfigurations = {
-      server = lib.nixosSystem {
+      server = lib-small.nixosSystem {
         inherit system;
         
 	      modules = [

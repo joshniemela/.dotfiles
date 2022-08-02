@@ -143,4 +143,5 @@
       childBorder = "#402F62";
     };
   };
+startup = [{ command = "autorandr -c"; }];
 }

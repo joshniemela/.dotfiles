@@ -28,6 +28,7 @@ in
       docker-compose
       darktable
       julia-wrapper
+      dotnet-sdk_5
    ];
   };
   services = {

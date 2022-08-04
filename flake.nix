@@ -22,12 +22,20 @@
     lib-small = nixpkgs-small.lib;
   in{
     nixosConfigurations = {
-      server = lib-small.nixosSystem {
+      server = lib-small.nixosSystem{
         inherit system;
         
 	      modules = [
-	      ./hosts/server/configuration.nix
-	      ];
+	        ./hosts/server/configuration.nix
+	      
+          home-manager.nixosModules.home-manager{
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.josh = import ./hosts/server/josh.nix;
+            };
+          }
+        ];
       };
 
       liveISO = lib.nixosSystem {
@@ -37,41 +45,34 @@
     	  ./hosts/image.nix
       	];
       };
-     desktop = lib.nixosSystem {
+
+      desktop = lib.nixosSystem {
        inherit system;
        modules = [
-        {
-          nix.nixPath = ["nixpkgs=${nixpkgs}"];
-        }
         ./hosts/desktop/configuration.nix
-        home-manager.nixosModules.home-manager 
-        {
+
+        home-manager.nixosModules.home-manager{
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.josh = import ./users/josh/home.nix;
+            users.josh = import ./hosts/desktop/josh.nix;
           };
-        }
-        
-       ]; 
+        }   
+      ]; 
      };
      laptop = lib.nixosSystem {
        inherit system;
        modules = [
-        {
-          nix.nixPath = ["nixpkgs=${nixpkgs}"];
-        }
         ./hosts/laptop/configuration.nix
-        home-manager.nixosModules.home-manager 
-        {
+
+        home-manager.nixosModules.home-manager{
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.josh = import ./users/josh/home.nix;
+            users.josh = import ./hosts/laptop/josh.nix;
           };
         }
-        
-       ]; 
+      ]; 
      };
     };
   };

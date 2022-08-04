@@ -83,11 +83,6 @@
     keyMap = "dk";
   };
 
-  fileSystems = {
-    "/".options = [ "compress=zstd" "discard" ];
-    "/home".options = [ "compress=zstd" "discard" ];
-    "/nix".options = [ "compress=zstd" "noatime" "discard" ];
-  };
   zramSwap = {
     enable=true;
     memoryPercent=100;
@@ -97,9 +92,9 @@
     users.josh = {
       isNormalUser = true;
       extraGroups = [ "wheel" "docker" ]; 
-
       initialPassword = "1234";
       openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@josharch" ];
+      shell = pkgs.zsh;
     };
     users.peter = {
       isNormalUser = true;

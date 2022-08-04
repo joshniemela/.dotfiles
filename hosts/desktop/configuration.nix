@@ -34,12 +34,7 @@
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
-  
-  fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-  };
+
   zramSwap = {
     enable=true;
     memoryPercent=100;

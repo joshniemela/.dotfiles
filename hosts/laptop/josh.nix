@@ -41,16 +41,10 @@ in
     };
   };
   imports = [
-    ../../modules/home-manager/zsh.nix #enables zsh
+    ../../modules/home-manager/zsh.nix # enables zsh
+    ../../modules/home-manager/git.nix # enable git
   ];
   programs = {
-    git = {
-      enable = true;
-      lfs.enable = true;
-      userName = "Joshua Niemelä";
-      userEmail = "josh@jniemela.dk";
-    };
-
     direnv = {
       enable = true;
       nix-direnv.enable = true;

@@ -61,7 +61,7 @@
         {
           nix.nixPath = ["nixpkgs=${nixpkgs}"];
         }
-        ./hosts/desktop/configuration.nix
+        ./hosts/laptop/configuration.nix
         home-manager.nixosModules.home-manager 
         {
           home-manager = {

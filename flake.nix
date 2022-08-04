@@ -40,6 +40,9 @@
      desktop = lib.nixosSystem {
        inherit system;
        modules = [
+        {
+          nix.nixPath = ["nixpkgs=${nixpkgs}"];
+        }
         ./hosts/desktop/configuration.nix
         home-manager.nixosModules.home-manager 
         {
@@ -49,6 +52,25 @@
             users.josh = import ./users/josh/home.nix;
           };
         }
+        
+       ]; 
+     };
+     laptop = lib.nixosSystem {
+       inherit system;
+       modules = [
+        {
+          nix.nixPath = ["nixpkgs=${nixpkgs}"];
+        }
+        ./hosts/desktop/configuration.nix
+        home-manager.nixosModules.home-manager 
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.josh = import ./users/josh/home.nix;
+          };
+        }
+        
        ]; 
      };
     };

@@ -22,8 +22,9 @@
     nameservers = [ "8.8.8.8" ];
     defaultGateway = "192.168.1.1";
     interfaces.eth0.ipv4.addresses = [ {
-      address="192.168.1.3";
+#      address="192.168.1.3";
       prefixLength = 24;
+      
     } ];
   };
 

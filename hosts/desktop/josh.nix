@@ -29,6 +29,7 @@ in
       darktable
       julia-wrapper
       dotnet-sdk_5
+      aspell
    ];
   };
   services = {
@@ -45,6 +46,7 @@ in
     ../../modules/home-manager/git.nix # enable git
   ];
   programs = {
+    sagemath.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;

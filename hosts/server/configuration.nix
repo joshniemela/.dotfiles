@@ -122,21 +122,21 @@
   services = {
     openssh.enable = true;
     smartd.enable = true;
-    nginx = {
-      enable = true;
-      virtualHosts."jniemela.dk" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."jniemela.dk".index = "home.html";
-        extraConfig = ''
-          if ($request_uri ~ ^/(.*)\.html) {
-              return 302 /$1;
-              }
-              try_files $uri $uri.html $uri/ =404;
-        '';
-        root = "/var/www/website";
-      };
-    };
+    #nginx = {
+    #  enable = true;
+    #  virtualHosts."jniemela.dk" = {
+    #    enableACME = true;
+    #    forceSSL = true;
+    #    locations."jniemela.dk".index = "home.html";
+    #    extraConfig = ''
+    #      if ($request_uri ~ ^/(.*)\.html) {
+    #          return 302 /$1;
+    #          }
+    #          try_files $uri $uri.html $uri/ =404;
+    #    '';
+    #    root = "/var/www/website";
+    #  };
+    #};
   };
   
 
@@ -145,10 +145,10 @@
 
   # Doas config
   security = {
-    acme = {
-      acceptTerms = true;
-      certs."jniemela.dk".email = "josh@jniemela.dk";
-    };
+    #acme = {
+    #  acceptTerms = true;
+    #  certs."jniemela.dk".email = "josh@jniemela.dk";
+    #};
     sudo.enable = false;
     doas = {
       enable = true;

@@ -1,4 +1,3 @@
-
 { config, pkgs, out, ... }:
 
 {
@@ -22,9 +21,6 @@
     hostName = "laptop"; 
     nameservers = [ "8.8.8.8" ];
     defaultGateway = "192.168.1.1";
-    #interfaces.eth0.ipv4.addresses = [ {
-    #  prefixLength = 24;
-    #} ];
     networkmanager.enable = true;
   };
 
@@ -43,15 +39,13 @@
   
   services.xserver = {
     libinput.enable = true;
-    #synaptics.enable = true;
     enable = true;
     layout = "dk";
-    #videoDrivers = [ "nvidia" ];
     desktopManager = {
       xterm.enable = false;
     };
     displayManager = {
-      defaultSession = "none+qtile";
+      defaultSession = "none+i3";
       lightdm.enable = true;
       autoLogin = {
         enable = true;
@@ -59,17 +53,16 @@
       };
     };
     
-    windowManager.qtile = {
+    windowManager.i3 = {
       enable = true;
-      #extraPackages = with pkgs; [
-      # dmenu
-      # i3status
-      #];
+      extraPackages = with pkgs; [
+        dmenu
+      ];
     };
   };
   hardware.opengl = {
     enable = true;
-    # driSupport32Bit = true;
+    driSupport32Bit = true;
   };
   # PROGRAMS
   programs = {
@@ -109,7 +102,7 @@
   };
   users.users.josh = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ];
+    extraGroups = [ "wheel" ];
     initialPassword = "1234";
     shell = pkgs.zsh;
   };

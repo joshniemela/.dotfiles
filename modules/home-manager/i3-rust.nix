@@ -103,6 +103,7 @@
     #names = [ "Font Awesome 6 Brands"]; # "Sans Mono" "DejaVu"];
     #size = 11.0;
     #};
+    trayOutput = "none";
     statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml"; #-c ~/.config/i3status-rust/bottom-config.toml;
    # i3status colors
     colors = {

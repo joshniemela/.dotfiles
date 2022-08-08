@@ -33,7 +33,7 @@ in
       julia-wrapper
       dotnet-sdk_5
       font-awesome #icons
-      powerline-fonts
+      (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];})
    ];
   };
   services = {
@@ -53,6 +53,11 @@ in
         default = {
           blocks = [
             {
+              block = "networkmanager";
+              on_click = "alacritty -e nmtui";
+              ap_format = "{ssid^10}";
+            }
+            {
               block = "disk_space";
               path = "/";
               alias = "/";
@@ -64,29 +69,35 @@ in
             }
             {
               block = "memory";
-              display_type = "memory";
-              format_mem = "{mem_used_percents}";
-              format_swap = "{swap_used_percents}";
+              format_mem = "{mem_avail}";
+              format_swap = "{swap_avail}";
             }
             {
               block = "cpu";
               interval = 1;
-            }
-            {
-              block = "load";
-              interval = 1;
-              format = "{1m}";
+	            format="{barchart}";
             }
             { block = "sound"; }
-	    {
-	      block = "battery";
+            {
+              block = "battery";
               interval = 15;
-	      format = "{percentage} {time}";
- 	    }
+              format = "{percentage} {time}";
+            }
+            {
+              block = "weather";
+              format = "{weather} {temp}C {humidity}% {wind}m/s {direction}";
+              service = {
+                name = "openweathermap"; 
+                api_key = "75913c9c48b7fcab3d9d9cae7c9dac7a";
+                city_id = "2618425";
+                units = "metric";
+              };
+            }
             {
               block = "time";
               interval = 60;
               format = "%a %d/%m %R";
+              on_click = "thunderbird -calendar";
             }
           ];
           #settings = {

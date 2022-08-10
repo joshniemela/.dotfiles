@@ -16,7 +16,7 @@
       shellAliases = {
         ll = "ls -l";
         lag = "ls -ag";
-        rebuildSystem = "source ~/.dotfiles/rebuildSystem.sh";
+        switchSystem = "source ~/.dotfiles/switchSystem.sh";
         testSystem = "source ~/.dotfiles/testSystem.sh";
         dir="dir --color='auto'";
         grep="grep --color='auto'";

@@ -24,13 +24,14 @@ in
       libreoffice
       unison
       tree
-      texlive.combined.scheme-full
+      texlive.combined.scheme-full # Make this smaller in the future, I don't need the entire texlive enviroment
       docker-compose
       darktable
       julia-wrapper
       dotnet-sdk_5
       hunspell
-      hunspellDicts.en_GB-large
+      hunspellDicts.en_GB-large # Dictionary for hunspell
+      xournalpp # Modfiying PDF docs for signing
    ];
   };
   services = {

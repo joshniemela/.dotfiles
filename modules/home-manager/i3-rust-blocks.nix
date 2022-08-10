@@ -58,5 +58,5 @@
     #  };
     #};
     icons = "awesome6";
-    theme = "solarized-dark";
+    theme = "gruvbox-dark";
 }

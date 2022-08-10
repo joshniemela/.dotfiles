@@ -48,15 +48,6 @@
         on_click = "thunderbird -calendar";
     }
     ];
-    #settings = {
-    #  theme =  {
-    #    name = "solarized-dark";
-    #    overrides = {
-    #      idle_bg = "#123456";
-    #      idle_fg = "#abcdef";
-    #    };
-    #  };
-    #};
     icons = "awesome6";
     theme = "gruvbox-dark";
 }

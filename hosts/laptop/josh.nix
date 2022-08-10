@@ -41,11 +41,6 @@ in
   services = {
     flameshot.enable = true;
     easyeffects.enable = true;
-
-    dunst = {
-      enable = true;
-      settings = import ../../modules/home-manager/dunst-red.nix;
-    };
   };
   
   programs = {

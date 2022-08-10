@@ -6,9 +6,10 @@ in
 {
   programs.home-manager.enable = true;
   home = {
-    #packages = with pkgs; [
-    #  
-    #];
+    packages = with pkgs; [
+      neofetch
+      htop  
+    ];
   };
 
   imports = [

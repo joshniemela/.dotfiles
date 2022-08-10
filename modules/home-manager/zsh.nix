@@ -16,7 +16,8 @@
       shellAliases = {
         ll = "ls -l";
         lag = "ls -ag";
-        applySystem = "source ~/.dotfiles/apply-system.sh";
+        rebuildSystem = "source ~/.dotfiles/rebuildSystem.sh";
+        testSystem = "source ~/.dotfiles/testSystem.sh";
         dir="dir --color='auto'";
         grep="grep --color='auto'";
         unison="unison -ui text";

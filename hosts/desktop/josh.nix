@@ -9,7 +9,7 @@ in
   programs.home-manager.enable = true;
   home = {
     file = {
-      ".unison/default.prf".source  = ../../configs/default.prf;
+      ".unison/default.prf".source  = ../../configs/unison.prf;
     };
     packages = with pkgs; [
       neofetch
@@ -29,7 +29,8 @@ in
       darktable
       julia-wrapper
       dotnet-sdk_5
-      aspell
+      hunspell
+      hunspellDicts.en_GB-large
    ];
   };
   services = {
@@ -38,7 +39,7 @@ in
 
     dunst = {
       enable = true;
-      settings = import ../../modules/home-manager/dunst.nix;
+      settings = import ../../modules/home-manager/dunst-purple.nix;
     };
   };
   imports = [

@@ -8,8 +8,8 @@ in
 {
   fonts.fontconfig.enable = true;
   imports = [
-    ../../modules/home-manager/zsh.nix # enables zsh
-    ../../modules/home-manager/git.nix # enable git
+    ../../modules/home-manager/zsh.nix # Enable zsh
+    ../../modules/home-manager/git.nix # Enable git
     ];
   home = {
     file = {
@@ -32,8 +32,8 @@ in
       darktable
       julia-wrapper
       dotnet-sdk_5
-      font-awesome #icons
-      (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];})
+      font-awesome # Icons
+      (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
    ];
   };
   services = {
@@ -78,9 +78,18 @@ in
       enable = true;
       package = pkgs.vscode;
       extensions = with pkgs.vscode-extensions; [
-        james-yu.latex-workshop
-        bbenoist.nix
-        #julialang.julia need to figure out how to add this thing with vs marketplace
+        james-yu.latex-workshop # Latex
+        bbenoist.nix # Nix 
+        naumovs.color-highlight # Shows hex codes with colour
+        pkief.material-icon-theme # Icon theme
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "language-julia"; # Julia
+          publisher = "julialang";
+          version = "1.6.30";
+          sha256 = "sha256-HZaltck0cKSBSPGCByLaIgui2tUf+aLmR56vyi60YUQ=";
+        }
       ];
     };
   };

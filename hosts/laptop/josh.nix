@@ -10,7 +10,9 @@ in
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
+    ../../modules/home-manager/dunst.nix # enable dunst
     ];
+  services.dunst.settings.urgency_normal.background = lib.mkForce "#E03444";
   home = {
     file = {
       ".unison/default.prf".source  = ../../configs/unison.prf;
@@ -45,6 +47,7 @@ in
       settings = import ../../modules/home-manager/dunst-red.nix;
     };
   };
+  
   programs = {
     home-manager.enable = true;
     i3status-rust = {
@@ -53,10 +56,12 @@ in
         default = import ../../modules/home-manager/i3-rust-blocks.nix;
       };
     };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
+
     autorandr = {
       enable = true;
       profiles = import ../../modules/home-manager/autorandr/desktop.nix;
@@ -74,6 +79,7 @@ in
     alacritty = {
       enable = true;
     };
+
     vscode = {
       enable = true;
       package = pkgs.vscode;
@@ -84,8 +90,8 @@ in
         pkief.material-icon-theme # Icon theme
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "language-julia"; # Julia
+        { # Julia
+          name = "language-julia"; 
           publisher = "julialang";
           version = "1.6.30";
           sha256 = "sha256-HZaltck0cKSBSPGCByLaIgui2tUf+aLmR56vyi60YUQ=";

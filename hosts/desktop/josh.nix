@@ -37,15 +37,12 @@ in
   services = {
     flameshot.enable = true;
     easyeffects.enable = true;
-
-    dunst = {
-      enable = true;
-      settings = import ../../modules/home-manager/dunst-purple.nix;
-    };
   };
   imports = [
     ../../modules/home-manager/zsh.nix # enable zsh
     ../../modules/home-manager/git.nix # enable git
+    ../../modules/home-manager/i3.nix # enable x and i3
+    ../../modules/home-manager/dunst.nix # enable dunst
   ];
   programs = {
     sagemath.enable = true;
@@ -87,19 +84,6 @@ in
           sha256 = "sha256-HZaltck0cKSBSPGCByLaIgui2tUf+aLmR56vyi60YUQ=";
         }
       ];
-    };
-  };
-  xsession = {
-    enable = true;
-    windowManager = {
-      i3 = {
-        enable = true;
-        
-        config = import ../../modules/home-manager/i3.nix { 
-          inherit pkgs; 
-          mod = "Mod1"; # Set to Mod1 for alt, Mod4 for super
-        };
-      };
     };
   };
   home.stateVersion = "22.05";

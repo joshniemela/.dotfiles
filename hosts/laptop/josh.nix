@@ -10,7 +10,7 @@ in
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
-    ../../modules/home-manager/dunst.nix # enable dunst
+    ../../modules/home-manager/dunst.nix # Enable dunst
     ];
   services.dunst.settings.urgency_normal.background = lib.mkForce "#E03444";
   home = {

@@ -4,7 +4,7 @@
     nixpkgs-small.url = "nixpkgs/nixos-unstable-small";
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager"; #/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { nixpkgs, nixpkgs-small, home-manager, ... }:

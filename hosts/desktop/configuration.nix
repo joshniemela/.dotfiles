@@ -60,7 +60,6 @@
       enable = true;
       extraPackages = with pkgs; [
        dmenu
-       i3status
       ];
     };
   };
@@ -85,8 +84,11 @@
 
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-      };
+      plugins = with pkgs.xfce; [ 
+        thunar-archive-plugin
+        thunar-volman 
+      ];
+    };
 
     dconf.enable = true;
     steam.enable = true;
@@ -122,7 +124,7 @@
     pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
       TERMINAL = [ "alacritty" ];
-      EDITOR = [ "codium" ];
+      EDITOR = [ "code" ];
       };
     
   };

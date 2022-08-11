@@ -32,6 +32,7 @@ in
       hunspell
       hunspellDicts.en_GB-large # Dictionary for hunspell
       xournalpp # Modfiying PDF docs for signing
+      tiled
    ];
   };
   services = {

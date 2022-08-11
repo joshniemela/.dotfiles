@@ -10,6 +10,13 @@ in
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
+    ../../modules/home-manager/i3.nix {
+      config.theme = lib.mkForce { # enable x and i3
+        statusbar = "i3status-rs";
+        primaryColour = "#E03444";
+        secondaryColour = "#902424";
+      };
+    }
     ../../modules/home-manager/dunst.nix # Enable dunst
     ];
   services.dunst.settings.urgency_normal.background = lib.mkForce "#E03444";
@@ -94,19 +101,7 @@ in
       ];
     };
   };
-  xsession = {
-    enable = true;
-    windowManager = {
-      i3 = {
-        enable = true;
-        
-        config = import ../../modules/home-manager/i3-rust.nix { 
-          inherit pkgs; 
-          mod = "Mod1"; # Set to Mod1 for alt, Mod4 for super
-       };
-     };
-    };
-  };
+  
   home.stateVersion = "22.05";
 }
   

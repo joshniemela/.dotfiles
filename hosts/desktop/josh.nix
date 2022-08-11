@@ -6,6 +6,7 @@ let
   julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
 in 
 {
+  #config.theme.primaryColour = lib.mkForce "#FF00FF";
   programs.home-manager.enable = true;
   home = {
     file = {

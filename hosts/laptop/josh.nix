@@ -4,21 +4,20 @@ let
   lib = pkgs.lib;
   julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
   julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
-in 
+in
 {
   fonts.fontconfig.enable = true;
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
-    ../../modules/home-manager/i3.nix {
-      config.theme = lib.mkForce { # enable x and i3
-        statusbar = "i3status-rs";
-        primaryColour = "#E03444";
-        secondaryColour = "#902424";
-      };
-    }
+    ../../modules/home-manager/i3.nix # enable x and i3
     ../../modules/home-manager/dunst.nix # Enable dunst
     ];
+    theme = {
+      statusbar = "i3status-rs";
+      primaryColour = "#E03444";
+      secondaryColour = "#902424";
+    };
   services.dunst.settings.urgency_normal.background = lib.mkForce "#E03444";
   home = {
     file = {
@@ -81,7 +80,7 @@ in
     alacritty = {
       enable = true;
     };
-
+    
     vscode = {
       enable = true;
       package = pkgs.vscode;
@@ -103,5 +102,6 @@ in
   };
   
   home.stateVersion = "22.05";
+
 }
   

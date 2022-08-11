@@ -130,6 +130,12 @@ in
               };
 
               bars = [{
+                statusCommand = if config.theme.statusbar=="i3status-rs"
+                  then "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml"
+                  else "${pkgs.i3status}/bin/i3status";
+                trayOutput = if config.theme.statusbar=="i3status-rs"
+                  then "none"
+                  else "primary";
                 # i3status colors
                 colors = {
                   background = "#000000";
@@ -170,16 +176,7 @@ in
               };
               startup = [{ command = "autorandr -c"; }];
             }
-            (lib.mkIf (config.theme.statusbar=="i3status") {
-              bars = [{
-                statusCommand = "${pkgs.i3status}/bin/i3status";
-                }];
-            })
             (lib.mkIf (config.theme.statusbar=="i3status-rs") {
-              bars = [{
-                trayOutput = "none";
-                statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
-              }];
               fonts = {
                 names = [ "DejaVu Sans Mono" "Font Awesome 6 Brands" ];
                 style = "Bold Semi-Condensed";

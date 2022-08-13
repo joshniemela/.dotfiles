@@ -4,10 +4,12 @@
     nixpkgs-small.url = "nixpkgs/nixos-unstable-small";
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager"; #/master";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    webcord.url = "github:fufexan/webcord-flake"; # foss discord
   };
-  outputs = { nixpkgs, nixpkgs-small, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-small, home-manager, webcord, ... }@inputs:
   let 
     system = "x86_64-linux";
 
@@ -24,8 +26,7 @@
     nixosConfigurations = {
       server = lib-small.nixosSystem{
         inherit system;
-        
-	      modules = [
+        modules = [
 	        ./hosts/server/configuration.nix
 	      
           home-manager.nixosModules.home-manager{
@@ -48,6 +49,7 @@
 
       desktop = lib.nixosSystem {
        inherit system;
+       specialArgs = inputs;
        modules = [
         ./hosts/desktop/configuration.nix
 
@@ -56,6 +58,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.josh = import ./hosts/desktop/josh.nix;
+            extraSpecialArgs = inputs;
           };
         }   
       ]; 

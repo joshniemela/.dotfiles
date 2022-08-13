@@ -1,6 +1,7 @@
-{ config, pkgs, webcord, ... }:
+{ config, pkgs, ... }:
 
 let
+  lib = pkgs.lib;
   julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
   julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
 in 
@@ -13,6 +14,7 @@ in
     packages = with pkgs; [
       neofetch
       lxappearance
+      discord
       polymc
       pavucontrol
       thunderbird
@@ -31,7 +33,6 @@ in
       hunspellDicts.en_GB-large # Dictionary for hunspell
       xournalpp # Modfiying PDF docs for signing
       tiled
-      webcord.packages.${system}.default
    ];
   };
   services = {
@@ -69,6 +70,5 @@ in
       enable = true;
     };
   };
-  home.stateVersion = "22.05";
 }
   

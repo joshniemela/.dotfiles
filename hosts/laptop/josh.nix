@@ -12,14 +12,18 @@ in
     ../../modules/home-manager/git.nix # Enable git
     ../../modules/home-manager/i3.nix # Enable x and i3
     ../../modules/home-manager/dunst.nix # Enable dunst
-    ../../modules/home-manager/dunst.nix # Enable code
+    ../../modules/home-manager/code.nix # Enable code
     ];
     theme = {
       statusbar = "i3status-rs";
       primaryColour = "#E03444";
       secondaryColour = "#902424";
     };
-  services.dunst.settings.urgency_normal.background = lib.mkForce "#E03444";
+  services.dunst.settings.urgency_normal = {
+    frame_color = lib.mkForce "#E03444";
+    background = lib.mkForce "#5F676A";
+  };
+  
   home = {
     file = {
       ".unison/default.prf".source  = ../../configs/unison.prf;
@@ -43,6 +47,7 @@ in
       dotnet-sdk_5
       font-awesome # Icons
       (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
+      subversion
    ];
   };
   services = {

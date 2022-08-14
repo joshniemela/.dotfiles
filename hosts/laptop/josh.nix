@@ -16,14 +16,14 @@ in
     ];
     theme = {
       statusbar = "i3status-rs";
-      primaryColour = "#E03444";
+      primaryColour = "#A03020";
       secondaryColour = "#902424";
     };
   services.dunst.settings.urgency_normal = {
-    frame_color = lib.mkForce "#E03444";
+    frame_color = lib.mkForce "#A03020";
     background = lib.mkForce "#5F676A";
   };
-  
+
   home = {
     file = {
       ".unison/default.prf".source  = ../../configs/unison.prf;

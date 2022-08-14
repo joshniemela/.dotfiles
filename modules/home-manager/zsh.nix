@@ -2,7 +2,7 @@
     programs.zsh = {
       enable = true;
       autocd = true;
-      dotDir = ".config/zsh";
+      dotDir = "~/.config/zsh";
       enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
       enableCompletion = true;
@@ -28,7 +28,7 @@
         bindkey "^[[F" end-of-line
         bindkey "^[[1;5D" backward-word
         bindkey "^[[1;5C" forward-word
-        source .dotfiles/configs/p10k
+        source ~/.dotfiles/configs/p10k
       '';
     };
 }

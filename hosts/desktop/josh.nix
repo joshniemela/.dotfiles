@@ -32,6 +32,8 @@ in
       xournalpp # Modfiying PDF docs for signing
       tiled
       webcord.packages.${system}.default
+      zulip
+      zulip-term
    ];
   };
   services = {

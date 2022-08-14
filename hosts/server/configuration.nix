@@ -118,6 +118,11 @@
     doas
     unison
     docker-compose
+    gitAndTools.git
+    gitAndTools.gitSVN
+    gitAndTools.svn2git
+    subversion
+    ruby_3_1
   ];
   services = {
     openssh.enable = true;

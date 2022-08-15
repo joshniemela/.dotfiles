@@ -1,13 +1,10 @@
-# systemEdit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      ./hardware-configuration.nix # Include the results of the hardware scan.
+      # ../../modules/website.nix
     ];
 
   nix = {
@@ -73,10 +70,6 @@
 
   time.timeZone = "Europe/Copenhagen";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   i18n.defaultLocale = "en_DK.UTF-8";
   console = {
     font = "Lat2-Terminus16";
@@ -96,20 +89,6 @@
       openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@josharch" ];
       shell = pkgs.zsh;
     };
-    users.peter = {
-      isNormalUser = true;
-      extraGroups = [ "docker" ]; 
-
-      initialPassword = "1234";
-      openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFykQFb2WstNq1Iv1KL3spNY3Y6udyuk6F0hmbFvKN2r user@deepthought "];
-    };
-
-    users.temp = {
-      isNormalUser = true; 
-
-      initialPassword = "1234";
-      openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPOu8/uo3T9syxIECxpteIGuk4XxBD29y5cfC2g+Udfx MacSlash "];
-    };
   };
  
   environment.systemPackages = with pkgs; [
@@ -118,30 +97,10 @@
     doas
     unison
     docker-compose
-    gitAndTools.git
-    gitAndTools.gitSVN
-    gitAndTools.svn2git
-    subversion
-    ruby_3_1
   ];
   services = {
     openssh.enable = true;
     smartd.enable = true;
-    #nginx = {
-    #  enable = true;
-    #  virtualHosts."jniemela.dk" = {
-    #    enableACME = true;
-    #    forceSSL = true;
-    #    locations."jniemela.dk".index = "home.html";
-    #    extraConfig = ''
-    #      if ($request_uri ~ ^/(.*)\.html) {
-    #          return 302 /$1;
-    #          }
-    #          try_files $uri $uri.html $uri/ =404;
-    #    '';
-    #    root = "/var/www/website";
-    #  };
-    #};
   };
   
 
@@ -150,10 +109,6 @@
 
   # Doas config
   security = {
-    #acme = {
-    #  acceptTerms = true;
-    #  certs."jniemela.dk".email = "josh@jniemela.dk";
-    #};
     sudo.enable = false;
     doas = {
       enable = true;

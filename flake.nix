@@ -65,6 +65,7 @@
      };
      laptop = lib.nixosSystem {
        inherit system;
+       specialArgs = inputs;
        modules = [
         ./hosts/laptop/configuration.nix
 
@@ -73,6 +74,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.josh = import ./hosts/laptop/josh.nix;
+            extraSpecialArgs = inputs;
           };
         }
       ]; 

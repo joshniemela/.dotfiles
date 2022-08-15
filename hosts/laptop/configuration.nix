@@ -102,7 +102,7 @@
   };
   users.users.josh = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     initialPassword = "1234";
     shell = pkgs.zsh;
   };

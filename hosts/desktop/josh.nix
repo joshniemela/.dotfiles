@@ -1,74 +1,40 @@
-{ config, pkgs, webcord, ... }:
+{ config, pkgs, ... }:
 
-let
-  julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
-  julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
-in 
 {
-  programs.home-manager.enable = true;
-  home = {
-    file = {
-      ".unison/default.prf".source  = ../../configs/unison.prf;
-    };
-    packages = with pkgs; [
-      neofetch
-      lxappearance
-      polymc
-      pavucontrol
-      thunderbird
-      youtube-dl
-      gimp
-      viewnior
-      libreoffice
-      unison
-      tree
-      texlive.combined.scheme-full # Make this smaller in the future, I don't need the entire texlive enviroment
-      docker-compose
-      darktable
-      julia-wrapper
-      dotnet-sdk_5
-      hunspell
-      hunspellDicts.en_GB-large # Dictionary for hunspell
-      xournalpp # Modfiying PDF docs for signing
-      tiled
-      webcord.packages.${system}.default
-      zulip
-      zulip-term
-   ];
-  };
-  services = {
-    flameshot.enable = true;
-    easyeffects.enable = true;
-  };
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
     ../../modules/home-manager/i3.nix # Enable x and i3
     ../../modules/home-manager/dunst.nix # Enable dunst
     ../../modules/home-manager/code.nix # Enable vscode and packages
+    ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
   ];
-  programs = {
-    sagemath.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
+
+  home = {
+    file = {
+      ".unison/default.prf".source  = ../../configs/unison.prf;
     };
+    packages = with pkgs; [
+      polymc
+      docker-compose 
+      zulip
+      zulip-term
+   ];
+  };
+  services = {
+    easyeffects.enable = true;
+  };
+  
+  programs = {
+    home-manager.enable = true;
     autorandr = {
       enable = true;
       profiles = import ../../modules/home-manager/autorandr/desktop.nix;
     };
 
-    mpv = { 
-      enable = true; 
-    };
-
     firefox = { 
       enable = true; 
       #profiles = ../../modules/home-manager/firefox.nix;
-    };
-
-    alacritty = {
-      enable = true;
     };
   };
   home.stateVersion = "22.05";

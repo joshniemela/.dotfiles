@@ -13,6 +13,7 @@ in
     ../../modules/home-manager/i3.nix # Enable x and i3
     ../../modules/home-manager/dunst.nix # Enable dunst
     ../../modules/home-manager/code.nix # Enable code
+    ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ];
     theme = {
       statusbar = "i3status-rs";
@@ -29,34 +30,14 @@ in
       ".unison/default.prf".source  = ../../configs/unison.prf;
     };
     packages = with pkgs; [
-      neofetch
-      lxappearance
-      discord
-      pavucontrol
-      thunderbird
-      youtube-dl
-      gimp
-      viewnior
-      libreoffice
-      unison
-      tree
-      texlive.combined.scheme-full
-      docker-compose
-      darktable
-      julia-wrapper
-      dotnet-sdk_5
       font-awesome # Icons
       (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
-      subversion
    ];
-  };
-  services = {
-    flameshot.enable = true;
-    easyeffects.enable = true;
   };
   
   programs = {
     home-manager.enable = true;
+
     i3status-rust = {
       enable = true;
       bars = {
@@ -64,31 +45,16 @@ in
       };
     };
 
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
     autorandr = {
       enable = true;
       profiles = import ../../modules/home-manager/autorandr/desktop.nix;
-    };
-
-    mpv = { 
-      enable = true; 
     };
 
     firefox = { 
       enable = true; 
       profiles = import ../../modules/home-manager/firefox.nix;
     };
-
-    alacritty = {
-      enable = true;
-    };
   };
-  
   home.stateVersion = "22.05";
-
 }
   

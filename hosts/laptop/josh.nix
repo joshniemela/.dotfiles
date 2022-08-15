@@ -1,10 +1,4 @@
 { config, pkgs, ... }:
-
-let
-  lib = pkgs.lib;
-  julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
-  julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
-in
 {
   fonts.fontconfig.enable = true;
   imports = [
@@ -43,11 +37,6 @@ in
       bars = {
         default = import ../../modules/home-manager/i3-rust-blocks.nix;
       };
-    };
-
-    autorandr = {
-      enable = true;
-      profiles = import ../../modules/home-manager/autorandr/desktop.nix;
     };
 
     firefox = { 

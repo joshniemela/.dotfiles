@@ -4,6 +4,9 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../modules/thunar.nix
+      ../../modules/pipewire.nix
+      ../../modules/doas.nix
     ];
   nix = {
     package = pkgs.nixFlakes;
@@ -69,43 +72,14 @@
   };
   # PROGRAMS
   programs = {
-    nix-ld.enable = true; # Dynamic binaries for Julia
     git.enable = true;    
-    htop = {
-      enable = true;
-      settings = {
-        hide_kernel_threads = true;
-        hide_userland_threads = true;
-        show_cpu_frequency = true;
-        show_cpu_temperature = true;
-      };
-    };
     iotop.enable = true;
-
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [ 
-        thunar-archive-plugin
-        thunar-volman 
-      ];
-    };
 
     dconf.enable = true;
     steam.enable = true;
   };
 
-  services = {
-    gvfs.enable = true;
-    tumbler.enable = true;
-    printing.enable = true;
-    
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-  };
+  services.printing.enable = true;
   users.users.josh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -128,27 +102,13 @@
       };
     
   };
-  
-  security = {
-    rtkit.enable = true;
-    sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [ {
-        groups = [ "wheel" ]; 
-        persist = true;
-	      keepEnv = true;
-	    } ];
-    };
-  };
-
   virtualisation = {
     virtualbox.host = {
       enable = true;
     };
     docker = {
       enableNvidia = true;
-      enable = false;
+      enable = true;
     }; 
   };
   system.stateVersion = "22.05";

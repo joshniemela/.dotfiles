@@ -4,6 +4,9 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../modules/doas.nix
+      ../../modules/pipewire.nix
+      ../../modules/thunar.nix
     ];
   nix = {
     package = pkgs.nixFlakes;
@@ -66,40 +69,16 @@
   };
   # PROGRAMS
   programs = {
-    nix-ld.enable = true; # Dynamic binaries for Julia
     git.enable = true;    
-    htop = {
-      enable = true;
-      settings = {
-        hide_kernel_threads = true;
-        hide_userland_threads = true;
-        show_cpu_frequency = true;
-        show_cpu_temperature = true;
-      };
-    };
-    iotop.enable = true;
 
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-      };
+    iotop.enable = true;
 
     dconf.enable = true;
     steam.enable = true;
   };
 
-  services = {
-    gvfs.enable = true;
-    tumbler.enable = true;
-    printing.enable = true;
-    
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-  };
+  services.printing.enable = true;
+
   users.users.josh = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
@@ -107,32 +86,12 @@
     shell = pkgs.zsh;
   };
 
-  environment.systemPackages = with pkgs; [
-    # SYSTEM TOOLS
-    wget
-    neofetch
-  ];
-
   # Environment
   environment = {
     pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
       TERMINAL = [ "alacritty" ];
-      EDITOR = [ "codium" ];
-      };
-    
-  };
-  
-  security = {
-    rtkit.enable = true;
-    sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [ {
-        groups = [ "wheel" ]; 
-        persist = true;
-	      keepEnv = true;
-	    } ];
+      EDITOR = [ "code" ];
     };
   };
 
@@ -140,10 +99,6 @@
     virtualbox.host = {
       enable = true;
     };
-    docker = {
-      enableNvidia = true;
-      enable = false;
-    }; 
   };
   system.stateVersion = "22.05";
 }

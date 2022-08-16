@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
       # ../../modules/website.nix
+      ../../modules/doas.nix
     ];
 
   nix = {
@@ -47,7 +48,7 @@
       address="192.168.1.2";
       prefixLength = 24;
     }];
-
+    # Open ports in the firewall.
     firewall = {
       allowedTCPPorts = [ 42069 25565 80 443 ];
       allowedUDPPorts = [ 19132 34197 ];
@@ -93,8 +94,6 @@
  
   environment.systemPackages = with pkgs; [
     nano
-    wget
-    doas
     unison
     docker-compose
   ];
@@ -102,24 +101,9 @@
     openssh.enable = true;
     smartd.enable = true;
   };
-  
 
   virtualisation.docker.enable = true;
-  # Open ports in the firewall.
-
-  # Doas config
-  security = {
-    sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [{
-        groups = [ "wheel" ]; 
-        persist = true;
-        keepEnv = true;
-      }];
-    };
-  };
-
+  
   system.stateVersion = "22.05";
 }
 

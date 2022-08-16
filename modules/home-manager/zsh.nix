@@ -2,7 +2,7 @@
     programs.zsh = {
       enable = true;
       autocd = true;
-      dotDir = "~/.config/zsh";
+      dotDir = ".config/zsh";
       enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
       enableCompletion = true;
@@ -18,6 +18,7 @@
         lag = "ls -ag";
         switchSystem = "source ~/.dotfiles/switchSystem.sh";
         testSystem = "source ~/.dotfiles/testSystem.sh";
+        updateSystem = "source ~/.dotfiles/updateSystem.sh";
         dir="dir --color='auto'";
         grep="grep --color='auto'";
         unison="unison -ui text";

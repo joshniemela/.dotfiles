@@ -1,8 +1,10 @@
 {
   description = "Josh's NixOS flake";
   inputs = {
-    nixpkgs-small.url = "nixpkgs/nixos-unstable-small";
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-small.url = "github:NixOs/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
+
     nix-ld.url = "github:Mic92/nix-ld";
 
     home-manager.url = "github:nix-community/home-manager";
@@ -10,10 +12,15 @@
 
     webcord.url = "github:fufexan/webcord-flake"; # foss discord
   };
-  outputs = { self, nixpkgs, nixpkgs-small, nix-ld, home-manager, webcord, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-small, nixpkgs-stable, nix-ld, home-manager, webcord, ... }@inputs:
   let 
     system = "x86_64-linux";
-
+    pkgs-stable = import nixpkgs-stable {
+      inherit system;
+      config = { 
+        allowUnfree = true; 
+      };
+    };
     pkgs = import nixpkgs {
       inherit system;
       config = { 

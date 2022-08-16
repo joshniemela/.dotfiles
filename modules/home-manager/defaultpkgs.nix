@@ -1,5 +1,6 @@
-{pkgs, webcord, ...}:
+{ pkgs, pkgs-stable, webcord, ...}:
 let
+  stable = pkgs-stable;
   julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
   julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
 in 
@@ -23,9 +24,10 @@ in
     hunspell
     hunspellDicts.en_GB-large # Dictionary for hunspell
     hunspellDicts.da_DK
-    texlive.combined.scheme-full # Make this smaller in the future, I don't need the entire texlive enviroment
+    #texlive.combined.scheme-full # Make this smaller in the future, I don't need the entire texlive enviroment
     lxappearance
     subversion
+    stable.sage
   ];
   services = {
     flameshot.enable = true;
@@ -41,7 +43,6 @@ in
       };
     };
     mpv.enable = true; 
-    sagemath.enable = true;
     alacritty.enable = true;
     direnv = {
         enable = true;

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-stable, ... }:
 {
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh

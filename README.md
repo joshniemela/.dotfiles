@@ -1,2 +1,2 @@
 # .dotfiles
-Various dotfiles for NixOS-based systems
+Configuration files for my server, desktop, laptop and ISO

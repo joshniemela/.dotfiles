@@ -1,6 +1,5 @@
-{ pkgs, pkgs-stable, webcord, ...}:
+{ pkgs, webcord, ...}:
 let
-  stable = pkgs-stable;
   julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
   julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
 in 
@@ -27,7 +26,20 @@ in
     #texlive.combined.scheme-full # Make this smaller in the future, I don't need the entire texlive enviroment
     lxappearance
     subversion
-    stable.sage
+    pkgs.texlive.combine {
+      inherit (pkgs. texlive) 
+      scheme-full
+      amsmath
+      latex-bin
+      latexmk
+      fancyhdr
+      lastpage
+      pgf
+      nomencl
+      hyperref
+      xkeyval
+      comma;
+    }
   ];
   services = {
     flameshot.enable = true;

@@ -23,23 +23,23 @@ in
     hunspell
     hunspellDicts.en_GB-large # Dictionary for hunspell
     hunspellDicts.da_DK
-    #texlive.combined.scheme-full # Make this smaller in the future, I don't need the entire texlive enviroment
     lxappearance
     subversion
-    pkgs.texlive.combine {
-      inherit (pkgs. texlive) 
-      scheme-full
-      amsmath
-      latex-bin
-      latexmk
-      fancyhdr
-      lastpage
-      pgf
-      nomencl
-      hyperref
-      xkeyval
-      comma;
-    }
+    texlive.combined.scheme-full
+    #(texlive.combine {
+    #  inherit (pkgs.texlive) 
+    #  scheme-medium
+    #  amsmath
+    #  fancyhdr
+    #  lastpage
+    #  pgf
+    #  nomencl
+    #  hyperref
+    #  xkeyval
+    #  latexmk
+    #  latex-bin
+    #  comma;
+    #})
   ];
   services = {
     flameshot.enable = true;

@@ -2,14 +2,16 @@
 {
     programs.vscode = {
         enable = true;
-        package = pkgs.vscode;
+        package = pkgs.vscodium;
         extensions = with pkgs.vscode-extensions; [
             james-yu.latex-workshop # Latex
             bbenoist.nix # Nix 
             naumovs.color-highlight # Shows hex codes with colour
             pkief.material-icon-theme # Icon theme
             ms-python.python # Python IDE
+            ms-python.vscode-pylance
             ionide.ionide-fsharp # F# IDE
+            arrterian.nix-env-selector #nix env selector
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             { # Julia

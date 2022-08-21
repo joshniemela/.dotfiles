@@ -39,7 +39,7 @@
     enable=true;
     memoryPercent=100;
   };
-  
+  services.blueman.enable = true;
   services.xserver = {
     libinput.enable = true;
     enable = true;
@@ -63,6 +63,7 @@
       ];
     };
   };
+  hardware.bluetooth.enable = true;
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;

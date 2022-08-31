@@ -80,6 +80,7 @@
   };
 
   services.printing.enable = true;
+  services.openssh.enable = true;
   users.users.josh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];

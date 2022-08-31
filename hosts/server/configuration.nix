@@ -96,6 +96,7 @@
     nano
     unison
     docker-compose
+    cryptsetup
   ];
   services = {
     openssh.enable = true;

@@ -30,6 +30,10 @@
   };
   
   programs = {
+    autorandr = {
+      enable = true;
+      profiles = import ../../modules/home-manager/autorandr/laptop.nix;
+    };
     home-manager.enable = true;
 
     i3status-rust = {

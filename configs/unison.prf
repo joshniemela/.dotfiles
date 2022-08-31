@@ -7,4 +7,5 @@ ignorenot = Name .dotfiles
 ignorenot = Name .thunderbird
 ignore = Path CSSVN
 ignore = Name Games
+ignore = Name maple2022
 perms=0

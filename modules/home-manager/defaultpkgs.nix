@@ -26,6 +26,12 @@ in
     lxappearance
     subversion
     texlive.combined.scheme-full
+    qutebrowser
+    imagemagick # Used for conversion of image formats
+    gcc #C compiler
+    # Stuff for work
+    teams
+    postman
     #(texlive.combine {
     #  inherit (pkgs.texlive) 
     #  scheme-medium

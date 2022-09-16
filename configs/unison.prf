@@ -4,7 +4,6 @@ root=ssh://jniemela.dk//home/josh/
 ignore = Name VirtualBox\ VMs
 ignore = Name .*
 ignorenot = Name .dotfiles
-ignorenot = Name .thunderbird
 ignore = Path CSSVN
 ignore = Name Games
 ignore = Name maple2022

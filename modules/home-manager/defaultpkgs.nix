@@ -12,11 +12,13 @@ in
     libreoffice
     viewnior
     gimp
-    dotnet-sdk_5 # Required for F#
+    dotnet-sdk_6 # Required for F#
+
     pavucontrol
     tiled
     xournalpp # Modfiying PDF docs for signing
     tree
+    
     julia-wrapper
     darktable
     webcord.packages.${system}.default
@@ -25,13 +27,13 @@ in
     hunspellDicts.da_DK
     lxappearance
     subversion
-    texlive.combined.scheme-full
-    qutebrowser
+    #qutebrowser
     imagemagick # Used for conversion of image formats
     gcc #C compiler
     # Stuff for work
     teams
     postman
+    texlive.combined.scheme-full
     #(texlive.combine {
     #  inherit (pkgs.texlive) 
     #  scheme-medium
@@ -46,6 +48,9 @@ in
     #  latex-bin
     #  comma;
     #})
+    zip 
+    unzip
+    bat
   ];
   services = {
     flameshot.enable = true;

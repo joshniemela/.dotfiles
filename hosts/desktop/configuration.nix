@@ -52,6 +52,7 @@
     };
     displayManager = {
       defaultSession = "none+i3";
+      #defaultSession = "xfce";
       lightdm.enable = true;
       autoLogin = {
         enable = true;
@@ -81,6 +82,7 @@
 
   services.printing.enable = true;
   services.openssh.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   users.users.josh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];

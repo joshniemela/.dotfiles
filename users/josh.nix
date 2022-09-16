@@ -15,7 +15,6 @@ in
       neofetch
       lxappearance
       discord
-      polymc
       pavucontrol
       thunderbird
       youtube-dl
@@ -47,11 +46,11 @@ in
     ../../modules/home-manager/code.nix # Enable vscode and packages
   ];
   programs = {
-    sagemath.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+#    sagemath.enable = true;
+#    direnv = {
+#      enable = true;
+#      nix-direnv.enable = true;
+#    };
     autorandr = {
       enable = true;
       profiles = import ../../modules/home-manager/autorandr/desktop.nix;

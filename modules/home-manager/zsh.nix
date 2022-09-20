@@ -19,9 +19,10 @@
         switchSystem = "source ~/.dotfiles/switchSystem.sh";
         testSystem = "source ~/.dotfiles/testSystem.sh";
         updateSystem = "source ~/.dotfiles/updateSystem.sh";
-        dir="dir --color='auto'";
-        grep="grep --color='auto'";
+        ls="ls --color='always'";
+        grep="grep --color='always'";
         unison="unison -ui text";
+        "..."="../..";
       };
       initExtra = ''
         bindkey "^[[3~" delete-char

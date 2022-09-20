@@ -13,12 +13,11 @@ in
     viewnior
     gimp
     dotnet-sdk_6 # Required for F#
-
+    nodejs
     pavucontrol
     tiled
     xournalpp # Modfiying PDF docs for signing
-    tree
-    
+    tree    
     julia-wrapper
     darktable
     webcord.packages.${system}.default
@@ -50,21 +49,22 @@ in
     #})
     zip 
     unzip
-    bat
+    bat # better cat
+    btop # better htop
   ];
   services = {
     flameshot.enable = true;
   };
   programs = {
-    htop = {
-      enable = true;
-      settings = {
-        hide_kernel_threads = true;
-        hide_userland_threads = true;
-        show_cpu_frequency = true;
-        show_cpu_temperature = true;
-      };
-    };
+    #htop = {
+    #  enable = true;
+      #settings = {
+      #  hide_kernel_threads = true;
+      #  hide_userland_threads = true;
+      #  show_cpu_frequency = true;
+      #  show_cpu_temperature = true;
+      #};
+    #};
     mpv.enable = true; 
     alacritty.enable = true;
     direnv = {

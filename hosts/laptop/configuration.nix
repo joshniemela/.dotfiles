@@ -40,6 +40,7 @@
     memoryPercent=100;
   };
   services.blueman.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   services.xserver = {
     libinput.enable = true;
     enable = true;

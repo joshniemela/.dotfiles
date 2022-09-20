@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
-      # ../../modules/website.nix
+      ../../modules/website.nix
       ../../modules/doas.nix
     ];
 

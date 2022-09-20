@@ -1,9 +1,7 @@
 { config, pkgs, lib, ... }:
-{
-    security.acme = {
-        acceptTerms = true;
-        certs."jniemela.dk" = "josh@jniemela.dk";
-    };
+{   
+    security.acme.acceptTerms = true;
+    security.acme.defaults.email = "josh@jniemela.dk";
     services.nginx = {
         enable = true;
         virtualHosts."jniemela.dk" = {
@@ -16,7 +14,7 @@
                 }
                 try_files $uri $uri.html $uri/ =404;
           '';
-          root = "/var/www/website";
+          root = "/var/www";
         };
-    }
+    };
 }

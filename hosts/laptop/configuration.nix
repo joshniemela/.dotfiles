@@ -74,7 +74,6 @@
     git.enable = true;    
 
     iotop.enable = true;
-
     dconf.enable = true;
     steam.enable = true;
   };

@@ -6,7 +6,8 @@
     ../../modules/home-manager/i3.nix # Enable x and i3
     ../../modules/home-manager/dunst.nix # Enable dunst
     ../../modules/home-manager/code.nix # Enable vscode and packages
-    ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
+    ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop'
+    ../../modules/julia/default.nix
   ];
 
   home = {
@@ -14,10 +15,7 @@
       ".unison/default.prf".source  = ../../configs/unison.prf;
     };
     packages = with pkgs; [
-      polymc
-      docker-compose 
-      zulip
-      zulip-term
+      docker-compose
    ];
   };
   services = {

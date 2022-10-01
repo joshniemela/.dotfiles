@@ -8,6 +8,7 @@
     ../../modules/home-manager/dunst.nix # Enable dunst
     ../../modules/home-manager/code.nix # Enable code
     ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
+    ../../modules/julia/default.nix
     ];
     theme = {
       statusbar = "i3status-rs";
@@ -26,6 +27,7 @@
     packages = with pkgs; [
       font-awesome # Icons
       (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
+      brightnessctl # Brightness control
    ];
   };
   

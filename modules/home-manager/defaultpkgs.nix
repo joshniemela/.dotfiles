@@ -1,38 +1,41 @@
 { pkgs, webcord, ...}:
-let
-  julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
-  julia-wrapper = pkgs.callPackage ../../pkgs/julia-wrapper { inherit julia; };
-in 
+#let
+#  julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
+#  julia-wrapper = pkgs.callPackage ../../modules/julia { inherit julia; };
+#in 
 {
   home.packages = with pkgs; [
-    youtube-dl
-    neofetch
-    thunderbird
-    unison
-    libreoffice
-    viewnior
-    gimp
-    dotnet-sdk_6 # Required for F#
-    nodejs
-    pavucontrol
-    tiled
-    xournalpp # Modfiying PDF docs for signing
-    tree    
-    julia-wrapper
-    darktable
-    webcord.packages.${system}.default
-    hunspell
+    youtube-dl # for downloading youtube videos
+    neofetch # system info
+    thunderbird # email
+    unison # for syncing
+    libreoffice # office suite
+    viewnior # image viewer
+    gimp # image editor
+    pavucontrol # audio control
+    xournalpp # for signing pdfs
+    tree # for viewing directory structure
+    darktable # photo editor
+    webcord.packages.${system}.default # discord
+    hunspell # spell checker
     hunspellDicts.en_GB-large # Dictionary for hunspell
-    hunspellDicts.da_DK
-    lxappearance
-    subversion
-    #qutebrowser
+    hunspellDicts.da_DK # Dictionary for hunspell
+    lxappearance # for changing gtk theme
+    subversion # for svn
+    qutebrowser # web browser
+    texlive.combined.scheme-full # for latex
+    timewarrior
+    taskwarrior
+
     imagemagick # Used for conversion of image formats
-    gcc #C compiler
+    ffmpeg # for converting videos
+
     # Stuff for work
-    teams
-    postman
-    texlive.combined.scheme-full
+    teams # Microsoft Teams
+    postman # for testing APIs
+    tiled # tile map editor
+
+    #TODO FIX LATEX
     #(texlive.combine {
     #  inherit (pkgs.texlive) 
     #  scheme-medium
@@ -47,24 +50,32 @@ in
     #  latex-bin
     #  comma;
     #})
-    zip 
-    unzip
+    zip  # for compressing files
+    unzip # for uncompressing files
     bat # better cat
     btop # better htop
+    
+
+    # Languages
+    dotnet-sdk_6 # Required for F#
+    nodejs # Required for javascript
+    rustc # Required for Rust
+    cargo # Required for Rust
+    gcc # Required for C
   ];
   services = {
     flameshot.enable = true;
   };
   programs = {
-    #htop = {
-    #  enable = true;
-      #settings = {
-      #  hide_kernel_threads = true;
-      #  hide_userland_threads = true;
-      #  show_cpu_frequency = true;
-      #  show_cpu_temperature = true;
-      #};
-    #};
+    htop = {
+      enable = true;
+      settings = {
+        hide_kernel_threads = true;
+        hide_userland_threads = true;
+        show_cpu_frequency = true;
+        show_cpu_temperature = true;
+      };
+    };
     mpv.enable = true; 
     alacritty.enable = true;
     direnv = {

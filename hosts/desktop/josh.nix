@@ -16,6 +16,8 @@
     };
     packages = with pkgs; [
       docker-compose
+      font-awesome # Icons
+      (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
    ];
   };
   services = {

@@ -1,11 +1,13 @@
 { config, lib, pkgs, ...}:
 {
-  options.dotfiles.headless = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = ''
-      Whether to run the headless version of the dotfiles.
-    '';
+  options.dotfiles = {
+    headless = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Whether to run the headless version of the dotfiles.
+      '';
+    };
   };
   config = {
     nix = {

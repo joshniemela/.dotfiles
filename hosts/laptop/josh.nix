@@ -21,9 +21,6 @@
   };
   
   home = {
-    file = {
-      ".unison/default.prf".source  = ../../configs/unison.prf;
-    };
     packages = with pkgs; [
       font-awesome # Icons
       (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this

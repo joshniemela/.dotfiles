@@ -6,17 +6,14 @@
     ../../modules/home-manager/i3.nix # Enable x and i3
     ../../modules/home-manager/dunst.nix # Enable dunst
     ../../modules/home-manager/code.nix # Enable vscode and packages
-    ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop'
+    ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../modules/julia/default.nix
   ];
 
   home = {
-    file = {
-      ".unison/default.prf".source  = ../../configs/unison.prf;
-    };
     packages = with pkgs; [
       docker-compose
-      font-awesome # Icons
+      font-awesome # Iconscode 
       (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
    ];
   };

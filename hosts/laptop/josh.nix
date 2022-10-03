@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 {
+  dotfiles.laptop = true;
   fonts.fontconfig.enable = true;
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
@@ -34,14 +35,7 @@
       profiles = import ../../modules/home-manager/autorandr/laptop.nix;
     };
     home-manager.enable = true;
-
-    i3status-rust = {
-      enable = true;
-      bars = {
-        default = import ../../modules/home-manager/i3-rust-blocks.nix;
-      };
-    };
-
+    
     firefox = { 
       enable = true; 
       profiles = import ../../modules/home-manager/firefox.nix;

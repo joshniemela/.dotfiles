@@ -7,12 +7,8 @@
       ../../modules/thunar.nix
       ../../modules/pipewire.nix
       ../../modules/doas.nix
+      ../default/configuration.nix # default host config
     ];
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
-  };
-  nixpkgs.config.allowUnfree = true;
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
@@ -28,14 +24,6 @@
       address="192.168.1.3";
       prefixLength = 24;
     }];
-  };
-
-  time.timeZone = "Europe/Copenhagen";
-
-  i18n.defaultLocale = "en_DK.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true;
   };
 
   zramSwap = {
@@ -59,7 +47,6 @@
         user = "josh";
       };
     };
-    
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
@@ -67,10 +54,7 @@
       ];
     };
   };
-  hardware.opengl = {
-    enable = true;
-    # driSupport32Bit = true;
-  };
+  
   # PROGRAMS
   programs = {
     git.enable = true;    
@@ -114,6 +98,5 @@
       enable = true;
     }; 
   };
-  system.stateVersion = "22.05";
 }
 

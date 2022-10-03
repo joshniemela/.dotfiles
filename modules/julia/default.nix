@@ -14,7 +14,5 @@ home.packages = [
 ];
 
 home.file.".julia/config/startup.jl".source = ./startup.jl;
-home.sessionVariables = {
-    JULIA_DEPOT_PATH = "${config.xdg.dataHome}/julia";
-  };
 }
+

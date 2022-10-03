@@ -1,37 +1,15 @@
 { config, pkgs, lib, ... }:
-
 {
+  dotfiles.headless = true;
   imports =
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
       ../../modules/website.nix
       ../../modules/doas.nix
+      ../../modules/docker.nix
+      ../default/configuration.nix
     ];
 
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    };
-  };
-
-  systemd = {
-    services.clear-log = {
-      description = "Clear logs older than two weeks";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.systemd}/bin/journalctl --vacuum-time=14d";
-      };
-    };
-    timers.clear-log = {
-      wantedBy = [ "timers.target" ];
-      partOf = [ "clear-log.service" ];
-      timerConfig.OnCalendar = "weekly UTC";
-    };
-  };
   # Use the systemd-boot EFI boot loader, replace with grub for BIOS based systems.
   boot = {
     kernelPackages = pkgs.linuxPackages_5_18_hardened;
@@ -69,14 +47,6 @@
     ];
   };
 
-  time.timeZone = "Europe/Copenhagen";
-
-  i18n.defaultLocale = "en_DK.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "dk";
-  };
-
   zramSwap = {
     enable=true;
     memoryPercent=100;
@@ -85,9 +55,9 @@
   users = {
     users.josh = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "docker" ]; 
+      extraGroups = [ "wheel" "docker" ]; # TODO add docker group to docker.nix
       initialPassword = "1234";
-      openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@josharch" ];
+      openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop" ];
       shell = pkgs.zsh;
     };
   };
@@ -95,16 +65,11 @@
   environment.systemPackages = with pkgs; [
     nano
     unison
-    docker-compose
     cryptsetup
   ];
   services = {
     openssh.enable = true;
     smartd.enable = true;
-  };
-
-  virtualisation.docker.enable = true;
-  
-  system.stateVersion = "22.05";
+  };  
 }
 

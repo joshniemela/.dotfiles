@@ -8,18 +8,18 @@
     ../../modules/home-manager/dunst.nix # Enable dunst
     ../../modules/home-manager/code.nix # Enable code
     ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
-    ../../modules/julia/default.nix
-    ];
-    theme = {
-      statusbar = "i3status-rs";
-      primaryColour = "#A03020";
-      secondaryColour = "#902424";
-    };
+    ../../modules/julia/default.nix # Julia
+  ];
+  theme = {
+    statusbar = "i3status-rs";
+    primaryColour = "#A03020";
+    secondaryColour = "#902424";
+  };
   services.dunst.settings.urgency_normal = {
     frame_color = lib.mkForce "#A03020";
     background = lib.mkForce "#5F676A";
   };
-
+  
   home = {
     file = {
       ".unison/default.prf".source  = ../../configs/unison.prf;

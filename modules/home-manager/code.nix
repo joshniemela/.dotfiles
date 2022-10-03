@@ -28,4 +28,5 @@
         #    }
         #];
     };
+    #environment.variables.EDITOR = [ "code" ];
 }

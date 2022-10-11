@@ -22,11 +22,11 @@ in
     };
   };
   options.dotfiles = {
-    laptop = lib.mkOption {
+    isLaptop = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = ''
-          Whether to run the laptop version of the dotfiles.
+          Whether to run the isLaptop version of the dotfiles.
       '';
     };
   };
@@ -199,18 +199,18 @@ in
       enable = lib.mkIf (config.theme.statusbar=="i3status-rs") true;
       bars.default = {
         blocks = [
-          (lib.mkIf config.dotfiles.laptop {
+          (lib.mkIf config.dotfiles.isLaptop {
             block = "networkmanager";
             on_click = "alacritty -e nmtui";
             ap_format = "{ssid^10}";
           })
 
-          (lib.mkIf config.dotfiles.laptop {
+          (lib.mkIf config.dotfiles.isLaptop {
             block = "backlight";
             root_scaling = 2.5;
           })
           
-          (lib.mkIf (!config.dotfiles.laptop) {
+          (lib.mkIf (!config.dotfiles.isLaptop) {
             block = "net";
             device = "eth0";
             format = "{ip} {bitrate}";
@@ -242,7 +242,7 @@ in
 
           { block = "sound"; }
 
-          (lib.mkIf config.dotfiles.laptop {
+          (lib.mkIf config.dotfiles.isLaptop {
             block = "battery";
             interval = 15;
             format = "{percentage} {time}";

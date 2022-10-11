@@ -17,6 +17,7 @@
       gimp # image editor
       pavucontrol # audio control
       xournalpp # for signing pdfs
+      zathura # pdf viewer
       tree # for viewing directory structure
       darktable # photo editor
       webcord.packages.${system}.default # discord

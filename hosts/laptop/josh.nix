@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  dotfiles.laptop = true;
+  dotfiles.isLaptop = true;
   fonts.fontconfig.enable = true;
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh

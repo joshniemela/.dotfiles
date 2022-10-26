@@ -10,7 +10,7 @@
     ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true; 
   };
@@ -55,7 +55,12 @@
   
   # PROGRAMS
   programs = {
-    git.enable = true;    
+    git = {
+      enable = true;
+      config = {
+        credential.helper = "cache --timeout=3600";
+      };
+    };
 
     iotop.enable = true;
     dconf.enable = true;
@@ -82,7 +87,7 @@
 
   virtualisation = {
     virtualbox.host = {
-      enable = true;
+      enable = false;
     };
   };
 }

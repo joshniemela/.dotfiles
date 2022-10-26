@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  dotfiles.headless = true;
+  dotfiles.headless = true; # Sets all modules to use the headless version, if available
   imports =
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
@@ -55,7 +55,7 @@
   users = {
     users.josh = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "docker" ]; # TODO add docker group to docker.nix
+      extraGroups = [ "wheel" ]; # TODO add docker group to docker.nix
       initialPassword = "1234";
       openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop" ];
       shell = pkgs.zsh;

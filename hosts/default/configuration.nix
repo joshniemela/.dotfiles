@@ -1,15 +1,17 @@
 { config, lib, pkgs, ...}:
 {
-  options.dotfiles.headless = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = ''
-      Whether to run the headless version of the dotfiles.
-    '';
+  options.dotfiles = {
+    headless = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Whether to run the headless version of the dotfiles.
+      '';
+    };
   };
   config = {
     nix = {
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.stable;
       extraOptions = "experimental-features = nix-command flakes";
       gc = {
           automatic = true;

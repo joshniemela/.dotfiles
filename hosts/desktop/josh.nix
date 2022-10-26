@@ -12,6 +12,10 @@
 
   home = {
     packages = with pkgs; [
+<<<<<<< HEAD
+=======
+      docker-compose
+>>>>>>> refs/remotes/origin/main
       font-awesome # Iconscode 
       (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
    ];

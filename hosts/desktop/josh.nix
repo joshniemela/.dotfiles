@@ -3,7 +3,7 @@
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
-    ../../modules/home-manager/i3.nix # Enable x and i3
+    #../../modules/home-manager/xmonad/xmonad.nix # Enable x and xmonad
     ../../modules/home-manager/dunst.nix # Enable dunst
     ../../modules/home-manager/code.nix # Enable vscode and packages
     ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop

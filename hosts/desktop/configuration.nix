@@ -33,28 +33,17 @@
   
   services.xserver = {
     enable = true;
+    windowManager.xmonad.enable = true;
     layout = "dk";
     videoDrivers = [ "nvidia" ];
-    desktopManager = {
-      xterm.enable = false;
-    };
+    
     displayManager = {
-      defaultSession = "none+i3";
-      #defaultSession = "xfce";
       lightdm.enable = true;
-      autoLogin = {
-        enable = true;
-        user = "josh";
-      };
-    };
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-       dmenu
-      ];
+      defaultSession = "none+xmonad";
     };
   };
   
+
   # PROGRAMS
   programs = {
     git.enable = true;    
@@ -73,13 +62,7 @@
     initialPassword = "1234";
     shell = pkgs.zsh;
   };
-
-  environment.systemPackages = with pkgs; [
-    # SYSTEM TOOLS
-    wget
-    neofetch
-  ];
-
+  
   # Environment
   environment = {
     pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3

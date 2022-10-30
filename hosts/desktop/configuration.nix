@@ -33,13 +33,19 @@
   
   services.xserver = {
     enable = true;
-    windowManager.xmonad.enable = true;
+    windowManager.xmonad = {
+      enable = true;
+    };
     layout = "dk";
     videoDrivers = [ "nvidia" ];
     
     displayManager = {
       lightdm.enable = true;
       defaultSession = "none+xmonad";
+      autoLogin = {
+        enable = true;
+        user = "josh";
+      };
     };
   };
   
@@ -74,7 +80,7 @@
   };
   virtualisation = {
     virtualbox.host = {
-      enable = true;
+      enable = false;
     };
     docker = {
       enableNvidia = true;

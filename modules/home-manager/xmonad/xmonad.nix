@@ -8,9 +8,9 @@
         enable = true;
         enableContribAndExtras = true;
         config = ./xmonad.hs;
-        #extraPackages = [
-        #
-        #];
+        extraPackages = hp: [
+          hp.xmobar 
+        ];
       };
     };
   };

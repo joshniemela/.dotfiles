@@ -33,15 +33,16 @@
   
   services.xserver = {
     enable = true;
-    windowManager.xmonad = {
+    windowManager.i3 = {
       enable = true;
+      extraPackages = with pkgs; [ dmenu ];
     };
     layout = "dk";
     videoDrivers = [ "nvidia" ];
     
     displayManager = {
       lightdm.enable = true;
-      defaultSession = "none+xmonad";
+      defaultSession = "none+i3";
       autoLogin = {
         enable = true;
         user = "josh";

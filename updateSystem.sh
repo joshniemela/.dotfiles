@@ -1,4 +1,4 @@
 #!/bin/sh
 pushd ~/.dotfiles
-doas nixos-rebuild switch  --upgrade --flake .#
+doas nix flake update && doas nixos-rebuild switch  --upgrade --flake .#
 popd

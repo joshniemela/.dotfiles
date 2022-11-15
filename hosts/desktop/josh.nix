@@ -1,5 +1,6 @@
 { config, pkgs, pkgs-stable, ... }:
 {
+  
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
@@ -9,13 +10,15 @@
     ../../modules/home-manager/code.nix # Enable vscode and packages
     ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../modules/julia/default.nix
+    ../../modules/fsharp.nix
   ];
-
+  
   home = {
     packages = with pkgs; [
       font-awesome # Iconscode 
       (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
       dmenu
+      conda
    ];
   };
   services = {

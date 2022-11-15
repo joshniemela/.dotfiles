@@ -38,8 +38,8 @@
       # Stuff for work
       teams # Microsoft Teams
       postman # for testing APIs
-      tiled # tile map editor
-
+      #tiled # tile map editor
+      seafile-client
       #TODO FIX LATEX
       #(texlive.combine {
       #  inherit (pkgs.texlive) 
@@ -59,14 +59,15 @@
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
-      
 
       # Languages
-      dotnet-sdk_6 # Required for F#
+      #dotnet-sdk_6 # Required for F#
       #nodejs # Required for javascript
       rustc # Required for Rust
       cargo # Required for Rust
       gcc # Required for C
+      baobab
+      socat
     ];
   };
   services = {

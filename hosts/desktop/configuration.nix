@@ -59,7 +59,7 @@
     dconf.enable = true;
     steam.enable = true;
   };
-
+  users.extraGroups.vboxusers.members = [ "josh" ];
   services.printing.enable = true;
   services.openssh.enable = true;
   services.gnome.gnome-keyring.enable = true;
@@ -75,13 +75,14 @@
     pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
       TERMINAL = [ "alacritty" ];
-      EDITOR = [ "code" ];
+      EDITOR = [ "vim" ];
       };
     
   };
   virtualisation = {
     virtualbox.host = {
-      enable = false;
+      enable = true;
+      enableExtensionPack = true;
     };
     docker = {
       enableNvidia = true;

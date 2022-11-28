@@ -52,5 +52,11 @@
 
     time.timeZone = lib.mkDefault "Europe/Copenhagen";
     system.stateVersion = "22.05";
+
+    environment.defaultPackages = [
+      pkgs.perl
+      pkgs.rsync
+      pkgs.strace
+    ];
   };
 }

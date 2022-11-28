@@ -63,7 +63,6 @@
   };
  
   environment.systemPackages = with pkgs; [
-    nano
     unison
     cryptsetup
   ];

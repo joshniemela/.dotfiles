@@ -81,7 +81,7 @@
     pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
       TERMINAL = [ "alacritty" ];
-      EDITOR = [ "code" ];
+      EDITOR = [ "vim" ];
     };
   };
 

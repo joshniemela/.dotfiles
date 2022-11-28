@@ -38,7 +38,6 @@
       # Stuff for work
       teams # Microsoft Teams
       postman # for testing APIs
-      #tiled # tile map editor
       seafile-client
       #TODO FIX LATEX
       #(texlive.combine {
@@ -53,7 +52,7 @@
       #  xkeyval
       #  latexmk
       #  latex-bin
-      #  comma;
+      #  comma;"ctrl-b" TUI
       #})
       zip  # for compressing files
       unzip # for uncompressing files
@@ -61,19 +60,84 @@
       btop # better htop
 
       # Languages
-      #dotnet-sdk_6 # Required for F#
       #nodejs # Required for javascript
       rustc # Required for Rust
       cargo # Required for Rust
       gcc # Required for C
       baobab
-      socat
+      rstudio
     ];
   };
   services = {
     flameshot.enable = true;
   };
   programs = {
+    neovim = {
+      enable = true;
+      package = pkgs.neovim-unwrapped;
+      extraPackages = with pkgs; [
+        nodejs-16_x
+        dotnet-sdk
+      ];
+      viAlias = true;
+      vimAlias = true;
+      withNodeJs = false; # Copilot dosent support the latest v18
+      withPython3 = true;
+      vimdiffAlias = true;
+      extraConfig = ''
+        set t_Co=256
+        let g:tex_flavor='latex'
+        let g:vimtex_view_method='zathura'
+        let g:vimtex_quickfix_mode=0
+        set conceallevel=2
+        let g:tex_conceal='abdmgs'
+        hi clear Conceal
+
+        set nu rnu
+        highlight LineNrAbove ctermfg=57
+        highlight LineNrBelow ctermfg=57
+        highlight LineNr ctermfg=88
+
+        # Makes FSAC work
+        let g:fsharp#fsautocomplete_command =
+          \ [ 'dotnet',
+          \   'fsautocomplete'
+          \ ]
+      '';
+      plugins = with pkgs.vimPlugins; [
+        nvim-lspconfig
+        Ionide-vim
+        vim-nix
+        vimtex
+        copilot-vim
+        rainbow
+        (nvim-treesitter.withPlugins (plugins:
+          with plugins; [
+            tree-sitter-python
+            tree-sitter-c
+            tree-sitter-nix
+            tree-sitter-rust
+            tree-sitter-toml
+            tree-sitter-json
+            tree-sitter-cmake
+            tree-sitter-comment
+            tree-sitter-http
+            tree-sitter-regex
+            tree-sitter-dart
+            tree-sitter-make
+            tree-sitter-html
+            tree-sitter-css
+            tree-sitter-latex
+            tree-sitter-bibtex
+            tree-sitter-php
+            tree-sitter-sql
+            tree-sitter-dockerfile
+            tree-sitter-haskell
+            tree-sitter-julia
+            tree-sitter-r
+          ]))
+      ];
+    };
     htop = {
       enable = true;
       settings = {

@@ -19,6 +19,7 @@
       (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
       dmenu
       conda
+      ncdu
    ];
   };
   services = {

@@ -10,6 +10,7 @@
     ../../modules/home-manager/code.nix # Enable code
     ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../modules/julia/default.nix # Julia
+    ../../modules/fsharp.nix
   ];
   theme = {
     statusbar = "i3status-rs";

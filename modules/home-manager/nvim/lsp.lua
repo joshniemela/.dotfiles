@@ -70,7 +70,7 @@ cmp.setup({
         luasnip = '⋗',
         buffer = 'Ω',
         path = '$',
-        copilot = '🚀'
+        copilot = '🚀',
         latex_symbols = 'Σ'
       }
 

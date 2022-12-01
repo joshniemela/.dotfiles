@@ -22,6 +22,11 @@
       luafile ${./lsp.lua}
       highlight LineNrAbove guifg=#401580
       highlight LineNrBelow guifg=#401580
+
+      let g:fsharp#fsautocomplete_command =
+      \ [ 'dotnet',
+      \   'fsautocomplete'
+      \ ]
     '';
     plugins = with pkgs.vimPlugins; [
       # LSP

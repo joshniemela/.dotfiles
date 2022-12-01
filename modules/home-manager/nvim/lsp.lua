@@ -1,4 +1,4 @@
-
+local g = vim.g
 local opt = vim.opt
 
 
@@ -25,7 +25,7 @@ lspconfig.sumneko_lua.setup({
 
 lspconfig.rnix.setup{}
 
-require'lspconfig'.julials.setup{
+lspconfig.julials.setup{
   settings = {
     julia = {
       enable = true,
@@ -38,7 +38,6 @@ require'lspconfig'.julials.setup{
     }
   }
 }
-
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
@@ -53,14 +52,14 @@ cmp.setup({
   },
   sources = {
     {name = 'path'},
-    {name = 'nvim_lsp', keyword_length = 2},
+    {name = 'nvim_lsp', keyword_length = 1},
     {name = 'latex_symbols'},
-    {name = 'buffer', keyword_length = 2},
+    {name = 'buffer', keyword_length = 1},
     {name = 'luasnip', keyword_length = 1},
     {name = 'copilot', keyword_length = 1},
   },
   window = {
-    documentation = cmp.config.window.bordered()
+    documentation = cmp.config.window.bordered()    
   },
   formatting = {
     fields = {'menu', 'abbr', 'kind'},
@@ -71,7 +70,7 @@ cmp.setup({
         buffer = 'Ω',
         path = '$',
         copilot = '🚀',
-        latex_symbols = 'Σ'
+        latex_symbols = 'Σ',
       }
 
       item.menu = menu_icon[entry.source.name]

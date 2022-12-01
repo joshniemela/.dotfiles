@@ -13,7 +13,8 @@ let dotnetfhs = pkgs.buildFHSUserEnv {
 };
 
 in {
-    home.packages = [ dotnetfhs ];
+  home.packages = [ dotnetfhs ];
+  home.sessionVariables = { PATH = ''$PATH::$HOME/.dotnet/tools''; };
     # OR
     # environment.systemPackages = [ dotnetfhs ];
 }

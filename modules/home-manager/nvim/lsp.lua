@@ -32,6 +32,11 @@ local luasnip = require('luasnip')
 
 local select_opts = {behavior = cmp.SelectBehavior.Select}
 
+
+cmp.setup.cmdline('/', {{
+    sources = { name = 'buffer' },
+}})
+
 cmp.setup({
   snippet = {
     expand = function(args)

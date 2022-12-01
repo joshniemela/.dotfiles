@@ -25,19 +25,7 @@ lspconfig.sumneko_lua.setup({
 
 lspconfig.rnix.setup{}
 
-lspconfig.julials.setup{
-  settings = {
-    julia = {
-      enable = true,
-      lint = true,
-      format = true,
-      format_options = {
-        indent = 4,
-        margin = 92,
-      }
-    }
-  }
-}
+lspconfig.julials.setup{}
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')

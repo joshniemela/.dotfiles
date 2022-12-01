@@ -11,6 +11,7 @@
     ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../modules/julia/default.nix
     ../../modules/fsharp.nix
+    ../../modules/home-manager/nvim/nvim.nix
   ];
   
   home = {

@@ -36,7 +36,8 @@ cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
-    end
+    end,
+  matching = { disallow_full_match = true },
   },
   sources = {
     {name = 'path'},
@@ -47,7 +48,7 @@ cmp.setup({
     {name = 'copilot', keyword_length = 1},
   },
   window = {
-    documentation = cmp.config.window.bordered()    
+    documentation = cmp.config.window.bordered()
   },
   formatting = {
     fields = {'menu', 'abbr', 'kind'},

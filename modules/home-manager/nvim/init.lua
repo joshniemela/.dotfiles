@@ -176,4 +176,5 @@ cmp.setup({
   },
 })
 
+g.loaded_perl_provider = 0
 vim.cmd('colorscheme habamax')

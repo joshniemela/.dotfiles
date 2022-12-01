@@ -34,7 +34,8 @@
       #chromium
       imagemagick # Used for conversion of image formats
       ffmpeg # for converting videos
-
+      pstree
+      xclip # for copying to clipboard
       # Stuff for work
       teams # Microsoft Teams
       postman # for testing APIs

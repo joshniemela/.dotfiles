@@ -8,6 +8,7 @@
       nodejs-16_x
       rnix-lsp
       sumneko-lua-language-server
+      xdotool
     ];
     extraPython3Packages = ( ps: with ps; [
       sympy
@@ -20,6 +21,7 @@
     extraConfig = ''
       luafile ${./init.lua}
       luafile ${./lsp.lua}
+      luafile ${./snippets.lua}
       highlight LineNrAbove guifg=#401580
       highlight LineNrBelow guifg=#401580
 

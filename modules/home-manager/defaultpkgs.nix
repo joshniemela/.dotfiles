@@ -40,6 +40,7 @@
       teams # Microsoft Teams
       postman # for testing APIs
       seafile-client
+      tectonic # for compiling latex
       #TODO FIX LATEX
       #(texlive.combine {
       #  inherit (pkgs.texlive) 
@@ -67,6 +68,7 @@
       gcc # Required for C
       baobab
       rstudio
+      wget
     ];
   };
   services = {

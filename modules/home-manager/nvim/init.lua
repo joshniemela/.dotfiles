@@ -19,10 +19,14 @@ opt.undodir = "/home/josh/.local/share/nvim/undo"
 -- Indentation
 opt.smartindent = true
 opt.autoindent = true
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
 opt.expandtab = true
 
+opt.scrolloff = 5
+opt.updatetime = 500
+opt.showmatch = true
 -- Clipboard mode
 opt.clipboard = "unnamedplus"
 
@@ -178,3 +182,12 @@ cmp.setup({
 
 g.loaded_perl_provider = 0
 vim.cmd('colorscheme habamax')
+
+-- Highlight yank'd text after yankin'
+vim.api.nvim_create_augroup("YankHighlight", {})
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = "YankHighlight",
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 100 })
+	end,
+})

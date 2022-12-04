@@ -29,6 +29,10 @@
       \ [ 'dotnet',
       \   'fsautocomplete'
       \ ]
+      inoremap { {}<Esc>ha
+      inoremap ( ()<Esc>ha
+      inoremap [ []<Esc>ha
+      inoremap " ""<Esc>ha
     '';
     plugins = with pkgs.vimPlugins; [
       # LSP
@@ -37,6 +41,7 @@
       cmp-nvim-lsp
       julia-vim
       Ionide-vim
+      haskell-vim
       vim-nix
       vimtex
       copilot-vim
@@ -46,6 +51,8 @@
       cmp-buffer
       cmp-copilot
       cmp-latex-symbols
+      friendly-snippets
+      vim-surround
       # Treesitter
       (nvim-treesitter.withPlugins (plugins:
         with plugins; [

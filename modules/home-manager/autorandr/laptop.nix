@@ -9,13 +9,13 @@
       "eDP-1" = {
         enable = true;
         primary = true;
-        position = "1920x0";
+        position = "0x0";
         mode = "1600x900";
       };
 
       "VGA-1" = {
         enable = true;
-        position = "0x0";
+        position = "1600x0";
         mode = "1920x1080";
       };
     };

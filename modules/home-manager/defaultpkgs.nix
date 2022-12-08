@@ -41,6 +41,7 @@
       postman # for testing APIs
       seafile-client
       tectonic # for compiling latex
+      slack-cli
       #TODO FIX LATEX
       #(texlive.combine {
       #  inherit (pkgs.texlive) 

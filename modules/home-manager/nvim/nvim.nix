@@ -74,6 +74,7 @@ in
       friendly-snippets
       vim-surround
       nvim-autopairs
+      which-key-nvim
 
       # Treesitter
       (nvim-treesitter.withPlugins (p: with p; [

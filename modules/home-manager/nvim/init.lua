@@ -18,6 +18,7 @@ local g = vim.g
  opt.expandtab = true
  
  opt.scrolloff = 8
+ opt.timeoutlen = 500
  opt.updatetime = 250
  opt.showmatch = true
  -- Clipboard mode
@@ -105,6 +106,7 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
+require("which-key").setup {}
 
 -- Autopairs
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')

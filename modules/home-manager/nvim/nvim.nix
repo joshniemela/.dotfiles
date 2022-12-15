@@ -19,7 +19,7 @@ in
       xdotool
       rnix-lsp
       sumneko-lua-language-server
-      haskell-language-server
+      # haskell-language-server
     ];
     viAlias = true;
     vimAlias = true;
@@ -49,7 +49,9 @@ in
       cmp-nvim-lsp-signature-help
 
       nvim-lspconfig
-      haskell-vim
+
+      plenary-nvim
+      haskell-tools-nvim
       vim-nix
       
       (nvim-treesitter.withPlugins (p: with p; [

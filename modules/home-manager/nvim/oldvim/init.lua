@@ -33,8 +33,6 @@ opt.cursorline = true
 opt.number = true
 opt.relativenumber = true
 
-
-
 -- Line context
 opt.list = true
 require("indent_blankline").setup{
@@ -61,6 +59,7 @@ require('lualine').setup{
   }
 }
 
+
 -- Latex
 g.vimtex_view_method = "zathura"
 g.vimtex_quickfix_mode = 0
@@ -72,6 +71,8 @@ vim.cmd [[
 ]]
 
 
+g.loaded_perl_provider = 0
+vim.cmd('colorscheme monokai')
 
 -- Highlight yank'd text after yankin'
 vim.api.nvim_create_augroup("YankHighlight", {})
@@ -83,11 +84,44 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 
-g.loaded_perl_provider = 0
-vim.cmd('colorscheme monokai')
-
 require'nvim-treesitter.configs'.setup {
-  highlight = { enable = true, disable = {"latex"}},
-  indent = {enable = true},
-  context_commentstring = {enable = true}
+  highlight = {
+    enable = true,
+    disable = { "latex" },
+  },
+  indent = {
+    enable = true
+  },
+  context_commentstring = {
+    enable = true
+  }
 }
+
+require("which-key").setup {}
+
+-- Autopairs
+-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+-- 
+-- require'nvim-autopairs'.setup {
+--   check_ts = true,
+--   ts_config = {
+--     lua = {'string', 'source'},
+-- 
+--   },
+--   disable_filetype = { "TelescopePrompt" , "vim" },
+--   fast_wrap = {
+--     map = '<M-e>',
+--     chars = { '{', '[', '(', '"', "'" },
+--     pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
+--     end_key = '¤',
+--     keys = 'qwertyuiopzxcvbnmasdfghjkl',
+--     check_comma = true,
+--     highlight = 'Search',
+--     highlight_grey = "LineNr"
+--   }
+-- }
+-- 
+-- cmp.event:on(
+--   'confirm_done',
+--   cmp_autopairs.on_confirm_done()
+-- )

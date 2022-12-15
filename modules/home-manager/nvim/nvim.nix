@@ -16,90 +16,49 @@ in
     enable = true;
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs; [
-      nodejs-16_x # Required for copilot
+      xdotool
       rnix-lsp
       sumneko-lua-language-server
       haskell-language-server
-      xdotool
     ];
-    extraPython3Packages = ( ps: with ps; [
-      sympy
-    ]);
     viAlias = true;
     vimAlias = true;
     withNodeJs = false;
-    withPython3 = true; # Used for sympy
     vimdiffAlias = true;
     extraConfig = ''
       luafile ${./init.lua}
       luafile ${./snippets.lua}
+      luafile ${./cmp.lua}
       luafile ${./lsp.lua}
-
-      highlight LineNrAbove guifg=#401580
-      highlight LineNrBelow guifg=#401580
-
-      let g:fsharp#fsautocomplete_command =
-      \ [ 'dotnet',
-      \   'fsautocomplete'
-      \ ]
     '';
     plugins = with pkgs.vimPlugins; [
+      indent-blankline-nvim
+      lualine-nvim
+      nvim-colorizer-lua
       # Theme
       monokai-nvim
       # UI
-      lualine-nvim
-      nvim-colorizer-lua
-
-      telescope-nvim
-      telescope-file-browser-nvim
-      indent-blankline-nvim
-      harpoon
-      # LSP
-      nvim-lspconfig
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-nvim-lsp-signature-help
-      julia-vim
-      Ionide-vim
-      haskell-vim
-      vim-nix
       vimtex
-      copilot-vim
       luasnip
+      nvim-cmp
       cmp_luasnip
       cmp-path
       cmp-buffer
-      cmp-copilot
       cmp-latex-symbols
-      friendly-snippets
-      vim-surround
-      nvim-autopairs
-      which-key-nvim
+      cmp-nvim-lsp
+      cmp-nvim-lsp-signature-help
 
-      # Treesitter
+      nvim-lspconfig
+      haskell-vim
+      vim-nix
+      
       (nvim-treesitter.withPlugins (p: with p; [
         nvim-ts-context-commentstring
-        #playground
-        julia
         haskell
-        nix
-        latex
-        python
+        nix 
         lua
-        rust
-        c
-        cpp
-        bash
-        vim
-        toml
-        json
-        yaml
-        html
-        css
-      ]))
+    ]))
       nvim-treesitter-context
-      nvim-treesitter-textobjects
-      #nvim-treesitter-refactor
-    ];
+      ];
   };
 }

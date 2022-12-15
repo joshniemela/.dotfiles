@@ -42,6 +42,7 @@
       seafile-client
       tectonic # for compiling latex
       slack-cli
+      simplescreenrecorder
       #TODO FIX LATEX
       #(texlive.combine {
       #  inherit (pkgs.texlive) 

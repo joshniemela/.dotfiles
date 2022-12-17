@@ -1,3 +1,8 @@
+local ls = require("luasnip")
+local s = ls.snippet
+local t = ls.text_node
+local i = ls.insert_node
+local fmta = require("luasnip.extras.fmt").fmta
 local in_mathzone = function()
   -- The `in_mathzone` function requires the VimTeX plugin
   return vim.fn['vimtex#syntax#in_mathzone']() == 1
@@ -74,6 +79,16 @@ s({trig="big{", dscr="Big curly bracket"},
 ),
 
 
+s({trig="qed", dscr="Blacksquare"},
+  {t("\\blacksquare")},
+  {condition = in_mathzone}
+),
+s({trig=".", dscr="cdot"},
+  {t("\\cdot")},
+  {condition = in_mathzone}
+),
+
+
 s({trig="inf", dscr="Infinity"},
   {t("\\infty")},
   {condition = in_mathzone}
@@ -126,4 +141,6 @@ s({trig="prod", dscr="Product"},
   ),
   {condition = in_mathzone}
 ),
+
+
 }

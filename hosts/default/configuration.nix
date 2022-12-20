@@ -19,7 +19,12 @@
           options = "--delete-older-than 7d";
         };
     };
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs = {
+      config.allowUnfree = true;
+      overlays = [
+        (final: prev: {clisp = prev.clisp.override { readline = final.readline63; }; })
+      ];
+    };
 
     hardware = lib.mkMerge [
       (lib.mkIf (!config.dotfiles.headless) { opengl.enable = true; })
@@ -58,5 +63,6 @@
       pkgs.rsync
       pkgs.strace
     ];
+    programs.nix-ld.enable = true;
   };
 }

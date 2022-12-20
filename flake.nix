@@ -5,22 +5,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
 
-    nix-ld.url = "github:Mic92/nix-ld";
-
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
     webcord.url = "github:fufexan/webcord-flake"; # foss discord
   };
-  outputs = { self, nixpkgs, nixpkgs-small, nixpkgs-stable, flake-utils, nix-ld, home-manager, webcord, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-small, nixpkgs-stable, flake-utils, home-manager, webcord, ... }@inputs:
     let 
       system = "x86_64-linux";
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config = { 
-          allowUnfree = true; 
-        };
-      };
       pkgs = import nixpkgs {
         inherit system;
         config = { 
@@ -59,7 +51,6 @@
         specialArgs = inputs;
         modules = [
           ./hosts/desktop/configuration.nix
-          nix-ld.nixosModules.nix-ld
 
           home-manager.nixosModules.home-manager{
             home-manager = {
@@ -76,7 +67,6 @@
         specialArgs = inputs;
         modules = [
           ./hosts/laptop/configuration.nix
-          nix-ld.nixosModules.nix-ld
 
           home-manager.nixosModules.home-manager{
             home-manager = {

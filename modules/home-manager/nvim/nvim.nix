@@ -6,7 +6,7 @@ let
       owner = "tanvirtin";
       repo = "monokai.nvim";
       rev = "master";
-      sha256 = "sha256-++gmw/LWdb6+WV/t/w5KZ6D59Nwxi0DXFbDNE9fUvAA=";
+      sha256 = "sha256-/otcoUETz6OMOaSUpYke4evrJIxxRA7crYbsh8d972M=";
     };
   };
 in

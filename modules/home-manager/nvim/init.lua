@@ -91,4 +91,4 @@ require'nvim-treesitter.configs'.setup {
   indent = {enable = true},
   context_commentstring = {enable = true}
 }
-require("which-key").setup {}
+-- require("which-key").setup {}

@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ tex2nix, pkgs ? import <nixpkgs> {} }:
 let 
     haskellPkgs = ps: with ps; [
         haskell-language-server
@@ -13,7 +13,8 @@ in
     pkgs.mkShell {
         name = "haskell dev shell";
         buildInputs = [
-            ghc
+          ghc
+          tex2nix
         ];
     }
 

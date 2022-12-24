@@ -19,7 +19,7 @@ in
       xdotool
       rnix-lsp
       sumneko-lua-language-server
-      # haskell-language-server
+      # haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
     ];
     viAlias = true;
     vimAlias = true;
@@ -50,6 +50,7 @@ in
 
       nvim-lspconfig
 
+      which-key-nvim
       plenary-nvim
       haskell-tools-nvim
       vim-nix

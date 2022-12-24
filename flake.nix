@@ -9,8 +9,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
     webcord.url = "github:fufexan/webcord-flake"; # foss discord
+
+    tex2nix.url = "github:Mic92/tex2nix";
   };
-  outputs = { self, nixpkgs, nixpkgs-small, nixpkgs-stable, flake-utils, home-manager, webcord, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-small, nixpkgs-stable, flake-utils, home-manager, webcord, tex2nix, ... }@inputs:
     let 
       system = "x86_64-linux";
       pkgs = import nixpkgs {

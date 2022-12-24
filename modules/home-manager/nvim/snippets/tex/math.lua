@@ -78,6 +78,21 @@ s({trig="big{", dscr="Big curly bracket"},
   {condition = in_mathzone}
 ),
 
+s({trig="norm", dscr="Norm"},
+  fmta(
+    "\\lVert <> \\rVert",
+    {i(1)}
+  ),
+  {condition = in_mathzone}
+),
+
+s({trig="abs", dscr="Absolute"},
+  fmta(
+    "\\lvert <> \\rvert",
+    {i(1)}
+  ),
+  {condition = in_mathzone}
+),
 
 s({trig="qed", dscr="Blacksquare"},
   {t("\\blacksquare")},
@@ -102,6 +117,13 @@ s({trig="int", dscr="Integral"},
   {condition = in_mathzone}
 ),
 
+s({trig="evalat", dscr="Evaluate from a to b"},
+  fmta(
+    "\\left <> \\right|_{<>}^{<>}",
+    {i(1, "content"), i(2), i(3)}
+  ),
+  {condition = in_mathzone}
+),
 s({trig="uint", dscr="Unbounded integral"},
   fmta(
     "\\int <> \\, d<>",
@@ -126,6 +148,13 @@ s({trig="hat", dscr="Hat"},
   {condition = in_mathzone}
 ),
 
+s({trig="vec", dscr="Vector"},
+  fmta(
+    "\\vec{<>}",
+    {i(1)}
+  ),
+  {condition = in_mathzone}
+),
 s({trig="sum", dscr="Summation"},
   fmta(
     "\\sum_{<>}^{<>}",

@@ -1,3 +1,10 @@
+local ls = require("luasnip")
+local s = ls.snippet
+local i = ls.insert_node
+local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
+local rep = require("luasnip.extras").rep
+
 return {
 -- Examples of complete snippets using fmt and fmta
 

@@ -1,4 +1,4 @@
-{ pkgs, webcord, ...}:
+{ pkgs, webcord, tex2nix, ...}:
 #let
 #  julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
 #  julia-wrapper = pkgs.callPackage ../../modules/julia { inherit julia; };
@@ -26,10 +26,9 @@
       lxappearance # for changing gtk theme
       subversion # for svn
       # qutebrowser # web browser
-      texlive.combined.scheme-full # for latex
-      timewarrior
-      taskwarrior
       sage
+      tex2nix.defaultPackage.${system}
+      #texlive.combined.scheme-full # for latex
       #chromium
       imagemagick # Used for conversion of image formats
       ffmpeg # for converting videos
@@ -39,29 +38,12 @@
       teams # Microsoft Teams
       postman # for testing APIs
       seafile-client
-      tectonic # for compiling latex
       slack-cli
       simplescreenrecorder
-      #TODO FIX LATEX
-      #(texlive.combine {
-      #  inherit (pkgs.texlive) 
-      #  scheme-medium
-      #  amsmath
-      #  fancyhdr
-      #  lastpage
-      #  pgf
-      #  nomencl
-      #  hyperref
-      #  xkeyval
-      #  latexmk
-      #  latex-bin
-      #  comma;"ctrl-b" TUI
-      #})
       zip  # for compressing files
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
-
       # Languages
       #nodejs # Required for javascript
       rustc # Required for Rust

@@ -14,7 +14,6 @@ in
         name = "haskell dev shell";
         buildInputs = [
           ghc
-          tex2nix
         ];
     }
 

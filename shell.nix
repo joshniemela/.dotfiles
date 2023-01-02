@@ -1,4 +1,4 @@
-{ tex2nix, pkgs ? import <nixpkgs> {} }:
+{pkgs ? import <nixpkgs> {} }:
 let 
     haskellPkgs = ps: with ps; [
         haskell-language-server

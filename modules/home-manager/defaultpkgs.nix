@@ -28,7 +28,7 @@
       # qutebrowser # web browser
       sage
       tex2nix.defaultPackage.${system}
-      #texlive.combined.scheme-full # for latex
+      texlive.combined.scheme-full # for latex
       #chromium
       imagemagick # Used for conversion of image formats
       ffmpeg # for converting videos

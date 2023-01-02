@@ -19,6 +19,7 @@ in
       xdotool
       rnix-lsp
       sumneko-lua-language-server
+      pyright
       # haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
     ];
     viAlias = true;
@@ -60,6 +61,7 @@ in
         haskell
         nix 
         lua
+        python
     ]))
       nvim-treesitter-context
       ];

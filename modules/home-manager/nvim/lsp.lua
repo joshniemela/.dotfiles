@@ -6,6 +6,8 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   lsp_defaults.capabilities,
   require('cmp_nvim_lsp').default_capabilities()
 )
+
+-- Lua LSP
 lspconfig.sumneko_lua.setup({
     single_file_support = true,
     settings = {
@@ -17,9 +19,13 @@ lspconfig.sumneko_lua.setup({
     }
 })
 
+-- Python LSP
+lspconfig.pyright.setup{}
+
+-- Nix LSP
 lspconfig.rnix.setup{}
 
-
+-- Haskell LSP
 local ht = require('haskell-tools')
 local def_opts = { noremap = true, silent = true, }
 ht.setup {

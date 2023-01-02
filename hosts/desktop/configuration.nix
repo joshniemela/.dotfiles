@@ -49,7 +49,7 @@
       };
     };
   };
-  
+  networking.firewall.enable = false; 
 
   # PROGRAMS
   programs = {
@@ -86,7 +86,7 @@
     };
     docker = {
       enableNvidia = true;
-      enable = true;
+      enable = false;
     }; 
   };
 }

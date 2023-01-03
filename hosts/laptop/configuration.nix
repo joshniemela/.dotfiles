@@ -36,7 +36,7 @@
       xterm.enable = false;
     };
     displayManager = {
-      defaultSession = "none+i3";
+      defaultSession = "none+xmonad";
       lightdm.enable = true;
       autoLogin = {
         enable = true;
@@ -44,11 +44,9 @@
       };
     };
     
-    windowManager.i3 = {
+    windowManager.xmonad = {
       enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-      ];
+      enableContribAndExtras = true;
     };
   };
   hardware.bluetooth.enable = true;

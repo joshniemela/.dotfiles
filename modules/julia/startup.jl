@@ -21,3 +21,6 @@ catch e
     @warn "Error initializing OhMyREPL" exception=(e, catch_backtrace())
 end
 
+if isfile("Project.toml") && isfile("Manifest.toml")
+  Pkg.activate(".")
+end

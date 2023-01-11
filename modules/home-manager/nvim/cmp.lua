@@ -22,6 +22,7 @@ cmp.setup({
   matching = { disallow_fuzzy_matching = false },
   },
   sources = {
+    {name = 'nvim_lsp_signature_help' },
     {name = 'luasnip', option={show_autosnippets = true} },
     {name = 'path'},
     --{name = 'nvim_lsp', keyword_length = 1},

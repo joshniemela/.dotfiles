@@ -5,7 +5,7 @@
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
-    ../../modules/home-manager/xmonad/xmonad.nix
+    ../../modules/home-manager/xmonad/default.nix
     ../../modules/home-manager/dunst.nix # Enable dunst
     ../../modules/home-manager/code.nix # Enable code
     ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop

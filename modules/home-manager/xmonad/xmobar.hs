@@ -4,7 +4,7 @@ Config {
      font =         "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#646464"
-   , position =     Bottom
+   , position =     Static { xpos = 0, ypos = 878, width = 1600, height = 22}
    , border =       TopB
    , borderColor =  "#646464"
 
@@ -80,9 +80,9 @@ Config {
         -- battery monitor
         , Run BatteryP ["/sys/class/power_supply/CMB1"]        [ "--template" , "Batt: <acstatus>"
                              , "--Low"      , "10"        -- units: %
-                             , "--High"     , "80"        -- units: %
+                             , "--High"     , "50"        -- units: %
                              , "--low"      , "darkred"
-                             , "--normal"   , "darkorange"
+                             , "--normal"   , "#646464"
                              , "--high"     , "darkgreen"
 
                              , "--" -- battery specific options

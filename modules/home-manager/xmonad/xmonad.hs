@@ -8,6 +8,8 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import System.IO
+
+
 myTerminal = "alacritty"
 myBrowser = "firefox"
 
@@ -56,13 +58,14 @@ showKeybindings x = addName "Show Keybindings" $ io $ do
 
 
 myLogHook h = dynamicLogWithPP $ def { ppOutput = hPutStrLn h }
-myManageHook = manageDocks <+> manageHook defaultConfig
-myLayoutHook = avoidStruts $ layoutHook defaultConfig
+myManageHook = manageDocks <+> manageHook def
+myLayoutHook = avoidStruts $ layoutHook def
 
-myEventHook = mconcat
-  [ docksEventHook -- this is needed to properly get xmobar struts working
-  , fullscreenEventHook
-  ]
+--myEventHook = mconcat
+--  [ docksEventHook -- this is needed to properly get xmobar struts working
+--  , fullscreenEventHook
+--  ]
+
 
 myStartupHook = do
   spawnOnce "autorandr -c"
@@ -79,11 +82,12 @@ myConfig statusPipe = def {
   , manageHook         = myManageHook
   , layoutHook         = myLayoutHook
   , startupHook        = myStartupHook
-  , handleEventHook          = myEventHook
+  --, handleEventHook          = myEventHook
 }
 
 main = do
   statusPipe <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad
+    $ docks 
     $ addDescrKeys ((myModMask, xK_F1), showKeybindings) myKeys
     $ myConfig statusPipe

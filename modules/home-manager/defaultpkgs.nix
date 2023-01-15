@@ -58,6 +58,8 @@
     flameshot.enable = true;
   };
   programs = {
+
+    kitty.enable = true;
     zathura = {
       enable = true;
     };

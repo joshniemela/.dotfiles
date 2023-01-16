@@ -40,10 +40,12 @@ myKeys :: XConfig l0 -> [((KeyMask, KeySym), NamedAction)]
 myKeys c =
   let subKeys str ks = subtitle str : ks
   in
-  subKeys "XMonad essentials"
+  subKeys "Additional stuff"
     [ ((myModMask .|. shiftMask, xK_r), addName "Recompile XMonad" $ spawn "xmonad --restart")
     , ((myModMask, xK_Return), addName "Open terminal" $ spawn myTerminal)
     , ((myModMask .|. shiftMask, xK_q), addName "Close window" kill)
+    , ((myModMask, xK_p), addName "Open DMenu" $ spawn "dmenu_run -sb '#402F65'")
+    , ((noModMask, xK_Print), addName "Take screenshot" $ spawn "flameshot gui")
     ]
 
 
@@ -82,6 +84,8 @@ myConfig statusPipe = def {
   , manageHook         = myManageHook
   , layoutHook         = myLayoutHook
   , startupHook        = myStartupHook
+  -- blank the keys
+  , keys               = const M.empty
   --, handleEventHook          = myEventHook
 }
 
@@ -89,5 +93,5 @@ main = do
   statusPipe <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad
     $ docks 
-    $ addDescrKeys ((myModMask, xK_F1), showKeybindings) myKeys
+    $ addDescrKeys' ((myModMask, xK_F1), showKeybindings) myKeys
     $ myConfig statusPipe

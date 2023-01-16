@@ -7,7 +7,6 @@ local rep = require("luasnip.extras").rep
 
 return {
 -- Examples of complete snippets using fmt and fmta
-
 -- \texttt
 s({trig="tt", dscr="Expands 'tt' into '\texttt{}'"},
   fmta(
@@ -15,6 +14,7 @@ s({trig="tt", dscr="Expands 'tt' into '\texttt{}'"},
     { i(1) }
   )
 ),
+
 
 -- Equation
 s({trig="eq", dscr="Expands 'eq' into an equation environment"},
@@ -93,4 +93,8 @@ s({trig="sssec", dscr="Sub-subsection"},
     {i(1)}
   )
 ),
+
+
+
+
 }

@@ -25,8 +25,8 @@ cmp.setup({
     {name = 'nvim_lsp_signature_help' },
     {name = 'luasnip', option={show_autosnippets = true} },
     {name = 'path'},
-    --{name = 'nvim_lsp', keyword_length = 1},
-    {name = 'buffer'},
+    {name = 'nvim_lsp', max_item_count=10},
+    {name = 'buffer', keyword_length=4},
     --{name = 'copilot', keyword_length = 1},
   },
   window = {

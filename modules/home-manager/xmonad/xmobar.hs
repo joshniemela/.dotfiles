@@ -1,18 +1,18 @@
 Config { 
 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=8:bold:antialias=true"
+     font =         "DejaVu Sans Mono Bold 10"
    , bgColor =      "black"
    , fgColor =      "#646464"
    --, position =     Static { xpos = 0, ypos = 878, width = 1600, height = 22}
-  , position = BottomH 22
+   , position = BottomH 16
    , border =       TopB
    , borderColor =  "#646464"
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ %EKCH% | %date% || %kbd% "
+   , template = "%StdinReader% %battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ %EKCH% | %date% || %kbd% "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -52,7 +52,7 @@ Config {
                              ] 10
 
         -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+        , Run MultiCpu       [ "--template" , "CPU: <total0>%|<total1>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
                              , "--low"      , "darkgreen"
@@ -103,5 +103,6 @@ Config {
         , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
                              , ("us"         , "<fc=#8B0000>US</fc>")
                              ]
+        , Run StdinReader
         ]
    }

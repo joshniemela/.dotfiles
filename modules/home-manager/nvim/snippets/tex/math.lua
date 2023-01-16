@@ -8,7 +8,37 @@ local in_mathzone = function()
   return vim.fn['vimtex#syntax#in_mathzone']() == 1
 end
 
+-- dynamic matrix 
+local mat = function(args, snip)
+	local rows = tonumber(snip.captures[2])
+  local cols = tonumber(snip.captures[3])
+	local nodes = {}
+	local ins_indx = 1
+	for j = 1, rows do
+		table.insert(nodes, r(ins_indx, tostring(j).."x1", i(1)))
+		ins_indx = ins_indx+1
+		for k = 2, cols do
+			table.insert(nodes, t" & ")
+			table.insert(nodes, r(ins_indx, tostring(j).."x"..tostring(k), i(1)))
+			ins_indx = ins_indx+1
+		end
+		table.insert(nodes, t{"\\\\", ""})
+	end
+	return sn(nil, nodes)
+end
+
 return {
+-- Matrix snippet
+s({ trig='([bBpvV])mat(%d+)x(%d+)', regTrig=true, name='matrix', dscr='matrix trigger lets go'},
+    fmt([[
+    \begin{<>}
+    <>\end{<>}]],
+    { f(function (_, snip) return snip.captures[1] .. "matrix" end),
+    d(1, mat),
+    f(function (_, snip) return snip.captures[1] .. "matrix" end)},
+    { delimiters='<>' }
+)),
+
 -- fraction
 s({trig="frac", dscr="Expands 'frac' into '\frac{}{}'"},
   fmta(

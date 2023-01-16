@@ -41,7 +41,7 @@ myKeys c =
   let subKeys str ks = subtitle str : ks
   in
   subKeys "Essentials"
-    [ ((myModMask .|. shiftMask, xK_r     ), addName "Recompile/restart XMonad" $ spawn "xmonad --recompile && xmonad --restart")
+    [ ((myModMask              , xK_q     ), addName "Recompile/restart XMonad" $ spawn "xmonad --recompile && pkill xmobar && xmonad --restart")
     , ((myModMask .|. shiftMask, xK_Return), addName "Open terminal" $ spawn myTerminal)
     , ((myModMask .|. shiftMask, xK_c     ), addName "Close window" kill)
     , ((myModMask              , xK_p     ), addName "Open dmenu" $ spawn "dmenu_run -sb '#402F65'")]
@@ -101,7 +101,14 @@ showKeybindings x = addName "Show Keybindings" $ io $ do
 
 
 
-myLogHook h = dynamicLogWithPP $ def { ppOutput = hPutStrLn h }
+myLogHook h = dynamicLogWithPP $ def 
+  { ppLayout = wrap "(<fc=#e4b63c>" "</fc>)"
+  -- , ppSort = getSortByXineramaRule  -- Sort left/right screens on the left, non-empty workspaces after those
+  , ppTitleSanitize = const ""  -- Also about window's title
+  , ppVisible = wrap "(" ")"  -- Non-focused (but still visible) screen
+  , ppCurrent = wrap "<fc=#b8473d>[</fc><fc=#7cac7a>" "</fc><fc=#b8473d>]</fc>"-- Non-focused (but still visible) screen
+  , ppOutput = hPutStrLn h
+  }
 myManageHook = manageDocks <+> manageHook def
 myLayoutHook = avoidStruts $ layoutHook def
 

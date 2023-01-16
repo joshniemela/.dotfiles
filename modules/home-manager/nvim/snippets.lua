@@ -34,3 +34,4 @@ ls.config.set_config({ -- Setting LuaSnip config
 require("luasnip/loaders/from_lua").load({paths = '~/.dotfiles/modules/home-manager/nvim/snippets/'})
 
 
+

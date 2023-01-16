@@ -1,10 +1,11 @@
 Config { 
 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true"
+     font =         "xft:Bitstream Vera Sans Mono:size=8:bold:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#646464"
-   , position =     Static { xpos = 0, ypos = 878, width = 1600, height = 22}
+   --, position =     Static { xpos = 0, ypos = 878, width = 1600, height = 22}
+  , position = BottomH 22
    , border =       TopB
    , borderColor =  "#646464"
 
@@ -18,7 +19,7 @@ Config {
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
    , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
-   , pickBroadest =     False   -- choose widest display (multi-monitor)
+   , pickBroadest =     True   -- choose widest display (multi-monitor)
    , persistent =       True    -- enable/disable hiding (True = disabled)
 
    -- plugins

@@ -19,7 +19,8 @@
       xournalpp # for signing pdfs
       tree # for viewing directory structure
       darktable # photo editor
-      webcord.packages.${system}.default # discord
+      #webcord.packages.${system}.default # discord
+      ripcord
       hunspell # spell checker
       hunspellDicts.en_GB-large # Dictionary for hunspell
       hunspellDicts.da_DK # Dictionary for hunspell
@@ -38,7 +39,7 @@
       teams # Microsoft Teams
       postman # for testing APIs
       seafile-client
-      slack-cli
+      #slack-cli
       simplescreenrecorder
       zip  # for compressing files
       unzip # for uncompressing files

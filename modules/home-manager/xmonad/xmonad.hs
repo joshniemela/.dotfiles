@@ -19,17 +19,9 @@ myFocusFollowsMouse = True
 
 myWorkspaces = map show [1..9]
 
+myFocusedBorderColor = "#D16328"
+myNormalBorderColor = "#402F65"
 
-
-myMainColor = "#333333"
-myBgColor = "#FEFEFE"
-myTextColor = "#282828"
-myLowColor = "#999999"
-myLowerColor = "#DDDDDD"
-greenColor = "#75b92d"
-
-myActiveColor = greenColor
-myInactiveColor = myTextColor
 
 
 -- Keybindings
@@ -123,6 +115,8 @@ myConfig statusPipe = def {
   , modMask            = myModMask
   , workspaces         = myWorkspaces
 
+  , focusedBorderColor = myFocusedBorderColor
+  , normalBorderColor  = myNormalBorderColor
   -- hooks, layouts
   , logHook            = myLogHook statusPipe
   , manageHook         = myManageHook

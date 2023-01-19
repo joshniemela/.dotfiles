@@ -10,6 +10,7 @@ import XMonad.Layout.Fullscreen
 import System.IO
 import XMonad.Actions.WithAll
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
+import XMonad.Util.NamedScratchpad
 myTerminal = "alacritty"
 myBrowser = "firefox"
 
@@ -90,6 +91,10 @@ myKeys c =
   [ ((noModMask                , xK_Print ), addName "Take screenshot" $ spawn "flameshot gui")
   ]
 
+  ++ subKeys "Scratchpads"
+  [ ((myModMask                , xK_b     ), addName "Open sagemath" $ namedScratchpadAction myScratchPads "sage") 
+  ]
+
 
 showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
 showKeybindings x = addName "Show Keybindings" $ io $ do
@@ -109,7 +114,7 @@ myLogHook h = dynamicLogWithPP $ def
   , ppCurrent = wrap "<fc=#b8473d>[</fc><fc=#7cac7a>" "</fc><fc=#b8473d>]</fc>"-- Non-focused (but still visible) screen
   , ppOutput = hPutStrLn h
   }
-myManageHook = manageDocks <+> manageHook def
+myManageHook = (manageDocks <+> manageHook def) <+> namedScratchpadManageHook myScratchPads
 myLayoutHook = avoidStruts $ layoutHook def
 
 
@@ -132,7 +137,24 @@ myConfig statusPipe = def {
 
 main = do
   statusPipe <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+  --statusPipes <- mapM (\i -> spawnPipe "xmobar ~/.xmonad/xmobar.hs" ++ show i " --x" ++ show i) [0..n-1]
   xmonad
     $ docks 
     $ addDescrKeys' ((myModMask, xK_F1), showKeybindings) myKeys
     $ myConfig statusPipe
+
+
+myScratchPads = [ NS "sage" spawnSage findSage manageSage]
+  where
+    spawnSage = myTerminal ++ " --class=sage -e sage"
+    findSage = className =? "sage"
+    manageSage = defaultFloating
+      where
+        h = 0.25
+        w = 0.38
+        t = 0.3-h
+        l = 0.95-w
+    
+
+
+

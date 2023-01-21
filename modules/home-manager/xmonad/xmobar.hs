@@ -80,8 +80,8 @@ Config {
 
         -- battery monitor
         , Run BatteryP ["/sys/class/power_supply/CMB1"]        [ "--template" , "Batt: <acstatus>"
-                             , "--Low"      , "10"        -- units: %
-                             , "--High"     , "50"        -- units: %
+                             , "--Low"      , "30"        -- units: %
+                             , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
                              , "--normal"   , "#646464"
                              , "--high"     , "darkgreen"

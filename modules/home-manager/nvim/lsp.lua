@@ -1,6 +1,6 @@
 local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
-
+local g = vim.g
 lsp_defaults.capabilities = vim.tbl_deep_extend(
   'force',
   lsp_defaults.capabilities,
@@ -41,6 +41,11 @@ ht.setup {
     end,
   },
 }
+-- Julia stuff
+g.latex_to_unicode_tab = "off" 
+g.latex_to_unicode_suggestions = 0
+g.latex_to_unicode_auto = 1
+
 -- Suggested keymaps that do not depend on haskell-language-server
 -- Toggle a GHCi repl for the current package
 vim.keymap.set('n', '<leader>rr', ht.repl.toggle, def_opts)

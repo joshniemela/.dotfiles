@@ -55,6 +55,7 @@ in
       plenary-nvim
       haskell-tools-nvim
       vim-nix
+      julia-vim
       
       (nvim-treesitter.withPlugins (p: with p; [
         nvim-ts-context-commentstring

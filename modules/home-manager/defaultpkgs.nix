@@ -27,7 +27,6 @@
       lxappearance # for changing gtk theme
       subversion # for svn
       # qutebrowser # web browser
-      sage
       tex2nix.defaultPackage.${system}
       texlive.combined.scheme-full # for latex
       #chromium
@@ -65,6 +64,8 @@
     zathura = {
       enable = true;
     };
+
+    sagemath.enable = true;
 
 
     htop = {

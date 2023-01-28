@@ -18,7 +18,7 @@
       pavucontrol # audio control
       xournalpp # for signing pdfs
       tree # for viewing directory structure
-      darktable # photo editor
+      #darktable # photo editor
       #webcord.packages.${system}.default # discord
       ripcord
       hunspell # spell checker

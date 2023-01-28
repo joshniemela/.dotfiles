@@ -63,6 +63,7 @@ in
         nix 
         lua
         python
+        julia
     ]))
       nvim-treesitter-context
       ];

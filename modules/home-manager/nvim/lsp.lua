@@ -45,6 +45,7 @@ ht.setup {
 g.latex_to_unicode_tab = "off" 
 g.latex_to_unicode_suggestions = 0
 g.latex_to_unicode_auto = 1
+lspconfig.julials.setup{}
 
 -- Suggested keymaps that do not depend on haskell-language-server
 -- Toggle a GHCi repl for the current package

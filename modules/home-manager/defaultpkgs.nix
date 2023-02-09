@@ -18,9 +18,7 @@
       pavucontrol # audio control
       xournalpp # for signing pdfs
       tree # for viewing directory structure
-      #darktable # photo editor
-      #webcord.packages.${system}.default # discord
-      ripcord
+      darktable # photo editor
       hunspell # spell checker
       hunspellDicts.en_GB-large # Dictionary for hunspell
       hunspellDicts.da_DK # Dictionary for hunspell
@@ -35,10 +33,8 @@
       pstree
       xclip # for copying to clipboard
       # Stuff for work
-      teams # Microsoft Teams
       postman # for testing APIs
       seafile-client
-      #slack-cli
       simplescreenrecorder
       zip  # for compressing files
       unzip # for uncompressing files
@@ -50,9 +46,12 @@
       cargo # Required for Rust
       gcc # Required for C
       baobab
-      rstudio
+      #rstudio
       wget
       xorg.xev
+
+      pipenv
+
     ];
   };
   services = {

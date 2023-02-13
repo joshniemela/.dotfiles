@@ -11,7 +11,7 @@ import System.IO
 import XMonad.Actions.WithAll
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
 import XMonad.Util.NamedScratchpad
-myTerminal = "alacritty"
+myTerminal = "kitty"
 myBrowser = "firefox"
 
 

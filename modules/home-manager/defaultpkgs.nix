@@ -50,8 +50,6 @@
       wget
       xorg.xev
 
-      pipenv
-
     ];
   };
   services = {

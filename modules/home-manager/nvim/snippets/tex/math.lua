@@ -201,5 +201,19 @@ s({trig="prod", dscr="Product"},
   {condition = in_mathzone}
 ),
 
+s({trig="ceil", dscr="Ceiling"},
+  fmta(
+    "\\left \\lceil <> \\right \\rceil",
+    {i(1)}
+  ),
+  {condition = in_mathzone}
+),
 
+s({trig="floor", dscr="Floor"},
+  fmta(
+    "\\left \\lfloor <> \\right \\rfloor",
+    {i(1)}
+  ),
+  {conditions = in_mathzone}
+),
 }

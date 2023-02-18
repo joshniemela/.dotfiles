@@ -56,8 +56,6 @@
     flameshot.enable = true;
   };
   programs = {
-
-    kitty.enable = true;
     zathura = {
       enable = true;
     };
@@ -75,7 +73,15 @@
       };
     };
     mpv.enable = true; 
-    alacritty.enable = true;
+    kitty = {
+      enable = true;
+      font = {
+        name = "FiraCode Nerd Font";
+        package = pkgs.fira-code;
+      };
+      settings = {
+      };
+    };
     direnv = {
         enable = true;
         nix-direnv.enable = true;

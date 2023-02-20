@@ -8,7 +8,7 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
 )
 
 -- Lua LSP
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
     single_file_support = true,
     settings = {
         Lua = {

@@ -49,7 +49,6 @@
       #rstudio
       wget
       xorg.xev
-
     ];
   };
   services = {

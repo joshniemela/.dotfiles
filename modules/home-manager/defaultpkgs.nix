@@ -8,6 +8,8 @@
     file.".unison/default.prf".source  = ../../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
     packages = with pkgs; [
+      csv2parquet
+      p7zip
       youtube-dl # for downloading youtube videos
       neofetch # system info
       thunderbird # email
@@ -27,6 +29,7 @@
       # qutebrowser # web browser
       tex2nix.defaultPackage.${system}
       texlive.combined.scheme-full # for latex
+      pandoc
       #chromium
       imagemagick # Used for conversion of image formats
       ffmpeg # for converting videos

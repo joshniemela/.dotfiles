@@ -5,6 +5,5 @@ ignore = Name VirtualBox\ VMs
 ignore = Name .*
 ignore = Path CSSVN
 ignore = Name Games
-ignore = Name maple2022
-ignore = Name Maple
+ignore = Name nosync
 perms=0

@@ -69,7 +69,7 @@
       enable = true;
     };
 
-    sagemath.enable = true;
+    #sagemath.enable = true;
 
 
     htop = {

@@ -57,6 +57,7 @@
 
     dconf.enable = true;
     steam.enable = true;
+    zsh.enable = true;
   };
   users.extraGroups.vboxusers.members = [ "josh" ];
   services.printing.enable = true;

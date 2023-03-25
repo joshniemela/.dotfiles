@@ -1,7 +1,11 @@
-{config, pkgs, lib, ...}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   monokai-nvim = pkgs.vimUtils.buildVimPlugin {
-    name="monokai-nvim";
+    name = "monokai-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "tanvirtin";
       repo = "monokai.nvim";
@@ -9,9 +13,7 @@ let
       sha256 = "sha256-Q6+la2P2L1QmdsRKszBBMee8oLXHwdJGWjG/FMMFgT0=";
     };
   };
-in
-  {
-
+in {
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
@@ -57,14 +59,16 @@ in
       haskell-tools-nvim
       vim-nix
       julia-vim
-      
-      (nvim-treesitter.withPlugins (p: with p; [
-        nvim-ts-context-commentstring
-        haskell
-        nix 
-        lua
-        python
-        julia]))
+
+      (nvim-treesitter.withPlugins (p:
+        with p; [
+          nvim-ts-context-commentstring
+          haskell
+          nix
+          lua
+          python
+          julia
+        ]))
 
       nvim-treesitter-context
     ];

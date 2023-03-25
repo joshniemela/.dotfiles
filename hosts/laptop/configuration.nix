@@ -1,30 +1,33 @@
-{ config, pkgs, out, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/doas.nix # enable doas
-      ../../modules/pipewire.nix # config for pipewire
-      ../../modules/thunar.nix # config for thunar
-      ../default/configuration.nix # default host config
-    ];
+  config,
+  pkgs,
+  out,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/doas.nix # enable doas
+    ../../modules/pipewire.nix # config for pipewire
+    ../../modules/thunar.nix # config for thunar
+    ../default/configuration.nix # default host config
+  ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true; 
+    loader.efi.canTouchEfiVariables = true;
   };
 
   networking = {
-    hostName = "laptop"; 
-    nameservers = [ "8.8.8.8" ];
+    hostName = "laptop";
+    nameservers = ["8.8.8.8"];
     defaultGateway = "192.168.1.1";
     networkmanager.enable = true;
   };
-  
+
   zramSwap = {
-    enable=true;
-    memoryPercent=100;
+    enable = true;
+    memoryPercent = 100;
   };
   services.blueman.enable = true;
   services.gnome.gnome-keyring.enable = true;
@@ -43,14 +46,14 @@
         user = "josh";
       };
     };
-    
+
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
     };
   };
   hardware.bluetooth.enable = true;
-  
+
   # PROGRAMS
   programs = {
     git = {
@@ -69,17 +72,17 @@
 
   users.users.josh = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = ["wheel" "networkmanager"];
     initialPassword = "1234";
     shell = pkgs.zsh;
   };
 
   # Environment
   environment = {
-    pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
+    pathsToLink = ["/libexec"]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
-      TERMINAL = [ "alacritty" ];
-      EDITOR = [ "vim" ];
+      TERMINAL = ["alacritty"];
+      EDITOR = ["vim"];
     };
   };
 
@@ -89,4 +92,3 @@
     };
   };
 }
-

@@ -1,6 +1,9 @@
-{config, pkgs, lib, ...}:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   config = {
     home.packages = with pkgs; [
       haskellPackages.haskell-language-server

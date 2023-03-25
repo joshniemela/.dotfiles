@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ...}:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.dotfiles = {
     headless = lib.mkOption {
       type = lib.types.bool;
@@ -14,24 +18,24 @@
       package = pkgs.nixVersions.stable;
       extraOptions = "experimental-features = nix-command flakes";
       gc = {
-          automatic = true;
-          dates = "weekly";
-          options = "--delete-older-than 7d";
-        };
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
     };
     nixpkgs = {
       config.allowUnfree = true;
       overlays = [
-        (final: prev: {clisp = prev.clisp.override { readline = final.readline63; }; })
+        (final: prev: {clisp = prev.clisp.override {readline = final.readline63;};})
       ];
     };
 
     hardware = lib.mkMerge [
-      (lib.mkIf (!config.dotfiles.headless) { opengl.enable = true; })
+      (lib.mkIf (!config.dotfiles.headless) {opengl.enable = true;})
       {enableRedistributableFirmware = true;}
     ];
     #hardware.enableAllFirmware = true;
-    
+
     systemd = {
       services.clear-log = {
         description = "Clear logs older than two weeks";
@@ -40,18 +44,18 @@
           ExecStart = "${pkgs.systemd}/bin/journalctl --vacuum-time=14d";
         };
       };
-      
+
       timers.clear-log = {
-        wantedBy = [ "timers.target" ];
-        partOf = [ "clear-log.service" ];
+        wantedBy = ["timers.target"];
+        partOf = ["clear-log.service"];
         timerConfig.OnCalendar = "weekly UTC";
       };
     };
 
     i18n.defaultLocale = lib.mkDefault "en_DK.UTF-8";
     console = lib.mkMerge [
-      (lib.mkIf config.dotfiles.headless { keyMap = "dk"; })
-      (lib.mkIf (!config.dotfiles.headless) { useXkbConfig = true; })
+      (lib.mkIf config.dotfiles.headless {keyMap = "dk";})
+      (lib.mkIf (!config.dotfiles.headless) {useXkbConfig = true;})
       {font = lib.mkDefault "Lat2-Terminus16";}
     ];
 

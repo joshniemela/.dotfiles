@@ -1,6 +1,9 @@
-{ config, pkgs, pkgs-stable, ... }:
 {
-  
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
     ../../modules/home-manager/git.nix # Enable git
@@ -13,20 +16,20 @@
     ../../modules/fsharp.nix
     ../../modules/home-manager/nvim/nvim.nix
   ];
-  
+
   home = {
     packages = with pkgs; [
-      font-awesome # Iconscode 
-      (nerdfonts.override{fonts = [ "FiraCode" "Meslo" ];}) # Powerline breaks without this
+      font-awesome # Iconscode
+      (nerdfonts.override {fonts = ["FiraCode" "Meslo"];}) # Powerline breaks without this
       dmenu
       conda
       ncdu
-   ];
+    ];
   };
   services = {
     easyeffects.enable = true;
   };
-  
+
   programs = {
     home-manager.enable = true;
     autorandr = {
@@ -34,11 +37,10 @@
       profiles = import ../../modules/home-manager/autorandr/desktop.nix;
     };
 
-    firefox = { 
-      enable = true; 
+    firefox = {
+      enable = true;
       #profiles = ../../modules/home-manager/firefox.nix;
     };
   };
   home.stateVersion = "22.05";
 }
-  

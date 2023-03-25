@@ -1,5 +1,8 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   services.dunst = {
     enable = true;
     settings = {
@@ -21,7 +24,7 @@
         foreground = "#888888";
         timeout = 10;
       };
-        
+
       urgency_normal = {
         background = "#402F65";
         foreground = "#FFFFFF";

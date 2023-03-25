@@ -1,14 +1,15 @@
-{ config, pkgs, ... }:
-
-let
-  lib = pkgs.lib;
-in 
 {
+  config,
+  pkgs,
+  ...
+}: let
+  lib = pkgs.lib;
+in {
   programs.home-manager.enable = true;
   home = {
     packages = with pkgs; [
       neofetch
-      htop  
+      htop
     ];
   };
 
@@ -22,11 +23,10 @@ in
       enable = true;
       nix-direnv.enable = true;
     };
-    
+
     alacritty = {
       enable = true;
-    };  
+    };
   };
   home.stateVersion = "22.05";
 }
-  

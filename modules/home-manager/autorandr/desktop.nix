@@ -1,4 +1,3 @@
-
 {
   "desktop" = {
     fingerprint = {
@@ -19,7 +18,7 @@
         position = "1080x840";
         mode = "1920x1080";
       };
-      
+
       "HDMI-1" = {
         enable = true;
         rotate = "right";
@@ -29,4 +28,3 @@
     };
   };
 }
-

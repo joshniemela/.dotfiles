@@ -1,11 +1,16 @@
-{ pkgs, webcord, tex2nix, ...}:
+{
+  pkgs,
+  webcord,
+  tex2nix,
+  ...
+}:
 #let
 #  julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
 #  julia-wrapper = pkgs.callPackage ../../modules/julia { inherit julia; };
-#in 
+#in
 {
   home = {
-    file.".unison/default.prf".source  = ../../configs/unison.prf; # File used for unison, TODO MAKE MODULE
+    file.".unison/default.prf".source = ../../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
     packages = with pkgs; [
       csv2parquet
@@ -39,7 +44,7 @@
       postman # for testing APIs
       seafile-client
       simplescreenrecorder
-      zip  # for compressing files
+      zip # for compressing files
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
@@ -71,7 +76,6 @@
 
     #sagemath.enable = true;
 
-
     htop = {
       enable = true;
       settings = {
@@ -81,7 +85,7 @@
         show_cpu_temperature = true;
       };
     };
-    mpv.enable = true; 
+    mpv.enable = true;
     kitty = {
       enable = true;
       font = {
@@ -92,8 +96,8 @@
       };
     };
     direnv = {
-        enable = true;
-        nix-direnv.enable = true;
+      enable = true;
+      nix-direnv.enable = true;
     };
   };
 }

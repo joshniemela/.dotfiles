@@ -27,7 +27,7 @@
       lxappearance # for changing gtk theme
       subversion # for svn
       # qutebrowser # web browser
-      tex2nix.defaultPackage.${system}
+      #tex2nix.defaultPackage.${system}
       texlive.combined.scheme-full # for latex
       pandoc
       #chromium

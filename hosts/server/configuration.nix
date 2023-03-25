@@ -49,7 +49,14 @@
 
   zramSwap = {
     enable=true;
-    memoryPercent=100;
+    memoryPercent=50;
+  };
+
+  programs = {
+    git.enable = true;
+    tmux.enable = true;
+    zsh.enable = true;
+    kitty.enable = true;
   };
 
   users = {
@@ -61,7 +68,6 @@
       shell = pkgs.zsh;
     };
   };
-  programs.zsh.enable=true;
  
   #powerManagement = {
   #  enable = true;

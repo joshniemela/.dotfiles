@@ -24,7 +24,7 @@ in
     ];
     viAlias = true;
     vimAlias = true;
-    withNodeJs = false;
+    withNodeJs = true;
     vimdiffAlias = true;
     extraConfig = ''
       luafile ${./init.lua}
@@ -48,6 +48,7 @@ in
       cmp-latex-symbols
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
+      copilot-vim
 
       nvim-lspconfig
 
@@ -63,9 +64,9 @@ in
         nix 
         lua
         python
-        julia
-    ]))
+        julia]))
+
       nvim-treesitter-context
-      ];
+    ];
   };
 }

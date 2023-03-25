@@ -52,6 +52,8 @@
       #rstudio
       wget
       xorg.xev
+      pandoc
+      inkscape
     ];
   };
   services = {

@@ -24,13 +24,6 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
-
     lib = nixpkgs.lib;
     lib-small = nixpkgs-small.lib;
   in {
@@ -93,7 +86,7 @@
         ];
       };
     };
-    devShells.${system}.default = import ./shell.nix {inherit pkgs;};
-    formatter.${system} = pkgs.alejandra;
+    #devShells.${system}.default = import ./shell.nix {inherit pkgs;};
+    formatter.${system} = nixpkgs.alejandra;
   };
 }

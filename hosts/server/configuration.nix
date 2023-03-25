@@ -10,7 +10,7 @@
     ../../modules/website.nix
     ../../modules/doas.nix
     ../../modules/docker.nix
-    ../default/configuration.nix
+    ../default/configuration.nix # default configs for host
   ];
 
   # Use the systemd-boot EFI boot loader, replace with grub for BIOS based systems.

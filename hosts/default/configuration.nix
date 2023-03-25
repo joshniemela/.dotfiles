@@ -25,9 +25,6 @@
     };
     nixpkgs = {
       config.allowUnfree = true;
-      overlays = [
-        (final: prev: {clisp = prev.clisp.override {readline = final.readline63;};})
-      ];
     };
 
     hardware = lib.mkMerge [

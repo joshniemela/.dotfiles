@@ -19,12 +19,8 @@
     shellAliases = {
       ll = "ls -l";
       lag = "ls -ag";
-      switchSystem = "source ~/.dotfiles/switchSystem.sh";
-      testSystem = "source ~/.dotfiles/testSystem.sh";
-      updateSystem = "source ~/.dotfiles/updateSystem.sh";
       ls = "ls --color='always'";
       grep = "grep --color='always'";
-      unison = "unison -ui text";
       "..." = "../..";
     };
     initExtra = ''
@@ -33,7 +29,7 @@
       bindkey "^[[F" end-of-line
       bindkey "^[[1;5D" backward-word
       bindkey "^[[1;5C" forward-word
-      source ~/.dotfiles/configs/p10k
+      source $HOME/.dotfiles/configs/p10k
     '';
   };
 }

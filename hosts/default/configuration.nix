@@ -63,6 +63,24 @@
       pkgs.perl
       pkgs.rsync
       pkgs.strace
+
+      (pkgs.writeShellScriptBin "switchSystem" ''
+        pushd /home/josh/.dotfiles
+        doas nixos-rebuild switch --flake .#
+        popd
+      '')
+      
+      (pkgs.writeShellScriptBin "testSystem" ''
+        pushd /home/josh/.dotfiles
+        doas nixos-rebuild test --flake .#
+        popd
+      '')
+
+      (pkgs.writeShellScriptBin "updateSystem" ''
+        pushd /home/josh/.dotfiles
+        doas nix flake update
+        popd
+      '')
     ];
     programs.nix-ld.enable = true;
   };

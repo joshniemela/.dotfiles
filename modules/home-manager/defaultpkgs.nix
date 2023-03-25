@@ -60,6 +60,11 @@
     flameshot.enable = true;
   };
   programs = {
+    tmux = {
+      enable = true;
+      clock24 = true;
+    };
+
     zathura = {
       enable = true;
     };

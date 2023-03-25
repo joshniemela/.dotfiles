@@ -56,7 +56,6 @@
     git.enable = true;
     tmux.enable = true;
     zsh.enable = true;
-    kitty.enable = true;
   };
 
   users = {

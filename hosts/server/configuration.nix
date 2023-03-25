@@ -12,7 +12,7 @@
 
   # Use the systemd-boot EFI boot loader, replace with grub for BIOS based systems.
   boot = {
-    kernelPackages = pkgs.linuxPackages_5_18_hardened;
+    kernelPackages = pkgs.linuxPackages_5_15_hardened;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
@@ -61,11 +61,12 @@
       shell = pkgs.zsh;
     };
   };
+  programs.zsh.enable=true;
  
-  powerManagement = {
-    enable = true;
-    cpuFreqGovenor = "powersave";
-  };
+  #powerManagement = {
+  #  enable = true;
+  #  cpuFreqGovenor = "powersave";
+  #};
 
   environment.systemPackages = with pkgs; [
     unison

@@ -6,4 +6,5 @@ ignore = Name .*
 ignore = Path CSSVN
 ignore = Name Games
 ignore = Name nosync
+ignore = Name .dotfiles
 perms=0

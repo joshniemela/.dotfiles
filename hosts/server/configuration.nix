@@ -76,6 +76,7 @@
   environment.systemPackages = with pkgs; [
     unison
     cryptsetup
+    vim
   ];
   services = {
     openssh.enable = true;

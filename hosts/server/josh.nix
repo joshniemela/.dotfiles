@@ -15,8 +15,7 @@ in
   imports = [
     ../../modules/home-manager/zsh.nix # enable zsh
     ../../modules/home-manager/git.nix # enable git
-    ../../modules/home-manager/nvim/nvim.nix # enable git
-    ../../modules/home-manager/defaultpkgs.nix # enable git
+    ../../modules/home-manager/nvim/nvim.nix # enable nvim
   ];
   programs = {
     direnv = {

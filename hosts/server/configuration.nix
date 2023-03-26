@@ -40,7 +40,7 @@
   };
 
   services.fail2ban = {
-    enable = true;
+    enable = false;
     maxretry = 5;
     ignoreIP = [
       "127.0.0.0/8"

@@ -6,7 +6,7 @@ g.mapleader = " "
 
 -- Undo files
 opt.undofile = true
-opt.undodir = ".local/share/nvim/undo"
+opt.undodir = "~/.local/share/nvim/undo"
 -- Indentation
 opt.smartindent = true
 opt.autoindent = true

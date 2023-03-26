@@ -27,7 +27,7 @@ cmp.setup({
     {name = 'path'},
     {name = 'nvim_lsp', max_item_count=10},
     {name = 'buffer', keyword_length=4},
-    {name = 'copilot', keyword_length = 4},
+    {name = 'copilot', keyword_length = 1},
   },
   window = {
     documentation = cmp.config.window.bordered()

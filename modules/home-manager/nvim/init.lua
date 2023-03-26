@@ -1,12 +1,17 @@
 local opt = vim.opt
 local g = vim.g
+local home = os.getenv('HOME') .. '/'
 
 -- Set leader key
 g.mapleader = " "
 
 -- Undo files
 opt.undofile = true
-opt.undodir = "~/.local/share/nvim/undo"
+opt.undodir = home .. '.local/share/nvim/undo,/tmp'
+-- Backup
+opt.backup = true
+opt.backupdir = home .. '.local/share/nvim/backup,/tmp'
+
 -- Indentation
 opt.smartindent = true
 opt.autoindent = true

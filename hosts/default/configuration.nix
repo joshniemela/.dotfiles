@@ -65,19 +65,22 @@
       pkgs.strace
 
       (pkgs.writeShellScriptBin "switchSystem" ''
-        pushd /home/josh/.dotfiles
+        set -e
+        pushd $HOME/.dotfiles
         doas nixos-rebuild switch --flake .#
         popd
       '')
       
       (pkgs.writeShellScriptBin "testSystem" ''
-        pushd /home/josh/.dotfiles
+        set -e
+        pushd $HOME/.dotfiles
         doas nixos-rebuild test --flake .#
         popd
       '')
 
       (pkgs.writeShellScriptBin "updateSystem" ''
-        pushd /home/josh/.dotfiles
+        set -e
+        pushd $HOME/.dotfiles
         doas nix flake update
         popd
       '')

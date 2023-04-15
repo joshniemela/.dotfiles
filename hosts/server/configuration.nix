@@ -96,6 +96,7 @@
     screen
     htop
     tree
+    kitty
   ];
   services = {
     openssh.enable = true;

@@ -75,14 +75,12 @@
       isNormalUser = true;
       initialPassword = "1234";
       openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINEZi2SZ9MRpD8sN71gj9SxixsCMlLKADrj9r77x/H7k jakupl@pingu" ];
-      shell = pkgs.zsh;
     };
 
     users.kristiandampedersen = {
       isNormalUser = true;
       initialPassword = "1234";
       openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop" ];
-      shell = pkgs.zsh;
     };
   };
 
@@ -96,6 +94,9 @@
     cryptsetup
     vim
     screen
+    htop
+    tree
+    kitty
   ];
   services = {
     openssh.enable = true;

@@ -28,6 +28,7 @@
   };
   services = {
     easyeffects.enable = true;
+    neo4j.enable = true;
   };
 
   programs = {

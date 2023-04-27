@@ -68,6 +68,7 @@ in {
           lua
           python
           julia
+          clojure
         ]))
 
       nvim-treesitter-context

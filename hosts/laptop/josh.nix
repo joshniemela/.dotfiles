@@ -33,6 +33,9 @@
       (nerdfonts.override {fonts = ["FiraCode" "Meslo"];}) # Powerline breaks without this
       brightnessctl # Brightness control
       dmenu
+      openjdk
+      clojure
+      leiningen
     ];
   };
 

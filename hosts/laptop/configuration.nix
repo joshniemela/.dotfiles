@@ -9,6 +9,7 @@
     ../../modules/doas.nix # enable doas
     ../../modules/pipewire.nix # config for pipewire
     ../../modules/thunar.nix # config for thunar
+    ../../modules/postgresql.nix
     ../default/configuration.nix # default host config
   ];
 

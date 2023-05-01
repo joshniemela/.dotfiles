@@ -36,6 +36,15 @@
       openjdk
       clojure
       leiningen
+
+      (pkgs.writeShellScriptBin "disableKeyboard" ''
+      xinput float "AT Translated Set 2 keyboard"
+      '')
+      
+      (pkgs.writeShellScriptBin "enableKeyboard" ''
+      xinput reattach "AT Translated Set 2 keyboard" "Virtual core keyboard"
+      '')
+      
     ];
   };
 

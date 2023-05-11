@@ -36,6 +36,8 @@
       openjdk
       clojure
       leiningen
+      insomnia
+      logseq
 
       (pkgs.writeShellScriptBin "disableKeyboard" ''
       xinput float "AT Translated Set 2 keyboard"

@@ -67,6 +67,17 @@
   users.extraGroups.vboxusers.members = ["josh"];
   services.printing.enable = true;
   services.openssh.enable = true;
+  #services.neo4j = {
+  #  enable = true;
+  #  bolt.tlsLevel = "DISABLED";
+  #  https.enable = false;
+  #  allowUpgrade = true;
+  #  bolt.enable = true;
+    #directories = {
+    #  home = "/home/josh/.neodata";
+    #};
+  #  defaultListenAddress = "0.0.0.0";
+  #};
   services.gnome.gnome-keyring.enable = true;
   users.users.josh = {
     isNormalUser = true;
@@ -85,12 +96,12 @@
   };
   virtualisation = {
     virtualbox.host = {
-      enable = true;
+      enable = false;
       enableExtensionPack = true;
     };
     docker = {
       enableNvidia = true;
-      enable = false;
+      enable = true;
     };
   };
 }

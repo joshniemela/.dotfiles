@@ -24,11 +24,18 @@
       dmenu
       conda
       ncdu
+      docker-compose
+      leiningen
+      clojure
+      openjdk
+      insomnia
+      nodejs
+      logseq
+      futhark
     ];
   };
   services = {
     easyeffects.enable = true;
-    neo4j.enable = true;
   };
 
   programs = {

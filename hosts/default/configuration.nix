@@ -84,6 +84,13 @@
         doas nix flake update
         popd
       '')
+
+      (pkgs.writeShellScriptBin "buildISO" ''
+        set -e
+        pushd $HOME/.dotfiles
+        nix build .#nixosConfigurations.liveISO.config.system.build.isoImage
+        popd
+      '')
     ];
     programs.nix-ld.enable = true;
   };

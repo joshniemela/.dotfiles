@@ -1,2 +1,2 @@
 modules/home-manager/nvim/*.lua linguist-vendored
-modules/home-manager/nvim/snippets/*.lua linguist-vendored
+modules/home-manager/nvim/snippets/* linguist-vendored

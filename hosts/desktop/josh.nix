@@ -30,8 +30,6 @@
       openjdk
       insomnia
       nodejs
-      logseq
-      futhark
     ];
   };
   services = {

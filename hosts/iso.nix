@@ -6,6 +6,7 @@
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+    ../modules/doas.nix # enable doas
   ];
 
   networking = {
@@ -38,7 +39,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    doas
     git
     wget
     nixFlakes
@@ -51,20 +51,5 @@
     firewall.enable = false;
     wireless.enable = false;
     networkmanager.enable = true;
-  };
-
-  # doas config
-  security = {
-    sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [
-        {
-          groups = ["wheel"];
-          persist = true;
-          keepEnv = true;
-        }
-      ];
-    };
   };
 }

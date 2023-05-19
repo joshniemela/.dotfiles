@@ -30,9 +30,7 @@
       hunspellDicts.en_GB-large # Dictionary for hunspell
       hunspellDicts.da_DK # Dictionary for hunspell
       lxappearance # for changing gtk theme
-      subversion # for svn
       # qutebrowser # web browser
-      #tex2nix.defaultPackage.${system}
       texlive.combined.scheme-full # for latex
       pandoc
       #chromium
@@ -54,11 +52,12 @@
       cargo # Required for Rust
       gcc # Required for C
       baobab
-      #rstudio
       wget
       xorg.xev
       pandoc
       inkscape
+      futhark
+      logseq
     ];
   };
   services = {
@@ -70,11 +69,7 @@
       clock24 = true;
     };
 
-    zathura = {
-      enable = true;
-    };
-
-    #sagemath.enable = true;
+    zathura.enable = true;
 
     htop = {
       enable = true;

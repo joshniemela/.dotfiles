@@ -57,9 +57,7 @@
 
   # PROGRAMS
   programs = {
-    git.enable = true;
     iotop.enable = true;
-
     dconf.enable = true;
     steam.enable = true;
     zsh.enable = true;

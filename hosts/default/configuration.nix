@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  imports = [
+  ];
   options.dotfiles = {
     headless = lib.mkOption {
       type = lib.types.bool;
@@ -31,7 +33,7 @@
       (lib.mkIf (!config.dotfiles.headless) {opengl.enable = true;})
       {enableRedistributableFirmware = true;}
     ];
-    #hardware.enableAllFirmware = true;
+    # hardware.enableAllFirmware = true;
 
     systemd = {
       services.clear-log = {
@@ -58,10 +60,12 @@
 
     time.timeZone = lib.mkDefault "Europe/Copenhagen";
     system.stateVersion = "22.05";
-
+    programs = {
+      git.enable = true;
+      nix-ld.enable = true;
+    };
     environment.defaultPackages = [
       pkgs.perl
-      pkgs.rsync
       pkgs.strace
 
       (pkgs.writeShellScriptBin "switchSystem" ''
@@ -92,6 +96,5 @@
         popd
       '')
     ];
-    programs.nix-ld.enable = true;
   };
 }

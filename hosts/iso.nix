@@ -13,7 +13,7 @@
     nameservers = ["8.8.8.8"];
   };
 
-  #in case of proprietary wireless drivers
+  # in case of proprietary wireless drivers
   nixpkgs.config.allowUnfree = true;
   hardware.enableRedistributableFirmware = true;
   boot.kernelModules = ["wl"];
@@ -53,7 +53,7 @@
     networkmanager.enable = true;
   };
 
-  #doas config
+  # doas config
   security = {
     sudo.enable = false;
     doas = {

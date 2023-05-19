@@ -39,7 +39,7 @@
         inherit system;
 
         modules = [
-          ./hosts/image.nix
+          ./hosts/iso.nix
         ];
       };
 

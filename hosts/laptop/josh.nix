@@ -4,7 +4,6 @@
   lib,
   ...
 }: {
-  #dotfiles.isLaptop = true;
   fonts.fontconfig.enable = true;
   imports = [
     ../../modules/home-manager/zsh.nix # Enable zsh
@@ -17,15 +16,6 @@
     ../../modules/fsharp.nix
     ../../modules/home-manager/nvim/nvim.nix
   ];
-  #  theme = {
-  #    statusbar = "i3status-rs";
-  #    primaryColour = "#A03020";
-  #    secondaryColour = "#902424";
-  #  };
-  #  services.dunst.settings.urgency_normal = {
-  #    frame_color = lib.mkForce "#A03020";
-  #    background = lib.mkForce "#5F676A";
-  #  };
 
   home = {
     packages = with pkgs; [
@@ -37,16 +27,14 @@
       clojure
       leiningen
       insomnia
-      logseq
 
       (pkgs.writeShellScriptBin "disableKeyboard" ''
-      xinput float "AT Translated Set 2 keyboard"
+        xinput float "AT Translated Set 2 keyboard"
       '')
-      
+
       (pkgs.writeShellScriptBin "enableKeyboard" ''
-      xinput reattach "AT Translated Set 2 keyboard" "Virtual core keyboard"
+        xinput reattach "AT Translated Set 2 keyboard" "Virtual core keyboard"
       '')
-      
     ];
   };
 

@@ -57,9 +57,7 @@
 
   # PROGRAMS
   programs = {
-    git.enable = true;
     iotop.enable = true;
-
     dconf.enable = true;
     steam.enable = true;
     zsh.enable = true;
@@ -73,9 +71,9 @@
   #  https.enable = false;
   #  allowUpgrade = true;
   #  bolt.enable = true;
-    #directories = {
-    #  home = "/home/josh/.neodata";
-    #};
+  #directories = {
+  #  home = "/home/josh/.neodata";
+  #};
   #  defaultListenAddress = "0.0.0.0";
   #};
   services.gnome.gnome-keyring.enable = true;

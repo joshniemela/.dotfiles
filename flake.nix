@@ -39,7 +39,7 @@
         inherit system;
 
         modules = [
-          ./hosts/image.nix
+          ./hosts/iso.nix
         ];
       };
 
@@ -78,7 +78,6 @@
         ];
       };
     };
-    #devShells.${system}.default = import ./shell.nix {inherit pkgs;};
-    formatter.${system} = nixpkgs.alejandra;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
 }

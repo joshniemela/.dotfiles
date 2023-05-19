@@ -88,13 +88,13 @@
     users.jakupl = {
       isNormalUser = true;
       initialPassword = "1234";
-      openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINEZi2SZ9MRpD8sN71gj9SxixsCMlLKADrj9r77x/H7k jakupl@pingu" ];
+      openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINEZi2SZ9MRpD8sN71gj9SxixsCMlLKADrj9r77x/H7k jakupl@pingu"];
     };
 
     users.kristiandampedersen = {
       isNormalUser = true;
       initialPassword = "1234";
-      openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop" ];
+      openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop"];
     };
   };
 

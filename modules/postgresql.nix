@@ -14,9 +14,9 @@
     '';
 
     initialScript = pkgs.writeText "backend-initScript" ''
-    CREATE ROLE josh WITH LOGIN PASSWORD 'md531ee9d3a717108aa7e4dec54405d8184'
-    CREATE DATABASE nixcloud;
-    GRANT ALL PRIVILEGES ON DATABASE nixcloud TO josh;
+      CREATE ROLE josh WITH LOGIN PASSWORD 'md531ee9d3a717108aa7e4dec54405d8184'
+      CREATE DATABASE nixcloud;
+      GRANT ALL PRIVILEGES ON DATABASE nixcloud TO josh;
     '';
   };
 }

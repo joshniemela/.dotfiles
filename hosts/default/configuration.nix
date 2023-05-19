@@ -70,7 +70,7 @@
         doas nixos-rebuild switch --flake .#
         popd
       '')
-      
+
       (pkgs.writeShellScriptBin "testSystem" ''
         set -e
         pushd $HOME/.dotfiles

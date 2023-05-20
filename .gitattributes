@@ -1,3 +1,4 @@
 modules/home-manager/nvim/*.lua linguist-vendored
 modules/home-manager/nvim/snippets/*.lua linguist-vendored
 modules/home-manager/nvim/snippets/tex/*.lua linguist-vendored
+modules/home-manager/autorandr/*.nix linguist-vendored

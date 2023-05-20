@@ -11,6 +11,7 @@
     ../../modules/postgresql.nix
     ../../modules/doas.nix
     ../../modules/docker.nix
+    ../../modules/website.nix
     ../default/configuration.nix # default configs for host
   ];
 
@@ -111,6 +112,7 @@
     htop
     tree
     kitty
+    rsync
   ];
   services = {
     openssh.enable = true;

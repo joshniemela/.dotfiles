@@ -58,6 +58,7 @@
       inkscape
       futhark
       logseq
+      shellcheck
     ];
   };
   services = {

@@ -84,7 +84,7 @@
   virtualisation = {
     virtualbox.host = {
       enable = false;
-      enableExtensionPack = true;
+      enableExtensionPack = false;
     };
     docker = {
       enableNvidia = true;

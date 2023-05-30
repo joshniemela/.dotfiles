@@ -108,6 +108,11 @@
   virtualisation = {
     virtualbox.host = {
       enable = false;
+      enableExtensionPack = false;
+    };
+    docker = {
+      enableNvidia = true;
+      enable = true;
     };
   };
 }

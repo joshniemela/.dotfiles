@@ -11,6 +11,7 @@
     ../../modules/thunar.nix # config for thunar
     ../../modules/postgresql.nix
     ../default/configuration.nix # default host config
+    ../../modules/docker.nix
   ];
 
   boot = {
@@ -102,17 +103,6 @@
     variables = {
       TERMINAL = ["alacritty"];
       EDITOR = ["vim"];
-    };
-  };
-
-  virtualisation = {
-    virtualbox.host = {
-      enable = false;
-      enableExtensionPack = false;
-    };
-    docker = {
-      enableNvidia = true;
-      enable = true;
     };
   };
 }

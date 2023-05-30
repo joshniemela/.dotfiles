@@ -11,6 +11,7 @@
     ../../modules/pipewire.nix
     ../../modules/doas.nix
     ../default/configuration.nix # default host config
+    ../../modules/docker.nix
   ];
 
   boot = {
@@ -79,16 +80,6 @@
     variables = {
       TERMINAL = ["kitty"];
       EDITOR = ["vim"];
-    };
-  };
-  virtualisation = {
-    virtualbox.host = {
-      enable = false;
-      enableExtensionPack = false;
-    };
-    docker = {
-      enableNvidia = true;
-      enable = true;
     };
   };
 }

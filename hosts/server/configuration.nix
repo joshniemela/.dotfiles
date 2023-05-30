@@ -40,20 +40,6 @@
       enable = true;
     };
   };
-  #services.postgresql = {
-  #  enable = true;
-  #  enableTCPIP = true;
-  #  package = pkgs.postgresql_14;
-  #  authentication = ''
-  #    local all all trust
-  #    host all all 127.0.0.1/32 trust
-  #    host all all ::1/128 trust
-  #  ''; initialScript = pkgs.writeText "backend-initScript" ''
-  #    CREATE ROLE nixcloud WITH LOGIN PASSWORD 'nixcloud' CREATEDB;
-  #    CREATE DATABASE nixcloud;
-  #    GRANT ALL PRIVILEGES ON DATABASE nixcloud TO nixcloud;
-  #  '';
-  #};
   services.fail2ban = {
     enable = false;
     maxretry = 5;
@@ -98,11 +84,6 @@
       openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop"];
     };
   };
-
-  #powerManagement = {
-  #  enable = true;
-  #  cpuFreqGovenor = "powersave";
-  #};
 
   environment.systemPackages = with pkgs; [
     unison

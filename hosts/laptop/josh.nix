@@ -41,8 +41,8 @@
 
   programs = {
     autorandr = {
-      enable = true;
-      profiles = import ../../modules/home-manager/autorandr/laptop.nix;
+      enable = false;
+      # profiles =
     };
     home-manager.enable = true;
 

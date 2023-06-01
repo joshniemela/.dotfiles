@@ -33,8 +33,6 @@
       (lib.mkIf (!config.dotfiles.headless) {opengl.enable = true;})
       {enableRedistributableFirmware = true;}
     ];
-    # hardware.enableAllFirmware = true;
-
     systemd = {
       services.clear-log = {
         description = "Clear logs older than two weeks";

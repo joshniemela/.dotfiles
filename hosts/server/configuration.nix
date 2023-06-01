@@ -84,11 +84,6 @@
     };
   };
 
-  #powerManagement = {
-  #  enable = true;
-  #  cpuFreqGovenor = "powersave";
-  #};
-
   environment.systemPackages = with pkgs; [
     unison
     cryptsetup

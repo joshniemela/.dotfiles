@@ -63,7 +63,14 @@
     programs = {
       git.enable = true;
       nix-ld.enable = true;
+
+      gnupg.agent = {
+        enable = true;
+        pinentryFlavor = "curses";
+        enableSSHSupport = true;
+      };
     };
+    services.pcscd.enable = true;
     environment.defaultPackages = [
       pkgs.perl
       pkgs.strace

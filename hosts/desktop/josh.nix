@@ -30,6 +30,9 @@
       openjdk
       insomnia
       nodejs
+      prismlauncher
+      postgresql
+      pass
     ];
   };
   services = {
@@ -45,7 +48,6 @@
 
     firefox = {
       enable = true;
-      #profiles = ../../modules/home-manager/firefox.nix;
     };
   };
   home.stateVersion = "22.05";

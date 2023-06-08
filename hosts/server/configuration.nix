@@ -7,7 +7,7 @@
   dotfiles.headless = true; # Sets all modules to use the headless version, if available
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
-    ../../modules/postgresql.nix
+    #../../modules/neo4j.nix
     ../../modules/doas.nix
     ../../modules/docker.nix
     ../../modules/website.nix

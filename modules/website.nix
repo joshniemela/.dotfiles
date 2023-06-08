@@ -12,6 +12,9 @@
       enableACME = true;
       forceSSL = true;
       locations."jniemela.dk".index = "home.html";
+      locations."jniemela.dk/disku" = {
+        proxyPass = "http://localhost:5000";
+      };
       extraConfig = ''
         if ($request_uri ~ ^/(.*)\.html) {
             return 302 /$1;

@@ -20,22 +20,6 @@
             ${pkgs.julia_19}/bin/julia "$@" ''
       ) {}
     )
-    (
-      pkgs.callPackage (
-        {
-          pkgs,
-          writeShellScriptBin,
-          stdenv,
-          config,
-          ...
-        }:
-          pkgs.writeShellScriptBin "julia19" ''
-            export JULIA_NUM_THREADS="auto";
-            export NIX_LD=${stdenv.cc.libc}/lib/ld-linux-x86-64.so.2
-            export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/run/opengl-driver/lib"
-            ~/.juliaup/bin/julia +beta "$@" ''
-      ) {}
-    )
   ];
 
   home.file.".julia/config/startup.jl".source = ./startup.jl;

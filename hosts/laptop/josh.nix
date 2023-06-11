@@ -12,9 +12,9 @@
     ../../home-manager/dunst.nix # Enable dunst
     ../../home-manager/code.nix # Enable code
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
+    ../../home-manager/nvim/nvim.nix
     ../../modules/julia/default.nix # Julia
     ../../modules/fsharp.nix
-    ../../modules/home-manager/nvim/nvim.nix
   ];
 
   home = {

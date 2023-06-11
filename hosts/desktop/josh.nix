@@ -8,13 +8,13 @@
     ../../home-manager/zsh.nix # Enable zsh
     ../../home-manager/git.nix # Enable git
     ../../home-manager/xmonad/default.nix # Enable x and xmonad
-    # ../../modules/home-manager/i3.nix # Enable x and i3
+    # ../../home-manager/i3.nix # Enable x and i3
     ../../home-manager/dunst.nix # Enable dunst
     ../../home-manager/code.nix # Enable vscode and packages
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
+    ../../home-manager/nvim/nvim.nix
     ../../modules/julia/default.nix
     ../../modules/fsharp.nix
-    ../../modules/home-manager/nvim/nvim.nix
   ];
 
   home = {

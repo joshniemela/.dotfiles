@@ -15,6 +15,7 @@
     ../../home-manager/nvim/nvim.nix
     ../../home-manager/languages/julia/default.nix
     ../../home-manager/languages/fsharp.nix
+    ../../home-manager/languages/clojure.nix
   ];
 
   home = {
@@ -24,14 +25,9 @@
       dmenu
       conda
       ncdu
-      docker-compose
-      leiningen
-      clojure
-      openjdk
       insomnia
       nodejs
       prismlauncher
-      postgresql
       pass
     ];
   };

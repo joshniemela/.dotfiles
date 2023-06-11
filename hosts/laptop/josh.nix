@@ -15,6 +15,7 @@
     ../../home-manager/nvim/nvim.nix
     ../../home-manager/languages/julia/default.nix # Julia
     ../../home-manager/languages/fsharp.nix
+    ../../home-manager/languages/clojure.nix
   ];
 
   home = {
@@ -23,11 +24,7 @@
       (nerdfonts.override {fonts = ["FiraCode" "Meslo"];}) # Powerline breaks without this
       brightnessctl # Brightness control
       dmenu
-      openjdk
-      clojure
-      leiningen
       insomnia
-      docker-compose
 
       (pkgs.writeShellScriptBin "disableKeyboard" ''
         xinput float "AT Translated Set 2 keyboard"

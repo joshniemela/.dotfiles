@@ -1,3 +1,4 @@
+{ config, pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -23,7 +24,28 @@
       grep = "grep --color='always'";
       "..." = "../..";
     };
+
+    # p10k Home manager config: https://github.com/nix-community/home-manager/issues/1338#issuecomment-651807792
+    initExtraBeforeCompInit = ''
+      # p10k instant prompt
+      local P10K_INSTANT_PROMPT="${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
+
+      # Custom completions
+      # TODO: get rid of it?
+      fpath+=("$XDG_DATA_HOME/zsh/completions")
+    '';
+
+
     initExtra = ''
+      # Powerlevel10k config
+      typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=
+      typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+      typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+      if [[ -f $XDG_DATA_HOME/zsh/zshrc ]]; then source $XDG_DATA_HOME/zsh/zshrc; fi
+
+      # other nice things
       bindkey "^[[3~" delete-char
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line

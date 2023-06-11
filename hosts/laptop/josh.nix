@@ -13,8 +13,8 @@
     ../../home-manager/code.nix # Enable code
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../home-manager/nvim/nvim.nix
-    ../../modules/julia/default.nix # Julia
-    ../../modules/fsharp.nix
+    ../../home-manager/languages/julia/default.nix # Julia
+    ../../home-manager/languages/fsharp.nix
   ];
 
   home = {

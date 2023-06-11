@@ -13,8 +13,8 @@
     ../../home-manager/code.nix # Enable vscode and packages
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../home-manager/nvim/nvim.nix
-    ../../modules/julia/default.nix
-    ../../modules/fsharp.nix
+    ../../home-manager/languages/julia/default.nix
+    ../../home-manager/languages/fsharp.nix
   ];
 
   home = {

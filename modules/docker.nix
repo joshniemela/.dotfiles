@@ -6,7 +6,7 @@
 }: {
   users.extraGroups.docker.members = ["josh"];
   virtualisation.docker.enable = true;
-  environment.systemPackages = [
-    pkgs.docker-compose
+  environment.systemPackages = with pkgs; [
+    docker-compose
   ];
 }

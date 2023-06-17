@@ -6,15 +6,16 @@
 }: {
   fonts.fontconfig.enable = true;
   imports = [
-    ../../modules/home-manager/zsh.nix # Enable zsh
-    ../../modules/home-manager/git.nix # Enable git
-    ../../modules/home-manager/xmonad/default.nix
-    ../../modules/home-manager/dunst.nix # Enable dunst
-    ../../modules/home-manager/code.nix # Enable code
-    ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
-    ../../modules/julia/default.nix # Julia
-    ../../modules/fsharp.nix
-    ../../modules/home-manager/nvim/nvim.nix
+    ../../home-manager/zsh.nix # Enable zsh
+    ../../home-manager/git.nix # Enable git
+    ../../home-manager/xmonad/default.nix
+    ../../home-manager/dunst.nix # Enable dunst
+    ../../home-manager/code.nix # Enable code
+    ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
+    ../../home-manager/nvim/nvim.nix
+    ../../home-manager/languages/julia/default.nix # Julia
+    ../../home-manager/languages/fsharp.nix
+    ../../home-manager/languages/clojure.nix
   ];
 
   home = {
@@ -23,11 +24,7 @@
       (nerdfonts.override {fonts = ["FiraCode" "Meslo"];}) # Powerline breaks without this
       brightnessctl # Brightness control
       dmenu
-      openjdk
-      clojure
-      leiningen
       insomnia
-      docker-compose
 
       (pkgs.writeShellScriptBin "disableKeyboard" ''
         xinput float "AT Translated Set 2 keyboard"
@@ -48,7 +45,7 @@
 
     firefox = {
       enable = true;
-      profiles = import ../../modules/home-manager/firefox.nix;
+      profiles = import ../../home-manager/firefox.nix;
     };
   };
   home.stateVersion = "22.05";

@@ -4,13 +4,9 @@
   tex2nix,
   ...
 }:
-#let
-#  julia = pkgs.julia-bin; # import ../../pkgs/julia-bin.nix { pkgs = pkgs; };
-#  julia-wrapper = pkgs.callPackage ../../modules/julia { inherit julia; };
-#in
 {
   home = {
-    file.".unison/default.prf".source = ../../configs/unison.prf; # File used for unison, TODO MAKE MODULE
+    file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
     packages = with pkgs; [
       csv2parquet

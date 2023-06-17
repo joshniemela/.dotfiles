@@ -65,7 +65,7 @@
   users = {
     users.josh = {
       isNormalUser = true;
-      extraGroups = ["wheel"]; # TODO add docker group to docker.nix
+      extraGroups = ["wheel"];
       initialPassword = "1234";
       openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop"];
       shell = pkgs.zsh;
@@ -81,6 +81,12 @@
       isNormalUser = true;
       initialPassword = "1234";
       openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkFDwJpcAKRArAOvx/fT2J5clly89NYFIdcWUVsxGRw josh@desktop"];
+    };
+
+    users.minimort = {
+      isNormalUser = true;
+      initialPassword = "1234";
+      openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMJKu3Ogvw09Wu5fHDWAtMfA0XBmjVzu0F4C8e9lMzPt"];
     };
   };
 

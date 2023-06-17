@@ -5,16 +5,17 @@
   ...
 }: {
   imports = [
-    ../../modules/home-manager/zsh.nix # Enable zsh
-    ../../modules/home-manager/git.nix # Enable git
-    ../../modules/home-manager/xmonad/default.nix # Enable x and xmonad
-    # ../../modules/home-manager/i3.nix # Enable x and i3
-    ../../modules/home-manager/dunst.nix # Enable dunst
-    ../../modules/home-manager/code.nix # Enable vscode and packages
-    ../../modules/home-manager/defaultpkgs.nix # Packages across laptop and desktop
-    ../../modules/julia/default.nix
-    ../../modules/fsharp.nix
-    ../../modules/home-manager/nvim/nvim.nix
+    ../../home-manager/zsh.nix # Enable zsh
+    ../../home-manager/git.nix # Enable git
+    ../../home-manager/xmonad/default.nix # Enable x and xmonad
+    # ../../home-manager/i3.nix # Enable x and i3
+    ../../home-manager/dunst.nix # Enable dunst
+    ../../home-manager/code.nix # Enable vscode and packages
+    ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
+    ../../home-manager/nvim/nvim.nix
+    ../../home-manager/languages/julia/default.nix
+    ../../home-manager/languages/fsharp.nix
+    ../../home-manager/languages/clojure.nix
   ];
 
   home = {
@@ -24,14 +25,9 @@
       dmenu
       conda
       ncdu
-      docker-compose
-      leiningen
-      clojure
-      openjdk
       insomnia
       nodejs
       prismlauncher
-      postgresql
       pass
     ];
   };
@@ -43,7 +39,7 @@
     home-manager.enable = true;
     autorandr = {
       enable = true;
-      profiles = import ../../modules/home-manager/autorandr/desktop.nix;
+      profiles = import ../../home-manager/autorandr/desktop.nix;
     };
 
     firefox = {

@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local null_ls = require("null-ls")
 local lsp_defaults = lspconfig.util.default_config
 local g = vim.g
 lsp_defaults.capabilities = vim.tbl_deep_extend(
@@ -21,7 +22,26 @@ lspconfig.lua_ls.setup({
 
 -- Python LSP
 lspconfig.pyright.setup{}
-
+-- Add black formatting
+null_ls.setup({
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                    -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+                    vim.lsp.buf.format()
+                end,
+            })
+        end
+    end,
+    sources = {
+        null_ls.builtins.formatting.black
+    }
+})
 -- Nix LSP
 lspconfig.rnix.setup{}
 

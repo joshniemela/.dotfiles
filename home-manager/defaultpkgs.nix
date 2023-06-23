@@ -3,8 +3,7 @@
   webcord,
   tex2nix,
   ...
-}:
-{
+}: {
   home = {
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 

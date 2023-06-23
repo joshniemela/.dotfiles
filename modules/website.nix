@@ -26,14 +26,14 @@
       locations."/" = {
         proxyPass = "http://localhost:5000";
         extraConfig =
-          "proxy_ssl_server_name on;" +
-          "proxy_pass_header Authorization;";
+          "proxy_ssl_server_name on;"
+          + "proxy_pass_header Authorization;";
       };
       locations."/api" = {
         proxyPass = "http://localhost:3000";
         extraConfig =
-          "proxy_ssl_server_name on;" +
-          "proxy_pass_header Authorization;";
+          "proxy_ssl_server_name on;"
+          + "proxy_pass_header Authorization;";
       };
     };
   };

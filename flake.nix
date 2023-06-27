@@ -11,6 +11,9 @@
     webcord.url = "github:fufexan/webcord-flake"; # foss discord
 
     tex2nix.url = "github:Mic92/tex2nix";
+    zig.url = "github:mitchellh/zig-overlay";
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+
   };
   outputs = {
     self,
@@ -21,11 +24,15 @@
     home-manager,
     webcord,
     tex2nix,
+    nix-doom-emacs,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     lib-small = nixpkgs-small.lib;
+    overlays = [
+      inputs.zig.overlays.default
+    ];
   in {
     nixosConfigurations = {
       server = lib-small.nixosSystem {
@@ -51,10 +58,21 @@
 
           home-manager.nixosModules.home-manager
           {
+            nixpkgs.overlays = overlays;
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.josh = import ./hosts/desktop/josh.nix;
+              users.josh = { ... }: {
+                imports = [ 
+                  ./hosts/desktop/josh.nix
+                  nix-doom-emacs.hmModule 
+                ];
+                programs.doom-emacs = {
+                  enable = true;
+                  doomPrivateDir = ./home-manager/emacs/doom.d; 
+                };
+                services.emacs.enable = true;
+              };
               extraSpecialArgs = inputs;
             };
           }

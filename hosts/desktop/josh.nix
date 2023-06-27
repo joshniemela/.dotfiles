@@ -15,7 +15,7 @@
     ../../home-manager/code.nix # Enable vscode and packages
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../home-manager/nvim/nvim.nix
-    #../../home-manager/emacs/emacs.nix
+    ../../home-manager/emacs/emacs.nix
     ../../home-manager/languages/julia/default.nix
     ../../home-manager/languages/fsharp.nix
     ../../home-manager/languages/clojure.nix

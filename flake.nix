@@ -32,6 +32,19 @@
     lib-small = nixpkgs-small.lib;
     overlays = [
       inputs.zig.overlays.default
+
+      # This overlay exists to fix the ABI version of tree-sitter-python
+      (final: prev:
+      {
+        tree-sitter-grammars = prev.tree-sitter-grammars // {
+          tree-sitter-python = prev.tree-sitter-grammars.tree-sitter-python.overrideAttrs (_: {
+            nativeBuildInputs = [ final.nodejs final.tree-sitter ];
+            configurePhase = ''
+              tree-sitter generate --abi 13 src/grammar.json
+            '';
+          });
+        };})
+
     ];
   in {
     nixosConfigurations = {

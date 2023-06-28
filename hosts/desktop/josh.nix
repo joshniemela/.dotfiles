@@ -22,7 +22,6 @@
     #../../home-manager/languages/zig.nix
   ];
 
-
   home = {
     packages = with pkgs; [
       font-awesome # Iconscode

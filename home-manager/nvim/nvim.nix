@@ -20,7 +20,7 @@ in {
     extraPackages = with pkgs; [
       xdotool
       rnix-lsp
-      sumneko-lua-language-server      
+      sumneko-lua-language-server
       ripgrep
       pyright
       black

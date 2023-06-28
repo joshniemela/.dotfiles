@@ -84,34 +84,9 @@
                   ./hosts/desktop/josh.nix
                   nix-doom-emacs.hmModule
                 ];
-                programs.doom-emacs = {
-                  enable = true;
-                  doomPrivateDir = ./home-manager/emacs/doom.d;
-                  emacsPackagesOverlay = self: super: {
-                    copilot = self.trivialBuild {
-                      pname = "copilot";
-                      ename = "copilot";
-                      version = "0.0.0";
-                      buildInputs = [self.s self.dash self.editorconfig self.jsonrpc];
-                      src = inputs.copilot-el;
-                      extraPackages = [nixpkgs.nodejs];
-                      extraConfig = ''
-                        (setq copilot-node-executable = "${nixpkgs.nodejs}/bin/node")
-                        (setq copilot--base-dir = "${inputs.copilot-el}")
-                      '';
-                      installPhase = ''
-                        runHook preInstall
-                        LISPDIR=$out/share/emacs/site-lisp
-                        install -d $LISPDIR
-                        cp -r * $LISPDIR
-                        runHook postInstall
-                      '';
-                    };
-                  };
-                };
-                services.emacs.enable = true;
               };
-              extraSpecialArgs = inputs;
+              #FIXME: this shouldnt be called flakes
+              extraSpecialArgs = {flakes = inputs;};
             };
           }
         ];

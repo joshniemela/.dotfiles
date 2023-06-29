@@ -19,3 +19,7 @@
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
+
+(setq lsp-julia-package-dir nil)
+(setq lsp-julia-flags `("-J ~/lsp.so"))
+(require 'lsp-julia)

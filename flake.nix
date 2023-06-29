@@ -12,7 +12,6 @@
 
     tex2nix.url = "github:Mic92/tex2nix";
     zig.url = "github:mitchellh/zig-overlay";
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     copilot-el = {
       url = "github:zerolfx/copilot.el";
       flake = false;
@@ -27,7 +26,6 @@
     home-manager,
     webcord,
     tex2nix,
-    nix-doom-emacs,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -82,7 +80,6 @@
               users.josh = {...}: {
                 imports = [
                   ./hosts/desktop/josh.nix
-                  nix-doom-emacs.hmModule
                 ];
               };
               #FIXME: this shouldnt be called flakes

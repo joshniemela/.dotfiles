@@ -1,32 +1,44 @@
-{pkgs, flakes,...}: {
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./doom.d;
-    emacsPackagesOverlay = self: super: {
-      copilot = self.trivialBuild {
-        pname = "copilot";
-        ename = "copilot";
-        version = "0.0.0";
-        buildInputs = [self.s self.dash self.editorconfig self.jsonrpc];
-        src = flakes.copilot-el;
-        extraPackages = [pkgs.nodejs];
-        extraConfig = ''
-          (setq copilot-node-executable = "${pkgs.nodejs}/bin/node")
-          (setq copilot--base-dir = "${flakes.copilot-el}")
-        '';
-        installPhase = ''
-          runHook preInstall
-          LISPDIR=$out/share/emacs/site-lisp
-          install -d $LISPDIR
-          cp -r * $LISPDIR
-          runHook postInstall
-        '';
-      };
+#
+# Doom Emacs: native install with home manager.
+# Recommended to comment out this import first install because script will cause issues. It your want to use doom emacs, use the correct location or change in script.
+# In my opinion better then nix-community/nix-doom-emacs but more of a hassle to install on a fresh install.
+# Unfortunately an activation script like with the default nix options is not possible since home.activation and home.file.*.onChange will time out systemd.
+#
+# flake.nix
+#   ├─ ./hosts
+#   │   └─ home.nix
+#   └─ ./modules
+#       └─ ./editors
+#           └─ ./emacs
+#               └─ ./doom-emacs
+#                   └─ default.nix *
+#
+
+{ config, pkgs, ... }:
+
+{
+  home.sessionVariables = {
+    DOOM = config.home.homeDirectory + "/.emacs.d"; # Set DOOM env variable to the doom emacs directory
+  };
+  home = {
+    file.".doom.d" = {                            
+      source = ./doom.d;                        
+      recursive = true;                          
+      onChange = builtins.readFile ./doom.sh;     
     };
+
+    packages = with pkgs; [
+      alacritty # for the doom.sh script
+      ripgrep
+      coreutils
+      fd
+    ];
+  };
+  home.shellAliases = {
+    e = "emacsclient -c -a ''";
   };
   services.emacs.enable = true;
-  home.packages = with pkgs; [
-    nodePackages.pyright
-    #tree-sitter
-  ];
+  programs = {
+    emacs.enable = true;                        # Get Emacs
+  };
 }

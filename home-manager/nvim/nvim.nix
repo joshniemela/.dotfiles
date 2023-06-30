@@ -21,19 +21,25 @@ in {
       xdotool
       rnix-lsp
       sumneko-lua-language-server
+      ripgrep
       pyright
+      black
       # haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
     ];
     viAlias = true;
     vimAlias = true;
     withNodeJs = true;
+    withPython3 = false;
     vimdiffAlias = true;
     extraConfig = ''
       luafile ${./init.lua}
-      luafile ${./snippets.lua}
-      luafile ${./cmp.lua}
+      luafile ${./telescope.lua}
+      luafile ${./treesitter.lua}
+      luafile ${./harpoon.lua}
       luafile ${./lsp.lua}
     '';
+    #luafile ${./snippets.lua}
+    #luafile ${./cmp.lua}
     plugins = with pkgs.vimPlugins; [
       indent-blankline-nvim
       lualine-nvim
@@ -51,7 +57,7 @@ in {
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
       copilot-vim
-
+      null-ls-nvim
       nvim-lspconfig
 
       which-key-nvim
@@ -59,6 +65,10 @@ in {
       haskell-tools-nvim
       vim-nix
       julia-vim
+
+      # new nvim
+      telescope-nvim
+      harpoon
 
       (nvim-treesitter.withPlugins (p:
         with p; [

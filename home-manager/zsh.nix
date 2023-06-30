@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -35,7 +38,6 @@
       # TODO: get rid of it?
       fpath+=("$XDG_DATA_HOME/zsh/completions")
     '';
-
 
     initExtra = ''
       # Powerlevel10k config

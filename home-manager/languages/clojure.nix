@@ -1,9 +1,8 @@
-{pkgs, ...}:
-{
-    home.packages = with pkgs; [
-        leiningen
-        clojure-lsp
-        clojure
-        babashka
-    ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    leiningen
+    clojure-lsp
+    clojure
+    babashka
+  ];
 }

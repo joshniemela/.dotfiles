@@ -28,3 +28,4 @@
   :demand t
   :after python)
 (add-hook! 'python-mode-hook #'python-black-on-save-mode)
+(add-hook 'nix-mode-hook 'nixpkgs-fmt-on-save-mode)

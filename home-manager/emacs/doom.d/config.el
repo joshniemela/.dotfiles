@@ -21,5 +21,10 @@
 
 
 (setq lsp-julia-package-dir nil)
-(setq lsp-julia-flags `("-J ~/lsp.so"))
-(require 'lsp-julia)
+(setq lsp-julia-default-environment "~/.julia/environments/v1.9")
+
+
+(use-package! python-black
+  :demand t
+  :after python)
+(add-hook! 'python-mode-hook #'python-black-on-save-mode)

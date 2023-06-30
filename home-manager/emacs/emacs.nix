@@ -46,6 +46,8 @@
           chmod +x $out/bin/nixfmt
         '';
       })
+
+      zls
     ];
   };
   home.shellAliases = {

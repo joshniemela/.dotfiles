@@ -13,18 +13,19 @@
 #               └─ ./doom-emacs
 #                   └─ default.nix *
 #
-
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.sessionVariables = {
     DOOM = config.home.homeDirectory + "/.emacs.d"; # Set DOOM env variable to the doom emacs directory
   };
   home = {
-    file.".doom.d" = {                            
-      source = ./doom.d;                        
-      recursive = true;                          
-      onChange = builtins.readFile ./doom.sh;     
+    file.".doom.d" = {
+      source = ./doom.d;
+      recursive = true;
+      onChange = builtins.readFile ./doom.sh;
     };
 
     packages = with pkgs; [
@@ -32,6 +33,21 @@
       ripgrep
       coreutils
       fd
+      (stdenv.mkDerivation {
+        name = "alejandra-posing-as-nixfmt";
+        buildInputs = [alejandra];
+        phases = ["installPhase"];
+        installPhase = ''
+          mkdir -p $out/bin
+          cat <<EOF > $out/bin/nixfmt
+          #!/bin/sh
+          exec ${alejandra}/bin/alejandra --quiet "\$@"
+          EOF
+          chmod +x $out/bin/nixfmt
+        '';
+      })
+
+      zls
     ];
   };
   home.shellAliases = {
@@ -39,6 +55,6 @@
   };
   services.emacs.enable = true;
   programs = {
-    emacs.enable = true;                        # Get Emacs
+    emacs.enable = true; # Get Emacs
   };
 }

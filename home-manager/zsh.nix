@@ -8,7 +8,7 @@
     autocd = true;
     dotDir = ".config/zsh";
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     enableCompletion = true;
 
     zplug = {

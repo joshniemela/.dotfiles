@@ -10,7 +10,8 @@
     ../../home-manager/git.nix # Enable git
     ../../home-manager/xmonad/default.nix
     ../../home-manager/dunst.nix # Enable dunst
-    ../../home-manager/code.nix # Enable code
+    #../../home-manager/code.nix # Enable code
+    ../../home-manager/emacs# Enable emacs
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../home-manager/nvim/nvim.nix
     ../../home-manager/languages/julia/default.nix # Julia

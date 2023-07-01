@@ -51,7 +51,7 @@
     ];
   };
   home.shellAliases = {
-    e = "emacsclient -c -a ''";
+    ec = "emacsclient -nc -a ''";
   };
   services.emacs.enable = true;
   programs = {

@@ -56,5 +56,6 @@
   services.emacs.enable = true;
   programs = {
     emacs.enable = true; # Get Emacs
+    emacs.package = pkgs.emacs28NativeComp;
   };
 }

@@ -7,7 +7,6 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    flake-utils.url = "github:numtide/flake-utils";
     webcord.url = "github:fufexan/webcord-flake"; # foss discord
 
     tex2nix.url = "github:Mic92/tex2nix";
@@ -23,7 +22,6 @@
     nixpkgs,
     nixpkgs-small,
     nixpkgs-stable,
-    flake-utils,
     home-manager,
     webcord,
     tex2nix,
@@ -85,28 +83,23 @@
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  users.josh = {...}: {
-                    imports = [
-                      ./hosts/desktop/josh.nix
-                    ];
-                  };
+                  users.josh = import ./home-manager/users/josh.nix;
                 };
               }
             ];
           };
           laptop = lib.nixosSystem {
             inherit system;
-            specialArgs = inputs;
             modules = [
               ./hosts/laptop/configuration.nix
 
               home-manager.nixosModules.home-manager
               {
+                nixpkgs.overlays = overlays;
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  users.josh = import ./hosts/laptop/josh.nix;
-                  extraSpecialArgs = inputs;
+                  users.josh = import ./home-manager/users/josh.nix;
                 };
               }
             ];

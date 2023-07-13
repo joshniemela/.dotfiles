@@ -16,6 +16,7 @@
       url = "github:zerolfx/copilot.el";
       flake = false;
     };
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
   outputs = {
     self,
@@ -26,11 +27,11 @@
     home-manager,
     webcord,
     tex2nix,
+    flake-parts,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
-    lib-small = nixpkgs-small.lib;
     overlays = [
       inputs.zig.overlays.default
 
@@ -48,67 +49,71 @@
           };
       })
     ];
-  in {
-    nixosConfigurations = {
-      server = lib-small.nixosSystem {
-        inherit system;
-
-
-
-        modules = [
-          ./hosts/server/configuration.nix
-        ];
+  in
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [system];
+      perSystem = {pkgs, ...}: {
+        formatter = pkgs.alejandra;
       };
+      flake = {
+        nixosConfigurations = {
+          server = lib.nixosSystem {
+            inherit system;
 
-      liveISO = lib.nixosSystem {
-        inherit system;
+            modules = [
+              ./hosts/server/configuration.nix
+            ];
+          };
 
-        modules = [
-          ./hosts/iso.nix
-        ];
-      };
+          liveISO = lib.nixosSystem {
+            inherit system;
 
-      desktop = lib.nixosSystem {
-        inherit system;
-        specialArgs = inputs;
-        modules = [
-          ./hosts/desktop/configuration.nix
+            modules = [
+              ./hosts/iso.nix
+            ];
+          };
 
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = overlays;
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.josh = {...}: {
-                imports = [
-                  ./hosts/desktop/josh.nix
-                ];
-              };
-              #FIXME: this shouldnt be called flakes
-              extraSpecialArgs = {flakes = inputs;};
-            };
-          }
-        ];
-      };
-      laptop = lib.nixosSystem {
-        inherit system;
-        specialArgs = inputs;
-        modules = [
-          ./hosts/laptop/configuration.nix
+          desktop = lib.nixosSystem {
+            inherit system;
+            specialArgs = inputs;
+            modules = [
+              ./hosts/desktop/configuration.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.josh = import ./hosts/laptop/josh.nix;
-              extraSpecialArgs = inputs;
-            };
-          }
-        ];
+              home-manager.nixosModules.home-manager
+              {
+                nixpkgs.overlays = overlays;
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.josh = {...}: {
+                    imports = [
+                      ./hosts/desktop/josh.nix
+                    ];
+                  };
+                  #FIXME: this shouldnt be called flakes
+                  extraSpecialArgs = {flakes = inputs;};
+                };
+              }
+            ];
+          };
+          laptop = lib.nixosSystem {
+            inherit system;
+            specialArgs = inputs;
+            modules = [
+              ./hosts/laptop/configuration.nix
+
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.josh = import ./hosts/laptop/josh.nix;
+                  extraSpecialArgs = inputs;
+                };
+              }
+            ];
+          };
+        };
       };
     };
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-  };
 }

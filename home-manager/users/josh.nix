@@ -18,7 +18,7 @@
     ../../home-manager/languages/julia/default.nix
     ../../home-manager/languages/fsharp.nix
     ../../home-manager/languages/clojure.nix
-    #../../home-manager/languages/zig.nix
+    ../../home-manager/languages/zig.nix
   ];
 
   home = {

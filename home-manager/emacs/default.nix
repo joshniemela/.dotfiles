@@ -49,7 +49,6 @@
         '';
       })
 
-      zls
     ];
   };
   home.shellAliases = {

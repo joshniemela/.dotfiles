@@ -33,6 +33,8 @@
       ripgrep
       coreutils
       fd
+      # nix lsp
+      nil
       (stdenv.mkDerivation {
         name = "alejandra-posing-as-nixfmt";
         buildInputs = [alejandra];

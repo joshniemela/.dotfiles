@@ -52,6 +52,9 @@
     nixosConfigurations = {
       server = lib-small.nixosSystem {
         inherit system;
+
+
+
         modules = [
           ./hosts/server/configuration.nix
         ];

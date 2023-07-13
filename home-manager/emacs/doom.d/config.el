@@ -95,3 +95,7 @@
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
 (setq +latex-viewers '(zathura))
+
+
+
+

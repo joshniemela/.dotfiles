@@ -4,5 +4,5 @@
   lib,
   ...
 }: {
-  home.packages = [pkgs.zig pkgs.zls];
+  home.packages = with pkgs; [zls zigpkgs.master];
 }

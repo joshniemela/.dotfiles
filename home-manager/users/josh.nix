@@ -1,11 +1,10 @@
 {
-  inputs,
   config,
+  lib,
   pkgs,
-  pkgs-stable,
-  zig,
   ...
 }: {
+  fonts.fontconfig.enable = true; # why is this needed? (laptop)
   imports = [
     ../../home-manager/zsh.nix # Enable zsh
     ../../home-manager/git.nix # Enable git
@@ -19,7 +18,7 @@
     ../../home-manager/languages/julia/default.nix
     ../../home-manager/languages/fsharp.nix
     ../../home-manager/languages/clojure.nix
-    #../../home-manager/languages/zig.nix
+    ../../home-manager/languages/zig.nix
   ];
 
   home = {
@@ -32,7 +31,18 @@
       insomnia
       nodejs
       prismlauncher
-      zigpkgs.master
+
+      # laptop
+      (pkgs.writeShellScriptBin "disableKeyboard" ''
+        xinput float "AT Translated Set 2 keyboard"
+      '')
+
+      (pkgs.writeShellScriptBin "enableKeyboard" ''
+        xinput reattach "AT Translated Set 2 keyboard" "Virtual core keyboard"
+      '')
+      brightnessctl
+      # end laptop
+
     ];
   };
   services = {
@@ -48,6 +58,7 @@
 
     firefox = {
       enable = true;
+      #profiles = import ../../home-manager/firefox.nix; # (laptop)
     };
   };
   home.stateVersion = "22.05";

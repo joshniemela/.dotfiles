@@ -11,7 +11,7 @@
     webcord.url = "github:fufexan/webcord-flake"; # foss discord
 
     tex2nix.url = "github:Mic92/tex2nix";
-    zig.url = "github:mitchellh/zig-overlay";
+    zig-overlay.url = "github:mitchellh/zig-overlay";
     copilot-el = {
       url = "github:zerolfx/copilot.el";
       flake = false;
@@ -28,12 +28,13 @@
     webcord,
     tex2nix,
     flake-parts,
+    zig-overlay,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     overlays = [
-      inputs.zig.overlays.default
+      zig-overlay.overlays.default
 
       # This overlay exists to fix the ABI version of tree-sitter-python
       (final: prev: {
@@ -75,7 +76,6 @@
 
           desktop = lib.nixosSystem {
             inherit system;
-            specialArgs = inputs;
             modules = [
               ./hosts/desktop/configuration.nix
 
@@ -90,8 +90,6 @@
                       ./hosts/desktop/josh.nix
                     ];
                   };
-                  #FIXME: this shouldnt be called flakes
-                  extraSpecialArgs = {flakes = inputs;};
                 };
               }
             ];

@@ -477,16 +477,16 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1661151577,
-        "narHash": "sha256-++S0TuJtuz9IpqP8rKktWyHZKpgdyrzDFUXVY07MTRI=",
+        "lastModified": 1689088367,
+        "narHash": "sha256-Y2tl2TlKCWEHrOeM9ivjCLlRAKH3qoPUE/emhZECU14=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "54060e816971276da05970a983487a25810c38a7",
+        "rev": "5c9ddb86679c400d6b7360797b8a22167c2053f8",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "ref": "release-23.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -546,7 +546,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "tex2nix": "tex2nix",
         "webcord": "webcord",
-        "zig": "zig"
+        "zig-overlay": "zig-overlay"
       }
     },
     "rust-analyzer-src": {
@@ -636,18 +636,18 @@
         "type": "github"
       }
     },
-    "zig": {
+    "zig-overlay": {
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils_3",
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1688776021,
-        "narHash": "sha256-q7zXKylmW/p0/78nOv2BF5GwnHMFx8aSafu3IkZSe0g=",
+        "lastModified": 1689208070,
+        "narHash": "sha256-X1gxbxkl2hSG6LrAWz8uBY/RSaxBfI8euAJvwaTXUa0=",
         "owner": "mitchellh",
         "repo": "zig-overlay",
-        "rev": "844a540dd269200942a6e51a3a1e5600db87e120",
+        "rev": "3953dd524fa355db3db3c9af7d9bbc6f005cbb7a",
         "type": "github"
       },
       "original": {

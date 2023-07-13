@@ -1,9 +1,5 @@
 {
-  inputs,
-  config,
   pkgs,
-  pkgs-stable,
-  zig,
   ...
 }: {
   imports = [

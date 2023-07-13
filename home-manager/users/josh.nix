@@ -31,7 +31,6 @@
       insomnia
       nodejs
       prismlauncher
-      zigpkgs.master
 
       # laptop
       (pkgs.writeShellScriptBin "disableKeyboard" ''

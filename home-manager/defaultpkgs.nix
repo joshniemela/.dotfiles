@@ -8,6 +8,9 @@
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
     packages = with pkgs; [
+      cmake
+      gnumake
+      nodejs
       csv2parquet
       p7zip
       youtube-dl # for downloading youtube videos

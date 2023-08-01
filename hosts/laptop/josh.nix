@@ -1,7 +1,9 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
+  zig,
   ...
 }: {
   fonts.fontconfig.enable = true;
@@ -26,6 +28,7 @@
       brightnessctl # Brightness control
       dmenu
       insomnia
+      zigpkgs.master
 
       (pkgs.writeShellScriptBin "disableKeyboard" ''
         xinput float "AT Translated Set 2 keyboard"

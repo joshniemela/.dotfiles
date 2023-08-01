@@ -1,5 +1,6 @@
 import Data.Map qualified as M
 import System.IO
+
 import XMonad
 import XMonad.Actions.WithAll
 import XMonad.Prompt.RunOrRaise

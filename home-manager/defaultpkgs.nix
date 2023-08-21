@@ -19,6 +19,9 @@
       heimdall
 
       jq
+      cmake
+      gnumake
+      nodejs
       csv2parquet
       p7zip
       youtube-dl # for downloading youtube videos

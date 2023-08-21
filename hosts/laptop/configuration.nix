@@ -22,7 +22,7 @@
   networking = {
     hostName = "laptop";
     nameservers = ["8.8.8.8"];
-    defaultGateway = "192.168.1.1";
+    #defaultGateway = "192.168.1.1";
     networkmanager.enable = true;
   };
 

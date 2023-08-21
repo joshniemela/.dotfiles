@@ -8,6 +8,17 @@
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
     packages = with pkgs; [
+      # rust stuff
+      rustc
+      cargo
+      rustfmt
+      rust-analyzer
+
+      # installing lineage stuff
+      android-tools
+      heimdall
+
+      jq
       csv2parquet
       p7zip
       youtube-dl # for downloading youtube videos
@@ -54,6 +65,7 @@
       futhark
       logseq
       shellcheck
+      brave
     ];
   };
   services = {

@@ -8,6 +8,9 @@
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
     packages = with pkgs; [
+      rust-analyzer
+      rustc
+      cargo
       cmake
       gnumake
       nodejs

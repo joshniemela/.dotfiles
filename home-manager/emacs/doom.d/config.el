@@ -98,4 +98,16 @@
 
 
 
+(define-derived-mode astro-mode web-mode "astro")
+(setq auto-mode-alist
+      (append '((".*\\.astro\\'" . astro-mode))
+              auto-mode-alist))
 
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-language-id-configuration
+               '(astro-mode . "astro"))
+
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("astro-ls" "--stdio"))
+                    :activation-fn (lsp-activate-on "astro")
+                    :server-id 'astro-ls)))

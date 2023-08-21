@@ -8,9 +8,17 @@
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
     packages = with pkgs; [
-      rust-analyzer
+      # rust stuff
       rustc
       cargo
+      rustfmt
+      rust-analyzer
+
+      # installing lineage stuff
+      android-tools
+      heimdall
+
+      jq
       cmake
       gnumake
       nodejs
@@ -60,6 +68,7 @@
       futhark
       logseq
       shellcheck
+      brave
     ];
   };
   services = {

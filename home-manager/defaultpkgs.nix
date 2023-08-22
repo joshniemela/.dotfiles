@@ -18,6 +18,8 @@
       android-tools
       heimdall
 
+      discord
+
       jq
       cmake
       gnumake

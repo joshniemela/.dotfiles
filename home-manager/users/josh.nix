@@ -20,6 +20,7 @@
     ../../home-manager/languages/fsharp.nix
     ../../home-manager/languages/clojure.nix
     ../../home-manager/languages/zig.nix
+    ../../home-manager/languages/python.nix
   ];
 
   home = {

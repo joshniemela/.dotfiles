@@ -8,7 +8,7 @@
     (python3.withPackages (ps: with ps; [
       # operator libs
       numpy
-      jax jaxlibWithCuda
+      #jax jaxlibWithCuda
       scipy
 
       # visualisation

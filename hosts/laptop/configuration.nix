@@ -102,6 +102,7 @@
     variables = {
       TERMINAL = ["alacritty"];
       EDITOR = ["vim"];
+      DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     };
   };
 }

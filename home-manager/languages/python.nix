@@ -10,6 +10,7 @@
       numpy
       #jax jaxlibWithCuda
       scipy
+      scikit-learn
 
       # visualisation
       matplotlib seaborn

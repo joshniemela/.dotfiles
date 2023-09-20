@@ -33,6 +33,9 @@
       ripgrep
       coreutils
       fd
+      # c# lsp
+      omnisharp-roslyn
+
       # nix lsp
       nil
       (stdenv.mkDerivation {
@@ -48,7 +51,6 @@
           chmod +x $out/bin/nixfmt
         '';
       })
-
     ];
   };
   home.shellAliases = {

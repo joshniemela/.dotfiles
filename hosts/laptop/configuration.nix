@@ -36,12 +36,11 @@
     power-profiles-daemon.enable = true;
 
     thermald.enable = true;
-    # Make a udev rule to detach and connect keyboard
-    udev.extraRules = let
-      inherit (import ./keyboard.nix args) enableKeyboard disableKeyboard;
-    in ''
-      ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="3233", ATTRS{idProduct}="6301" RUN+="${disableKeyboard}"
-      ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="3233", ATTRS{idProduct}="6301" RUN+="${enableKeyboard}"
+    # Make a udev rule to detach and connect keyboard and detach with xinput
+    udev.extraRules =
+    ''
+      ACTION=="add", SUBSYSTEM=="input", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/josh/.Xauthority", ATTRS{idVendor}=="3233", ATTRS{idProduct}=="6301", RUN+="${pkgs.xorg.xinput}/bin/xinput float 'AT Translated Set 2 keyboard'"
+      ACTION=="remove", SUBSYSTEM=="input", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/josh/.Xauthority", ATTRS{idVendor}=="3233", ATTRS{idProduct}=="6301", RUN+="${pkgs.xorg.xinput}/bin/xinput reattach 'AT Translated Set 2 keyboard' 'Virtual core keyboard'"
     '';
   };
 

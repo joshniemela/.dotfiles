@@ -3,7 +3,7 @@
   pkgs,
   out,
   ...
-}: {
+} @ args: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/doas.nix # enable doas
@@ -36,6 +36,13 @@
     power-profiles-daemon.enable = true;
 
     thermald.enable = true;
+    # Make a udev rule to detach and connect keyboard
+    udev.extraRules = let
+      inherit (import ./keyboard.nix args) enableKeyboard disableKeyboard;
+    in ''
+      ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="3233", ATTRS{idProduct}="6301" RUN+="${disableKeyboard}"
+      ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="3233", ATTRS{idProduct}="6301" RUN+="${enableKeyboard}"
+    '';
   };
 
   services.tlp = {

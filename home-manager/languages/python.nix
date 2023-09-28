@@ -17,6 +17,7 @@
 
       # data loading
       pandas
+      pytorch
     ]))
   ];
 }

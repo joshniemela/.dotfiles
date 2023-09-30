@@ -18,6 +18,9 @@
       # data loading
       pandas
       pytorch
+
+      jupyter # i hate this
+      ipython # i hate this
     ]))
   ];
 }

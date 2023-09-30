@@ -59,6 +59,8 @@
       btop # better htop
       # Languages
       #nodejs # Required for javascript
+      bun
+
       rustc # Required for Rust
       cargo # Required for Rust
       gcc # Required for C

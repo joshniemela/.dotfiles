@@ -50,7 +50,6 @@
       pstree
       xclip # for copying to clipboard
       # Stuff for work
-      postman # for testing APIs
       seafile-client
       simplescreenrecorder
       zip # for compressing files

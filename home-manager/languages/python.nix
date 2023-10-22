@@ -18,6 +18,7 @@
       # data loading
       pandas
       pytorch
+      torchvision
 
       jupyter # i hate this
       ipython # i hate this

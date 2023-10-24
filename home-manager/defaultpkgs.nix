@@ -62,7 +62,12 @@
 
       rustc # Required for Rust
       cargo # Required for Rust
+
       gcc # Required for C
+      gdb # Debugger for C
+      valgrind # Memory checker for C
+
+
       baobab
       wget
       xorg.xev

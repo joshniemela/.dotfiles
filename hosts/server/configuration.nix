@@ -39,6 +39,7 @@
       enable = true;
     };
   };
+  services.logrotate.checkConfig = false; # fix since it fails for group id 30000
   services.fail2ban = {
     enable = false;
     maxretry = 5;

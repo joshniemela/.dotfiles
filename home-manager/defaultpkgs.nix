@@ -73,7 +73,7 @@
       xorg.xev
       pandoc
       inkscape
-      futhark
+      #futhark broken since 10/24/23
       logseq
       shellcheck
       brave

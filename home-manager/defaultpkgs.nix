@@ -20,6 +20,9 @@
 
       discord
 
+      # correction
+      thefuck
+
       jq
       cmake
       gnumake

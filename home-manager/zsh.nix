@@ -37,6 +37,9 @@
       # Custom completions
       # TODO: get rid of it?
       fpath+=("$XDG_DATA_HOME/zsh/completions")
+
+      # correction
+      eval "$(${pkgs.thefuck}/bin/thefuck --alias "kurwa")"
     '';
 
     initExtra = ''

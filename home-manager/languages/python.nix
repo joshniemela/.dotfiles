@@ -22,6 +22,9 @@
 
       jupyter # i hate this
       ipython # i hate this
+
+      flake8
+      black
     ]))
   ];
 }

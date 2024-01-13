@@ -1,6 +1,5 @@
 {
   pkgs,
-  webcord,
   tex2nix,
   ...
 }: {
@@ -13,6 +12,7 @@
       cargo
       rustfmt
       rust-analyzer
+      openapi-generator-cli
 
       # installing lineage stuff
       android-tools
@@ -66,7 +66,8 @@
       rustc # Required for Rust
       cargo # Required for Rust
 
-      gcc # Required for C
+      clang # Required for C
+      clang-tools
       gdb # Debugger for C
       valgrind # Memory checker for C
 

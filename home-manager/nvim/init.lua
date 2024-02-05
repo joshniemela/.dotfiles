@@ -1,6 +1,6 @@
 local opt = vim.opt
 local g = vim.g
-local home = os.getenv('HOME') .. '/'
+local home = os.getenv('HOME')
 
 -- Set leader key
 g.mapleader = " "

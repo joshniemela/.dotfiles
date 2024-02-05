@@ -27,6 +27,9 @@
     };
     nixpkgs = {
       config.allowUnfree = true;
+config.permittedInsecurePackages = [
+                "electron-25.9.0"
+              ];
     };
 
     hardware = lib.mkMerge [
@@ -72,6 +75,7 @@
     environment.defaultPackages = [
       pkgs.perl
       pkgs.strace
+      pkgs.linuxPackages_latest.perf
 
       (pkgs.writeShellScriptBin "switchSystem" ''
         set -e

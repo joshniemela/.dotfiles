@@ -7,7 +7,7 @@
     enable = true;
     autocd = true;
     dotDir = ".config/zsh";
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
 
@@ -39,7 +39,6 @@
       fpath+=("$XDG_DATA_HOME/zsh/completions")
 
       # correction
-      eval "$(${pkgs.thefuck}/bin/thefuck --alias "kurwa")"
     '';
 
     initExtra = ''

@@ -19,7 +19,6 @@ in {
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs; [
       xdotool
-      rnix-lsp
       sumneko-lua-language-server
       ripgrep
       pyright

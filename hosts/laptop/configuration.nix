@@ -59,7 +59,7 @@
   services.xserver = {
     libinput.enable = true;
     enable = true;
-    layout = "dk";
+    xkb.layout = "dk";
     desktopManager = {
       xterm.enable = false;
     };

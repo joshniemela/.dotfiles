@@ -67,7 +67,8 @@ config.permittedInsecurePackages = [
 
       gnupg.agent = {
         enable = true;
-        pinentryFlavor = "curses";
+        # this no longer works
+        #pinentryFlavor = "curses";
         enableSSHSupport = true;
       };
     };

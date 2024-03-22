@@ -21,7 +21,6 @@
       discord
 
       # correction
-      thefuck
 
       jq
       cmake

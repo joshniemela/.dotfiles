@@ -79,7 +79,6 @@
       #futhark broken since 10/24/23
       logseq
       shellcheck
-      brave
     ];
   };
   services = {

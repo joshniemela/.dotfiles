@@ -20,7 +20,7 @@
     ../../home-manager/languages/dotnet.nix
     ../../home-manager/languages/clojure.nix
     ../../home-manager/languages/zig.nix
-    ../../home-manager/languages/python.nix
+    #../../home-manager/languages/python.nix
   ];
 
   home = {

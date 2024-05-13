@@ -82,7 +82,7 @@
 
 
 (setq lsp-julia-package-dir nil)
-(setq lsp-julia-default-environment "~/.julia/environments/v1.9")
+(setq lsp-julia-default-environment "~/.julia/environments/v1.10")
 
 
 ;; nikos' config things

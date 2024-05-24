@@ -11,7 +11,7 @@
     ../../modules/thunar.nix # config for thunar
     ../default/configuration.nix # default host config
     ../../modules/docker.nix
-    ../../modules/virtualbox.nix
+    #../../modules/virtualbox.nix
   ];
 
   boot = {

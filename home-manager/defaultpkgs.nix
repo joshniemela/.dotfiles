@@ -26,9 +26,7 @@
       cmake
       gnumake
       nodejs
-      csv2parquet
       p7zip
-      youtube-dl # for downloading youtube videos
       neofetch # system info
       thunderbird # email
       unison # for syncing
@@ -52,7 +50,6 @@
       pstree
       xclip # for copying to clipboard
       # Stuff for work
-      seafile-client
       simplescreenrecorder
       zip # for compressing files
       unzip # for uncompressing files
@@ -60,7 +57,7 @@
       btop # better htop
       # Languages
       #nodejs # Required for javascript
-      bun
+      #bun
 
       rustc # Required for Rust
       cargo # Required for Rust
@@ -85,7 +82,7 @@
   };
   programs = {
     tmux = {
-      enable = true;
+      enable = false;
       clock24 = true;
     };
 

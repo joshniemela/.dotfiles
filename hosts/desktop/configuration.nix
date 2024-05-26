@@ -12,7 +12,7 @@
     ../../modules/doas.nix
     ../default/configuration.nix # default host config
     ../../modules/docker.nix
-    ../../modules/virtualbox.nix
+    #../../modules/virtualbox.nix
   ];
 
   boot = {

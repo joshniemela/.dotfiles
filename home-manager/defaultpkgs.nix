@@ -12,15 +12,12 @@
       cargo
       rustfmt
       rust-analyzer
-      openapi-generator-cli
 
-      # installing lineage stuff
-      android-tools
-      heimdall
+      # For installing lineage stuff / more android stuff
+      #android-tools
+      #heimdall
 
       discord
-
-      # correction
 
       jq
       cmake
@@ -37,33 +34,31 @@
       xournalpp # for signing pdfs
       tree # for viewing directory structure
       darktable # photo editor
-      hunspell # spell checker
-      hunspellDicts.en_GB-large # Dictionary for hunspell
-      hunspellDicts.da_DK # Dictionary for hunspell
+      #hunspell # spell checker
+      #hunspellDicts.en_GB-large # Dictionary for hunspell
+      #hunspellDicts.da_DK # Dictionary for hunspell
       lxappearance # for changing gtk theme
-      # qutebrowser # web browser
       texlive.combined.scheme-full # for latex
       pandoc
-      #chromium
+      chromium
       imagemagick # Used for conversion of image formats
       ffmpeg # for converting videos
       pstree
       xclip # for copying to clipboard
-      # Stuff for work
+
       simplescreenrecorder
       zip # for compressing files
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
-      # Languages
-      #nodejs # Required for javascript
-      #bun
 
+      # Languages
       rustc # Required for Rust
       cargo # Required for Rust
+      futhark
 
-      clang # Required for C
-      clang-tools
+      #clang # Required for C
+      #clang-tools
       gdb # Debugger for C
       valgrind # Memory checker for C
 
@@ -72,8 +67,6 @@
       xorg.xev
       pandoc
       inkscape
-      #futhark broken since 10/24/23
-      logseq
       shellcheck
     ];
   };

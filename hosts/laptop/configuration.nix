@@ -56,21 +56,24 @@
     };
   };
 
-  services.xserver = {
-    libinput.enable = true;
-    enable = true;
-    xkb.layout = "dk";
-    desktopManager = {
-      xterm.enable = false;
-    };
-    displayManager = {
+  services.libinput.enable = true;
+
+  services.displayManager = {
       defaultSession = "none+xmonad";
-      lightdm.enable = true;
       autoLogin = {
         enable = true;
         user = "josh";
       };
     };
+
+  services.xserver = {
+    enable = true;
+    xkb.layout = "dk";
+    desktopManager = {
+      xterm.enable = false;
+    };
+
+    displayManager.lightdm.enable = true;
 
     windowManager.xmonad = {
       enable = true;

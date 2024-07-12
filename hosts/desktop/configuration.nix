@@ -75,6 +75,14 @@
     shell = pkgs.zsh;
   };
 
+  # Put this into a separate module
+  services.postgresql = {
+    enable = true;
+
+    extraPlugins = with pkgs.postgresql_16.pkgs; [ pgvector ];
+    package = pkgs.postgresql_16;
+  };
+
   # Environment
   environment = {
     pathsToLink = ["/libexec"]; # links /libexec from derivations to /run/current-system/sw, used for i3

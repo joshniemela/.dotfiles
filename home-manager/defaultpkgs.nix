@@ -6,19 +6,23 @@
   home = {
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
+    file."jdks/openjdk8".source = pkgs.openjdk8;
+
     packages = with pkgs; [
       # rust stuff
       rustc
       cargo
       rustfmt
       rust-analyzer
-      openapi-generator-cli
 
-      # installing lineage stuff
-      android-tools
-      heimdall
+      #clang # Required for C
+      #clang-tools
+      gdb # Debugger for C
+      valgrind # Memory checker for C
 
       discord
+
+      prismlauncher
 
       # correction
 
@@ -29,6 +33,7 @@
       p7zip
       neofetch # system info
       thunderbird # email
+      evolution # also email
       unison # for syncing
       libreoffice # office suite
       viewnior # image viewer
@@ -49,7 +54,6 @@
       ffmpeg # for converting videos
       pstree
       xclip # for copying to clipboard
-      # Stuff for work
       simplescreenrecorder
       zip # for compressing files
       unzip # for uncompressing files
@@ -58,14 +62,6 @@
       # Languages
       #nodejs # Required for javascript
       #bun
-
-      rustc # Required for Rust
-      cargo # Required for Rust
-
-      clang # Required for C
-      clang-tools
-      gdb # Debugger for C
-      valgrind # Memory checker for C
 
       baobab
       wget
@@ -80,6 +76,7 @@
   services = {
     flameshot.enable = true;
   };
+
   programs = {
     tmux = {
       enable = false;

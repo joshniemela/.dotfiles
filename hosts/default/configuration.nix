@@ -33,7 +33,7 @@ config.permittedInsecurePackages = [
     };
 
     hardware = lib.mkMerge [
-      (lib.mkIf (!config.dotfiles.headless) {opengl.enable = true;})
+      (lib.mkIf (!config.dotfiles.headless) {graphics.enable = true;})
       {enableRedistributableFirmware = true;}
     ];
     systemd = {

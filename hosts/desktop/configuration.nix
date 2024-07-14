@@ -35,7 +35,12 @@
 
   zramSwap = {
     enable = true;
-    memoryPercent = 100;
+    memoryPercent = 25;
+  };
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "josh";
   };
 
   services.xserver = {
@@ -43,16 +48,12 @@
     windowManager.xmonad = {
       enable = true;
     };
-    layout = "dk";
+    xkb.layout = "dk";
     videoDrivers = ["nvidia"];
 
     displayManager = {
       lightdm.enable = true;
       defaultSession = "none+xmonad";
-      autoLogin = {
-        enable = true;
-        user = "josh";
-      };
     };
   };
   networking.firewall.enable = false;

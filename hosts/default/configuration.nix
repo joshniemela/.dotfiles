@@ -27,10 +27,13 @@
     };
     nixpkgs = {
       config.allowUnfree = true;
+config.permittedInsecurePackages = [
+                "electron-27.3.11"
+              ];
     };
 
     hardware = lib.mkMerge [
-      (lib.mkIf (!config.dotfiles.headless) {opengl.enable = true;})
+      (lib.mkIf (!config.dotfiles.headless) {graphics.enable = true;})
       {enableRedistributableFirmware = true;}
     ];
     systemd = {
@@ -64,7 +67,8 @@
 
       gnupg.agent = {
         enable = true;
-        pinentryFlavor = "curses";
+        # this no longer works
+        #pinentryFlavor = "curses";
         enableSSHSupport = true;
       };
     };
@@ -72,6 +76,7 @@
     environment.defaultPackages = [
       pkgs.perl
       pkgs.strace
+      pkgs.linuxPackages_latest.perf
 
       (pkgs.writeShellScriptBin "switchSystem" ''
         set -e

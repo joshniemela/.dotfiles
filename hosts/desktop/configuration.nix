@@ -12,6 +12,7 @@
     ../../modules/doas.nix
     ../default/configuration.nix # default host config
     ../../modules/docker.nix
+    #../../modules/virtualbox.nix
   ];
 
   boot = {
@@ -34,7 +35,12 @@
 
   zramSwap = {
     enable = true;
-    memoryPercent = 100;
+    memoryPercent = 25;
+  };
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "josh";
   };
 
   services.xserver = {
@@ -42,16 +48,12 @@
     windowManager.xmonad = {
       enable = true;
     };
-    layout = "dk";
+    xkb.layout = "dk";
     videoDrivers = ["nvidia"];
 
     displayManager = {
       lightdm.enable = true;
       defaultSession = "none+xmonad";
-      autoLogin = {
-        enable = true;
-        user = "josh";
-      };
     };
   };
   networking.firewall.enable = false;
@@ -74,12 +76,20 @@
     shell = pkgs.zsh;
   };
 
+  # Put this into a separate module
+  services.postgresql = {
+    enable = true;
+
+    extraPlugins = with pkgs.postgresql_16.pkgs; [ pgvector ];
+    package = pkgs.postgresql_16;
+  };
+
   # Environment
   environment = {
     pathsToLink = ["/libexec"]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
       TERMINAL = ["kitty"];
-      EDITOR = ["vim"];
+      EDITOR = ["emacs"];
     };
   };
 }

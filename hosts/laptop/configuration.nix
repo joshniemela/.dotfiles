@@ -11,6 +11,7 @@
     ../../modules/thunar.nix # config for thunar
     ../default/configuration.nix # default host config
     ../../modules/docker.nix
+    #../../modules/virtualbox.nix
   ];
 
   boot = {
@@ -58,7 +59,7 @@
   services.xserver = {
     libinput.enable = true;
     enable = true;
-    layout = "dk";
+    xkb.layout = "dk";
     desktopManager = {
       xterm.enable = false;
     };
@@ -106,8 +107,8 @@
   environment = {
     pathsToLink = ["/libexec"]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
-      TERMINAL = ["alacritty"];
-      EDITOR = ["vim"];
+      TERMINAL = ["kitty"];
+      EDITOR = ["emacs"];
       DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     };
   };

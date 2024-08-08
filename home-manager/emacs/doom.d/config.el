@@ -82,7 +82,7 @@
 
 
 (setq lsp-julia-package-dir nil)
-(setq lsp-julia-default-environment "~/.julia/environments/v1.9")
+(setq lsp-julia-default-environment "~/.julia/environments/v1.10")
 
 
 ;; nikos' config things
@@ -93,7 +93,6 @@
               ("TAB" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
-
 (setq +latex-viewers '(zathura))
 
 

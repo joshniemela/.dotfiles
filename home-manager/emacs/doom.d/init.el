@@ -148,7 +148,7 @@
        (latex +fold +latexmk)             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
-       ;;lua               ; one-based indices? one-based indices
+       lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        (nix +lsp +tree-sitter)               ; I hereby declare "nix geht mehr!"
@@ -173,7 +173,7 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        (web +lsp +html +css)               ; the tubes
-       ;;yaml              ; JSON, but readable
+       yaml              ; JSON, but readable
        (zig +lsp)               ; C, but simpler
 
        :email

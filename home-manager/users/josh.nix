@@ -17,10 +17,10 @@
     ../../home-manager/nvim/nvim.nix
     ../../home-manager/emacs
     ../../home-manager/languages/julia/default.nix
-    ../../home-manager/languages/dotnet.nix
-    ../../home-manager/languages/clojure.nix
-    ../../home-manager/languages/zig.nix
-    ../../home-manager/languages/python.nix
+    #../../home-manager/languages/dotnet.nix
+    #../../home-manager/languages/clojure.nix
+    #../../home-manager/languages/zig.nix
+    #../../home-manager/languages/python.nix
   ];
 
   home = {
@@ -28,14 +28,11 @@
       font-awesome # Iconscode
       (nerdfonts.override {fonts = ["FiraCode" "Meslo"];}) # Powerline breaks without this
       dmenu
-      conda
       ncdu
       insomnia
-      nodejs
-      prismlauncher
+      #nodejs
 
       brightnessctl
-      # end laptop
     ];
   };
   services = {

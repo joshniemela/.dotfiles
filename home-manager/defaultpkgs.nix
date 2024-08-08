@@ -1,11 +1,12 @@
 {
   pkgs,
-  webcord,
   tex2nix,
   ...
 }: {
   home = {
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
+
+    file."jdks/openjdk8".source = pkgs.openjdk8;
 
     packages = with pkgs; [
       # rust stuff
@@ -14,24 +15,25 @@
       rustfmt
       rust-analyzer
 
-      # installing lineage stuff
-      android-tools
-      heimdall
+      #clang # Required for C
+      #clang-tools
+      gdb # Debugger for C
+      valgrind # Memory checker for C
 
       discord
 
+      prismlauncher
+
       # correction
-      thefuck
 
       jq
       cmake
       gnumake
       nodejs
-      csv2parquet
       p7zip
-      youtube-dl # for downloading youtube videos
       neofetch # system info
       thunderbird # email
+      evolution # also email
       unison # for syncing
       libreoffice # office suite
       viewnior # image viewer
@@ -52,8 +54,6 @@
       ffmpeg # for converting videos
       pstree
       xclip # for copying to clipboard
-      # Stuff for work
-      seafile-client
       simplescreenrecorder
       zip # for compressing files
       unzip # for uncompressing files
@@ -61,15 +61,7 @@
       btop # better htop
       # Languages
       #nodejs # Required for javascript
-      bun
-
-      rustc # Required for Rust
-      cargo # Required for Rust
-
-      gcc # Required for C
-      gdb # Debugger for C
-      valgrind # Memory checker for C
-
+      #bun
 
       baobab
       wget
@@ -79,15 +71,15 @@
       #futhark broken since 10/24/23
       logseq
       shellcheck
-      brave
     ];
   };
   services = {
     flameshot.enable = true;
   };
+
   programs = {
     tmux = {
-      enable = true;
+      enable = false;
       clock24 = true;
     };
 

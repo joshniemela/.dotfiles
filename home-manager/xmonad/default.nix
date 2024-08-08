@@ -11,7 +11,7 @@
       haskellPackages.xmobar
       cabal-install
       ghc
-      gnome.zenity
+      zenity
     ];
 
     home.file.".xmonad/xmobar.hs".source = ./xmobar.hs;

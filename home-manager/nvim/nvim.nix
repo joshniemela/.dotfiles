@@ -19,7 +19,6 @@ in {
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs; [
       xdotool
-      rnix-lsp
       sumneko-lua-language-server
       ripgrep
       pyright
@@ -38,6 +37,7 @@ in {
       luafile ${./harpoon.lua}
       luafile ${./lsp.lua}
     '';
+
     #luafile ${./snippets.lua}
     #luafile ${./cmp.lua}
     plugins = with pkgs.vimPlugins; [
@@ -79,6 +79,8 @@ in {
           python
           julia
           clojure
+          c
+          vimdoc
         ]))
 
       nvim-treesitter-context

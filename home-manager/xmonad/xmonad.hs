@@ -1,19 +1,22 @@
 import Data.Map qualified as M
+import System.Directory
 import System.IO
-
 import XMonad
+import XMonad.Actions.WindowGo
 import XMonad.Actions.WithAll
-import XMonad.Prompt.RunOrRaise
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.ToggleLayouts qualified as T (ToggleLayout (Toggle), toggleLayouts)
+import XMonad.Prompt.RunOrRaise
 import XMonad.StackSet qualified as W
 import XMonad.Util.NamedActions
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-import XMonad.Actions.WindowGo
 
 myTerminal = "kitty"
 
@@ -31,9 +34,6 @@ myNormalBorderColor = "#402F65"
 
 myModMask = mod1Mask -- 3 is right alt and 4 is super
 
-
-
-
 myKeys :: XConfig Layout -> [((KeyMask, KeySym), NamedAction)]
 myKeys c =
   let subKeys str ks = subtitle str : ks
@@ -43,9 +43,8 @@ myKeys c =
           ((myModMask .|. shiftMask, xK_Return), addName "Open terminal" $ spawn myTerminal),
           ((myModMask .|. shiftMask, xK_c), addName "Close window" kill),
           ((myModMask, xK_p), addName "Open dmenu" $ spawn "dmenu_run -sb '#402F65'"),
-
           -- If emacs is not running, open emacs, otherwise focus emacs
-        ((myModMask, xK_less), addName "Open emacs" $ (raiseMaybe . spawn) "emacsclient -c -a '' -n" (className =? "Emacs"))
+          ((myModMask, xK_less), addName "Open emacs" $ (raiseMaybe . spawn) "emacsclient -c -a '' -n" (className =? "Emacs"))
         ]
         ++ subtitle "Switching workspaces"
         :
@@ -146,11 +145,12 @@ myConfig statusPipe =
 
 main = do
   statusPipe <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  -- statusPipes <- mapM (\i -> spawnPipe "xmobar ~/.xmonad/xmobar.hs" ++ show i " --x" ++ show i) [0..n-1]
   xmonad $
     docks $
-      addDescrKeys' ((myModMask, xK_F1), showKeybindings) myKeys $
-        myConfig statusPipe
+      ewmhFullscreen $
+        ewmh $
+          addDescrKeys' ((myModMask, xK_F1), showKeybindings) myKeys $
+            myConfig statusPipe
 
 myScratchPads =
   [ NS "sage" spawnSage findSage manageSage,
@@ -164,3 +164,9 @@ myScratchPads =
     spawnTerm = myTerminal ++ " --class=term"
     findTerm = className =? "term"
     manageTerm = defaultFloating
+
+-- /sys/class/power_supply/CMB1
+batteryPresent :: IO Bool
+batteryPresent = do
+  b <- doesDirectoryExist "/sys/class/power_supply/CMB1"
+  return b

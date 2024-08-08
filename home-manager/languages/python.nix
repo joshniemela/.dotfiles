@@ -7,18 +7,18 @@
   home.packages = with pkgs; [
     (python3.withPackages (ps: with ps; [
       # operator libs
-      numpy
+      #numpy
       #jax jaxlibWithCuda
-      scipy
-      scikit-learn
+      #scipy
+      #scikit-learn
 
       # visualisation
-      matplotlib seaborn
+      #matplotlib seaborn
 
       # data loading
-      pandas
-      pytorch
-      torchvision
+      #pytorch-bin
+      #torchvision-bin
+      #opencv4
 
       jupyter # i hate this
       ipython # i hate this
@@ -26,5 +26,6 @@
       flake8
       black
     ]))
+    poetry
   ];
 }

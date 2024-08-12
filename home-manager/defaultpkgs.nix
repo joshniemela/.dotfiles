@@ -6,6 +6,8 @@
   home = {
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
+    file."jdks/openjdk8".source = pkgs.openjdk8;
+
     packages = with pkgs; [
       # rust stuff
       rustc
@@ -18,6 +20,16 @@
       #heimdall
 
       discord
+      #clang # Required for C
+      #clang-tools
+      gdb # Debugger for C
+      valgrind # Memory checker for C
+
+      discord
+
+      prismlauncher
+
+      # correction
 
       jq
       cmake
@@ -26,6 +38,7 @@
       p7zip
       neofetch # system info
       thunderbird # email
+      evolution # also email
       unison # for syncing
       libreoffice # office suite
       viewnior # image viewer
@@ -57,11 +70,6 @@
       cargo # Required for Rust
       futhark
 
-      #clang # Required for C
-      #clang-tools
-      gdb # Debugger for C
-      valgrind # Memory checker for C
-
       baobab
       wget
       xorg.xev
@@ -73,6 +81,7 @@
   services = {
     flameshot.enable = true;
   };
+
   programs = {
     tmux = {
       enable = false;

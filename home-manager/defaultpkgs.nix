@@ -56,9 +56,7 @@
       shellcheck
     ];
   };
-  services = {
-    flameshot.enable = true;
-  };
+  services.flameshot.enable = true;
 
   programs = {
     tmux = {

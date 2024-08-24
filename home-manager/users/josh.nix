@@ -17,10 +17,7 @@
     ../../home-manager/nvim/nvim.nix
     ../../home-manager/emacs
     ../../home-manager/languages/julia/default.nix
-    #../../home-manager/languages/dotnet.nix
-    #../../home-manager/languages/clojure.nix
-    #../../home-manager/languages/zig.nix
-    #../../home-manager/languages/python.nix
+    ../../home-manager/languages/rust.nix
   ];
 
   home = {
@@ -30,8 +27,6 @@
       dmenu
       ncdu
       insomnia
-      #nodejs
-
       brightnessctl
     ];
   };
@@ -41,16 +36,12 @@
 
   programs = {
     nushell.enable = true;
+    firefox.enable = true;
 
     home-manager.enable = true;
     autorandr = {
       enable = true;
       profiles = import ../../home-manager/autorandr/desktop.nix;
-    };
-
-    firefox = {
-      enable = true;
-      #profiles = import ../../home-manager/firefox.nix; # (laptop)
     };
   };
   home.stateVersion = "22.05";

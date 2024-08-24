@@ -23,13 +23,12 @@
   networking = {
     hostName = "laptop";
     nameservers = ["8.8.8.8"];
-    #defaultGateway = "192.168.1.1";
     networkmanager.enable = true;
   };
 
   zramSwap = {
     enable = true;
-    memoryPercent = 100;
+    memoryPercent = 50;
   };
   services = {
     blueman.enable = true;
@@ -37,9 +36,9 @@
     power-profiles-daemon.enable = true;
 
     thermald.enable = true;
+
     # Make a udev rule to detach and connect keyboard and detach with xinput
-    udev.extraRules =
-    ''
+    udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="input", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/josh/.Xauthority", ATTRS{idVendor}=="3233", ATTRS{idProduct}=="6301", RUN+="${pkgs.xorg.xinput}/bin/xinput float 'AT Translated Set 2 keyboard'"
       ACTION=="remove", SUBSYSTEM=="input", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/josh/.Xauthority", ATTRS{idVendor}=="3233", ATTRS{idProduct}=="6301", RUN+="${pkgs.xorg.xinput}/bin/xinput reattach 'AT Translated Set 2 keyboard' 'Virtual core keyboard'"
     '';
@@ -59,12 +58,12 @@
   services.libinput.enable = true;
 
   services.displayManager = {
-      defaultSession = "none+xmonad";
-      autoLogin = {
-        enable = true;
-        user = "josh";
-      };
+    defaultSession = "none+xmonad";
+    autoLogin = {
+      enable = true;
+      user = "josh";
     };
+  };
 
   services.xserver = {
     enable = true;

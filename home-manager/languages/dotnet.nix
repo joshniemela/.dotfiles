@@ -13,8 +13,10 @@
     runScript = "dotnet_x11";
   };
 in {
-  home.packages = [pkgs.dotnet-sdk
-                   dotnetfhs];
+  home.packages = [
+    pkgs.dotnet-sdk
+    dotnetfhs
+  ];
   home.sessionVariables = {
     PATH = ''$PATH::$HOME/.dotnet/tools'';
     DOTNET_ROOT = "${pkgs.dotnet-sdk}";

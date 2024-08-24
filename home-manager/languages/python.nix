@@ -5,27 +5,28 @@
   ...
 }: {
   home.packages = with pkgs; [
-    (python3.withPackages (ps: with ps; [
-      # operator libs
-      #numpy
-      #jax jaxlibWithCuda
-      #scipy
-      #scikit-learn
+    (python3.withPackages (ps:
+      with ps; [
+        # operator libs
+        #numpy
+        #jax jaxlibWithCuda
+        #scipy
+        #scikit-learn
 
-      # visualisation
-      #matplotlib seaborn
+        # visualisation
+        #matplotlib seaborn
 
-      # data loading
-      #pytorch-bin
-      #torchvision-bin
-      #opencv4
+        # data loading
+        #pytorch-bin
+        #torchvision-bin
+        #opencv4
 
-      jupyter # i hate this
-      ipython # i hate this
+        jupyter # i hate this
+        ipython # i hate this
 
-      flake8
-      black
-    ]))
+        flake8
+        black
+      ]))
     poetry
   ];
 }

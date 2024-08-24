@@ -9,6 +9,8 @@
     file."jdks/openjdk8".source = pkgs.openjdk8;
 
     packages = with pkgs; [
+      zig
+      jetbrains.rider
       # rust stuff
       rustc
       cargo

@@ -40,6 +40,8 @@
   };
 
   programs = {
+    nushell.enable = true;
+
     home-manager.enable = true;
     autorandr = {
       enable = true;

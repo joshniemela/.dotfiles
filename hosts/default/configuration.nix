@@ -27,9 +27,9 @@
     };
     nixpkgs = {
       config.allowUnfree = true;
-config.permittedInsecurePackages = [
-                "electron-27.3.11"
-              ];
+      config.permittedInsecurePackages = [
+        "electron-27.3.11"
+      ];
     };
 
     hardware = lib.mkMerge [

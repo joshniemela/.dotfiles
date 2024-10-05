@@ -12,7 +12,7 @@
     ../../modules/doas.nix
     ../default/configuration.nix # default host config
     ../../modules/docker.nix
-    #../../modules/virtualbox.nix
+    ../../modules/virtmanager.nix
   ];
 
   boot = {
@@ -80,7 +80,7 @@
   services.postgresql = {
     enable = true;
 
-    extraPlugins = with pkgs.postgresql_16.pkgs; [ pgvector ];
+    extraPlugins = with pkgs.postgresql_16.pkgs; [pgvector];
     package = pkgs.postgresql_16;
   };
 

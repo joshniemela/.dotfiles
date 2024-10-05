@@ -24,7 +24,6 @@
       '';
       root = "/var/www";
 
-
       locations."/predict" = {
         proxyPass = "http://localhost:4242";
         extraConfig =

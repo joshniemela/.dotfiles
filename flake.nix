@@ -104,6 +104,22 @@
               }
             ];
           };
+          thonkpad = lib.nixosSystem {
+            inherit system;
+            modules = [
+              ./hosts/thonkpad/configuration.nix
+
+              home-manager.nixosModules.home-manager
+              {
+                nixpkgs.overlays = overlays;
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.josh = import ./home-manager/users/josh.nix;
+                };
+              }
+            ];
+          };
         };
       };
     };

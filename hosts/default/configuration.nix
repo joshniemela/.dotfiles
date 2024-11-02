@@ -77,6 +77,7 @@
       pkgs.perl
       pkgs.strace
       pkgs.linuxPackages_latest.perf
+      pkgs.doas-sudo-shim
 
       (pkgs.writeShellScriptBin "switchSystem" ''
         set -e

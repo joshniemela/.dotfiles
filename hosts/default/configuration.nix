@@ -82,14 +82,14 @@
       (pkgs.writeShellScriptBin "switchSystem" ''
         set -e
         pushd $HOME/.dotfiles
-        doas nixos-rebuild switch --flake .#
+        sudo nixos-rebuild switch --use-remote-sudo --flake .#
         popd
       '')
 
       (pkgs.writeShellScriptBin "testSystem" ''
         set -e
         pushd $HOME/.dotfiles
-        doas nixos-rebuild test --flake .#
+        sudo nixos-rebuild test --use-remote-sudo --flake .#
         popd
       '')
 

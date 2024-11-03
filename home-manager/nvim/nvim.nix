@@ -22,10 +22,11 @@ in {
       sumneko-lua-language-server
       stylua
       alejandra
+      nodePackages.prettier
+      ruff
 
       #ripgrep
       #pyright
-      #black
       #haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
     ];
     viAlias = true;
@@ -44,12 +45,13 @@ in {
 
     #luafile ${./snippets.lua}
     plugins = with pkgs.vimPlugins; [
-      supermaven-nvim
       indent-blankline-nvim
-      #lualine-nvim
+      lualine-nvim
       nvim-colorizer-lua
+
       # Theme
       moonfly-nvim
+
       # UI
       #vimtex
       #luasnip
@@ -62,6 +64,9 @@ in {
       cmp-nvim-lsp-signature-help
       nvim-lspconfig
       conform-nvim
+
+      # AI-assisted autocompletion
+      supermaven-nvim
 
       #which-key-nvim
       #plenary-nvim

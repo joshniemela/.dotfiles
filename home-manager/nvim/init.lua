@@ -3,6 +3,7 @@ local g = vim.g
 local home = os.getenv("HOME")
 
 require("colorizer").setup()
+require("lualine").setup()
 
 -- Set leader key
 g.mapleader = " "

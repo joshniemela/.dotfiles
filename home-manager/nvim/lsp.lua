@@ -5,6 +5,16 @@ require("conform").setup({
 	formatters_by_ft = {
 		nix = { "alejandra" },
 		lua = { "stylua" },
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		svelte = { "prettier" },
+		css = { "prettier" },
+		html = { "prettier" },
+		json = { "prettier" },
+		yaml = { "prettier" },
+		markdown = { "prettier" },
+
+		python = { "ruff_format" },
 	},
 
 	format_on_save = {
@@ -15,7 +25,6 @@ require("conform").setup({
 	notify_on_error = true,
 	notify_no_formatters = true,
 })
--- local lspconfig = require('lspconfig')
 -- local null_ls = require("null-ls")
 -- local lsp_defaults = lspconfig.util.default_config
 -- local g = vim.g

@@ -33,7 +33,7 @@ in {
       nodePackages.prettier
       ruff
 
-      #ripgrep
+      ripgrep
     ];
     viAlias = true;
     vimAlias = true;
@@ -52,6 +52,7 @@ in {
     #luafile ${./snippets.lua}
     plugins = with pkgs.vimPlugins; [
       indent-blankline-nvim
+      rainbow-delimiters-nvim
       lualine-nvim
       nvim-colorizer-lua
 
@@ -93,6 +94,7 @@ in {
           python
           julia
           clojure
+          rust
           c
           vimdoc
         ]))

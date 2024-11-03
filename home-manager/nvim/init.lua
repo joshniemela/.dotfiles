@@ -1,6 +1,8 @@
 local opt = vim.opt
 local g = vim.g
-local home = os.getenv('HOME')
+local home = os.getenv("HOME")
+
+require("colorizer").setup()
 
 -- Set leader key
 g.mapleader = " "
@@ -8,10 +10,10 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Undo files
 opt.undofile = true
-opt.undodir = home .. '.local/share/nvim/undo,/tmp'
+opt.undodir = home .. ".local/share/nvim/undo,/tmp"
 -- Backup
 opt.backup = true
-opt.backupdir = home .. '.local/share/nvim/backup,/tmp'
+opt.backupdir = home .. ".local/share/nvim/backup,/tmp"
 
 -- Indentation
 opt.smartindent = true
@@ -39,8 +41,6 @@ opt.cursorline = true
 opt.number = true
 opt.relativenumber = true
 
-
-
 -- Line context
 opt.list = true
 
@@ -56,6 +56,5 @@ opt.incsearch = true
 opt.hlsearch = true
 opt.autoread = true
 
-
 -- Theme
-vim.cmd('colorscheme monokai')
+vim.cmd("colorscheme monokai")

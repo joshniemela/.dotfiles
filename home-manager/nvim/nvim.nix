@@ -33,30 +33,30 @@ in {
     extraConfig = ''
       luafile ${./init.lua}
       luafile ${./treesitter.lua}
+      luafile ${./cmp.lua}
     '';
     #luafile ${./telescope.lua}
     #luafile ${./harpoon.lua}
     #luafile ${./lsp.lua}
 
     #luafile ${./snippets.lua}
-    #luafile ${./cmp.lua}
     plugins = with pkgs.vimPlugins; [
+      supermaven-nvim
       indent-blankline-nvim
       #lualine-nvim
-      #nvim-colorizer-lua
+      nvim-colorizer-lua
       # Theme
       monokai-nvim
       # UI
       #vimtex
       #luasnip
-      #nvim-cmp
-      #cmp_luasnip
-      #cmp-path
-      #cmp-buffer
-      #cmp-latex-symbols
-      #cmp-nvim-lsp
-      #cmp-nvim-lsp-signature-help
-      #copilot-vim
+      nvim-cmp
+      cmp_luasnip
+      cmp-path
+      cmp-buffer
+      cmp-latex-symbols
+      cmp-nvim-lsp
+      cmp-nvim-lsp-signature-help
       #null-ls-nvim
       #nvim-lspconfig
 

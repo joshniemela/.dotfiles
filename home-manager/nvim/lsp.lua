@@ -1,10 +1,28 @@
 local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup({})
+
+-- Lua LSP
+lspconfig.lua_ls.setup({
+	single_file_support = true,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
+
+-- Rust LSP
+lspconfig.rust_analyzer.setup({})
+
+-- Python LSP
+lspconfig.pyright.setup({})
 
 require("conform").setup({
 	formatters_by_ft = {
 		nix = { "alejandra" },
 		lua = { "stylua" },
+
 		javascript = { "prettier" },
 		typescript = { "prettier" },
 		svelte = { "prettier" },
@@ -33,44 +51,7 @@ require("conform").setup({
 --   lsp_defaults.capabilities,
 --   require('cmp_nvim_lsp').default_capabilities()
 -- )
---
--- -- Lua LSP
--- -- lspconfig.lua_ls.setup({
--- --     single_file_support = true,
--- --     settings = {
--- --         Lua = {
--- --             diagnostics = {
--- --                 globals = {'vim'}
--- --             }
--- --         }
--- --     }
--- -- })
---
--- -- Python LSP
--- lspconfig.pyright.setup{}
--- -- Add black formatting
--- null_ls.setup({
---     on_attach = function(client, bufnr)
---         if client.supports_method("textDocument/formatting") then
---             vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
---             vim.api.nvim_create_autocmd("BufWritePre", {
---                 group = augroup,
---                 buffer = bufnr,
---                 callback = function()
---                     -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
---                     -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
---                     vim.lsp.buf.format()
---                 end,
---             })
---         end
---     end,
---     sources = {
---         null_ls.builtins.formatting.black
---     }
--- })
--- -- Nix LSP
--- lspconfig.rnix.setup{}
---
+
 -- -- Haskell LSP
 -- -- local ht = require('haskell-tools')
 -- -- local def_opts = { noremap = true, silent = true, }
@@ -103,16 +84,8 @@ require("conform").setup({
 -- vim.keymap.set('n', '<leader>rq', ht.repl.quit, def_opts)
 
 -- Setup language servers.
-
--- lspconfig.pyright.setup({})
 -- lspconfig.tsserver.setup({})
 -- lspconfig.clangd.setup({})
--- lspconfig.rust_analyzer.setup({
--- 	-- Server-specific settings. See `:help lspconfig-setup`
--- 	settings = {
--- 		["rust-analyzer"] = {},
--- 	},
--- })
 --
 -- -- Global mappings.
 -- -- See `:help vim.diagnostic.*` for documentation on any of the below functions

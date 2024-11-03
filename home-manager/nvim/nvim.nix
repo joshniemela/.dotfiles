@@ -19,15 +19,21 @@ in {
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs; [
       xdotool
-      sumneko-lua-language-server
+
+      # Language servers
+      sumneko-lua-language-server # Lua Language Server
+      pyright # Python Language Server
+      nil # Nix Language Server
+      #haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
+      # rust-analyzer: Rust analyzer comes from global packages
+
+      # Formatters
       stylua
       alejandra
       nodePackages.prettier
       ruff
 
       #ripgrep
-      #pyright
-      #haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
     ];
     viAlias = true;
     vimAlias = true;

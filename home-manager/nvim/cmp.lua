@@ -14,7 +14,7 @@ require("supermaven-nvim").setup({
 	},
 	color = {
 		suggestion_color = "#D75F00",
-    -- this is the 256 colour of the same colour
+		-- this is the 256 colour of the same colour
 		cterm = 166,
 	},
 })

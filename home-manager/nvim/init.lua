@@ -57,4 +57,4 @@ opt.hlsearch = true
 opt.autoread = true
 
 -- Theme
-vim.cmd("colorscheme monokai")
+vim.cmd("colorscheme moonfly")

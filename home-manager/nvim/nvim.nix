@@ -4,13 +4,13 @@
   lib,
   ...
 }: let
-  monokai-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "monokai-nvim";
+  moonfly-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "moonfly-nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "tanvirtin";
-      repo = "monokai.nvim";
+      owner = "bluz71";
+      repo = "vim-moonfly-colors";
       rev = "master";
-      sha256 = "sha256-Q6+la2P2L1QmdsRKszBBMee8oLXHwdJGWjG/FMMFgT0=";
+      sha256 = "sha256-c+WHqece0Pb8oc2i/km0Spvo8JM3/0JnAJLkvPhAUHk=";
     };
   };
 in {
@@ -20,6 +20,9 @@ in {
     extraPackages = with pkgs; [
       xdotool
       sumneko-lua-language-server
+      stylua
+      alejandra
+
       #ripgrep
       #pyright
       #black
@@ -34,10 +37,10 @@ in {
       luafile ${./init.lua}
       luafile ${./treesitter.lua}
       luafile ${./cmp.lua}
+      luafile ${./lsp.lua}
     '';
     #luafile ${./telescope.lua}
     #luafile ${./harpoon.lua}
-    #luafile ${./lsp.lua}
 
     #luafile ${./snippets.lua}
     plugins = with pkgs.vimPlugins; [
@@ -46,7 +49,7 @@ in {
       #lualine-nvim
       nvim-colorizer-lua
       # Theme
-      monokai-nvim
+      moonfly-nvim
       # UI
       #vimtex
       #luasnip
@@ -57,8 +60,8 @@ in {
       cmp-latex-symbols
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
-      #null-ls-nvim
-      #nvim-lspconfig
+      nvim-lspconfig
+      conform-nvim
 
       #which-key-nvim
       #plenary-nvim

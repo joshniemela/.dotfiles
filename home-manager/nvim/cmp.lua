@@ -42,7 +42,6 @@ cmp.setup({
 				nvim_lsp = "λ",
 				buffer = "Ω",
 				path = "$",
-				supermaven = "✨",
 			}
 
 			item.menu = menu_icon[entry.source.name]

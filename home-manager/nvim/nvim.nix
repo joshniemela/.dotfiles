@@ -4,13 +4,13 @@
   lib,
   ...
 }: let
-  monokai-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "monokai-nvim";
+  moonfly-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "moonfly-nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "tanvirtin";
-      repo = "monokai.nvim";
+      owner = "bluz71";
+      repo = "vim-moonfly-colors";
       rev = "master";
-      sha256 = "sha256-Q6+la2P2L1QmdsRKszBBMee8oLXHwdJGWjG/FMMFgT0=";
+      sha256 = "sha256-c+WHqece0Pb8oc2i/km0Spvo8JM3/0JnAJLkvPhAUHk=";
     };
   };
 in {
@@ -19,36 +19,49 @@ in {
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs; [
       xdotool
-      sumneko-lua-language-server
+
+      # Language servers
+      sumneko-lua-language-server # Lua Language Server
+      pyright # Python Language Server
+      nil # Nix Language Server
+      #haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
+      # rust-analyzer: Rust analyzer comes from global packages
+
+      # Formatters
+      stylua
+      alejandra
+      nodePackages.prettier
+      ruff
+
       ripgrep
-      pyright
-      black
-      # haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
     ];
     viAlias = true;
     vimAlias = true;
-    withNodeJs = true;
+    withNodeJs = false;
     withPython3 = false;
     vimdiffAlias = true;
     extraConfig = ''
       luafile ${./init.lua}
-      luafile ${./telescope.lua}
       luafile ${./treesitter.lua}
-      luafile ${./harpoon.lua}
+      luafile ${./cmp.lua}
       luafile ${./lsp.lua}
     '';
+    #luafile ${./telescope.lua}
+    #luafile ${./harpoon.lua}
 
     #luafile ${./snippets.lua}
-    #luafile ${./cmp.lua}
     plugins = with pkgs.vimPlugins; [
       indent-blankline-nvim
+      rainbow-delimiters-nvim
       lualine-nvim
       nvim-colorizer-lua
+
       # Theme
-      monokai-nvim
+      moonfly-nvim
+
       # UI
-      vimtex
-      luasnip
+      #vimtex
+      #luasnip
       nvim-cmp
       cmp_luasnip
       cmp-path
@@ -56,19 +69,21 @@ in {
       cmp-latex-symbols
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
-      copilot-vim
-      null-ls-nvim
       nvim-lspconfig
+      conform-nvim
 
-      which-key-nvim
-      plenary-nvim
-      haskell-tools-nvim
-      vim-nix
-      julia-vim
+      # AI-assisted autocompletion
+      supermaven-nvim
 
-      # new nvim
-      telescope-nvim
-      harpoon
+      #which-key-nvim
+      #plenary-nvim
+      #haskell-tools-nvim
+      #vim-nix
+      #julia-vim
+
+      ## new nvim
+      #telescope-nvim
+      #harpoon
 
       (nvim-treesitter.withPlugins (p:
         with p; [
@@ -79,6 +94,7 @@ in {
           python
           julia
           clojure
+          rust
           c
           vimdoc
         ]))

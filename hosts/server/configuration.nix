@@ -105,4 +105,16 @@
     openssh.enable = true;
     smartd.enable = true;
   };
+
+  services.btrbk = {
+    instances."backup_storage" = {
+      onCalendar = "daily";
+      settings = {
+        volume."/storage" = {
+          target = "/backup";
+          subvolume = ".";
+        };
+      };
+    };
+  };
 }

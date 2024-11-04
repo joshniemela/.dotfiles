@@ -37,10 +37,18 @@
     fsType = "vfat";
   };
 
-  fileSystems."/dockers/filebrowser/data" = {
-    device = "/dev/disk/by-uuid/8e7e4d3c-8738-4261-bdeb-cc4852e7ede7";
-    fsType = "ext4";
+  fileSystems."/storage" = {
+    device = "/dev/disk/by-uuid/199caee7-58dc-4d6d-9dfc-453eae89c769";
+    fsType = "btrfs";
+    options = [ "subvol=first" "compress=zstd" ];
   };
+
+  fileSystems."/backup" = { 
+    device = "/dev/disk/by-uuid/4a694e66-e6fe-4dfb-a495-f2bd8cea947f";
+    fsType = "btrfs";
+    options = [ "subvol=first" "compress=zstd" ];
+  };
+
 
   swapDevices = [];
 

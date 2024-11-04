@@ -11,7 +11,7 @@
     ../../modules/thunar.nix # config for thunar
     ../default/configuration.nix # default host config
     ../../modules/docker.nix
-    #../../modules/virtualbox.nix
+    ../../modules/virtmanager.nix
   ];
 
   boot = {
@@ -28,12 +28,11 @@
 
   zramSwap = {
     enable = true;
-    memoryPercent = 50;
+    memoryPercent = 25;
   };
   services = {
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
-    power-profiles-daemon.enable = true;
 
     thermald.enable = true;
 
@@ -45,6 +44,7 @@
   };
 
   services.tlp = {
+    enable = true;
     settings = {
       CPU_BOOST_ON_AC = 1;
 

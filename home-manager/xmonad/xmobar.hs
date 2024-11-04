@@ -78,8 +78,10 @@ Config {
                              , "--high"     , "darkred"
                              ] 10
 
-        -- battery monitor
-        , Run BatteryP ["/sys/class/power_supply/CMB1"]        [ "--template" , "Batt: <acstatus>"
+        -- battery monitor for old laptop
+        -- , Run BatteryP ["/sys/class/power_supply/CMB1"]        [ "--template" , "Batt: <acstatus"
+        -- battery monitor for new laptop
+        , Run BatteryP ["/sys/class/power_supply/BAT0"]        [ "--template" , "Batt: <acstatus>"
                              , "--Low"      , "30"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"

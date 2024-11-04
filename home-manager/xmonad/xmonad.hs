@@ -164,9 +164,3 @@ myScratchPads =
     spawnTerm = myTerminal ++ " --class=term"
     findTerm = className =? "term"
     manageTerm = defaultFloating
-
--- /sys/class/power_supply/CMB1
-batteryPresent :: IO Bool
-batteryPresent = do
-  b <- doesDirectoryExist "/sys/class/power_supply/CMB1"
-  return b

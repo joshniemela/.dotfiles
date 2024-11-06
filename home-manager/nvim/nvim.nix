@@ -78,7 +78,6 @@ in {
       #which-key-nvim
       #plenary-nvim
       #haskell-tools-nvim
-      #vim-nix
       #julia-vim
 
       ## new nvim

@@ -47,6 +47,7 @@
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
+      aider-chat
 
       baobab
       wget

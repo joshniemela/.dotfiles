@@ -47,8 +47,8 @@ in {
       luafile ${./cmp.lua}
       luafile ${./lsp.lua}
       luafile ${./telescope.lua}
+      luafile ${./harpoon.lua}
     '';
-    #luafile ${./harpoon.lua}
 
     #luafile ${./snippets.lua}
     plugins = with pkgs.vimPlugins; [
@@ -83,7 +83,7 @@ in {
 
       ## new nvim
       telescope-nvim
-      #harpoon
+      harpoon2
 
       (nvim-treesitter.withPlugins (p:
         with p; [

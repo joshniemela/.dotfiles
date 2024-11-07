@@ -15,3 +15,18 @@ Keybindings for nvim-cmp
 -- <C-j> used by LSP to scroll down in the completion menu
 -- <C-k> used by LSP to scroll up in the completion menu
 -- <CR> used by LSP to select the current item in the completion menu
+
+### telescope
+
+Keybindings for telescope
+
+-- <<leader>ff> find files
+-- <<leader>fg> find git files
+-- <<leader>fs> find grep live
+-- <<leader>fb> find buffers
+-- <<leader>fh> help tags
+
+## TODO
+
+- [ ] Add oil.nvim
+- [ ] Add harpoon

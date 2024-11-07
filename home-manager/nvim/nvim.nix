@@ -33,6 +33,7 @@ in {
       nodePackages.prettier
       ruff
 
+      # Required for telescope-nvim
       ripgrep
     ];
     viAlias = true;
@@ -45,8 +46,8 @@ in {
       luafile ${./treesitter.lua}
       luafile ${./cmp.lua}
       luafile ${./lsp.lua}
+      luafile ${./telescope.lua}
     '';
-    #luafile ${./telescope.lua}
     #luafile ${./harpoon.lua}
 
     #luafile ${./snippets.lua}
@@ -81,7 +82,7 @@ in {
       #julia-vim
 
       ## new nvim
-      #telescope-nvim
+      telescope-nvim
       #harpoon
 
       (nvim-treesitter.withPlugins (p:

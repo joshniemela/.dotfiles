@@ -84,6 +84,7 @@ in {
       telescope-nvim
       oil-nvim
       harpoon2
+      nvim-web-devicons
 
       (nvim-treesitter.withPlugins (p:
         with p; [

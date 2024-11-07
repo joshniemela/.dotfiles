@@ -2,6 +2,12 @@ local opt = vim.opt
 local g = vim.g
 local home = os.getenv("HOME")
 
+require("nvim-web-devicons").setup({
+	color_icons = true,
+	default = true,
+	strict = true,
+	variant = "dark",
+})
 require("colorizer").setup()
 require("lualine").setup()
 require("oil").setup({

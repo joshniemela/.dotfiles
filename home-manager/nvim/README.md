@@ -24,9 +24,15 @@ Keybindings for telescope
 -- <<leader>fg> find git files
 -- <<leader>fs> find grep live
 -- <<leader>fb> find buffers
--- <<leader>fh> help tags
+-- <<leader>fh> find harpoon links
+
+### harpoon
+
+-- <<leader>a> add harpoon link
+-- <C-e> open quick menu
+-- <<leader>1 to <<leader>5 open harpoon link
+-- <<leader>fh> find harpoon links
 
 ## TODO
 
 - [ ] Add oil.nvim
-- [ ] Add harpoon

@@ -6,8 +6,8 @@
 }: {
   virtualisation.libvirtd = {
     enable = true;
-    qemuOvmf = true;
-    qemuSwtpm = true;
+    qemuOvmf.enable = true;
+    qemuSwtpm.enable = true;
   };
 
   programs.virt-manager.enable = true;

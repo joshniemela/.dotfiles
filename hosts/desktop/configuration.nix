@@ -51,11 +51,11 @@
     xkb.layout = "dk";
     videoDrivers = ["nvidia"];
 
-    displayManager = {
-      lightdm.enable = true;
-      defaultSession = "none+xmonad";
-    };
+    displayManager.lightdm.enable = true;
   };
+
+  services.displayManager.defaultSession = "none+xmonad";
+
   networking.firewall.enable = false;
 
   # PROGRAMS

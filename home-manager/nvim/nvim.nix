@@ -81,8 +81,8 @@ in {
       #haskell-tools-nvim
       #julia-vim
 
-      ## new nvim
       telescope-nvim
+      oil-nvim
       harpoon2
 
       (nvim-treesitter.withPlugins (p:

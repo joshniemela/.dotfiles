@@ -33,6 +33,10 @@ Keybindings for telescope
 -- <<leader>1 to <<leader>5 open harpoon link
 -- <<leader>fh> find harpoon links
 
+### Oil
+
+-- <-> open oil menu
+
 ## TODO
 
 - [ ] Add oil.nvim

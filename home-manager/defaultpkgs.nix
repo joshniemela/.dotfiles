@@ -10,7 +10,6 @@
 
     packages = with pkgs; [
       zig
-      jetbrains.rider
 
       discord
 

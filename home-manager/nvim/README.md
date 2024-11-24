@@ -39,4 +39,4 @@ Keybindings for `harpoon`:
 
 Keybinding for `oil.nvim`:
 
-- `<-`: Open Oil menu
+- `<->`: Open Oil menu

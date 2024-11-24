@@ -50,7 +50,7 @@ opt.expandtab = true
 
 opt.scrolloff = 8
 opt.timeoutlen = 300
-opt.updatetime = 250
+opt.updatetime = 150
 opt.showmatch = true
 -- Clipboard mode, loads async to reduce startup time
 vim.schedule(function()

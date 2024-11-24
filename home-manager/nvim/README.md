@@ -40,3 +40,30 @@ Keybindings for `harpoon`:
 Keybinding for `oil.nvim`:
 
 - `<->`: Open Oil menu
+
+### LSP
+
+Keybindings for LSP:
+
+- `gd`: Go to definition
+- `gD`: Go to declaration
+- `gr`: Go to references
+- `gi`: Go to implementation
+- `K`: Show documentation
+- `<C-k>`: Show signature help
+- `<space>wa`: Add workspace folder
+- `<space>wr`: Remove workspace folder
+- `<space>wl`: List workspace folders
+- `<space>D`: Go to type definition
+- `<space>rn`: Rename symbol
+- `<space>ca`: Code action
+- `<space>f`: Format buffer
+
+### LSP Diagnostics
+
+Keybindings for LSP diagnostics:
+
+- `<space>e`: Open diagnostic float
+- `dp`: Go to previous diagnostic
+- `dn`: Go to next diagnostic
+- `<space>q`: Set diagnostic location list

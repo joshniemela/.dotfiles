@@ -79,7 +79,7 @@ in {
       #which-key-nvim
       #plenary-nvim
       #haskell-tools-nvim
-      #julia-vim
+      julia-vim
 
       telescope-nvim
       oil-nvim

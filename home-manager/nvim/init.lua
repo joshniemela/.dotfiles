@@ -2,8 +2,31 @@ local opt = vim.opt
 local g = vim.g
 local home = os.getenv("HOME")
 
+require("nvim-web-devicons").setup({
+	color_icons = true,
+	default = true,
+	strict = true,
+	variant = "dark",
+})
 require("colorizer").setup()
 require("lualine").setup()
+require("oil").setup({
+	default_file_explorer = true,
+	skip_confirm_for_simple_edits = true,
+	view_options = {
+		show_hidden = true,
+		natural_order = true,
+		-- hide git
+		is_always_hidden = function(name, _)
+			return name == ".." or name == ".git"
+		end,
+	},
+	win_options = {
+		wrap = true,
+	},
+})
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Set leader key
 g.mapleader = " "
@@ -27,7 +50,7 @@ opt.expandtab = true
 
 opt.scrolloff = 8
 opt.timeoutlen = 300
-opt.updatetime = 250
+opt.updatetime = 150
 opt.showmatch = true
 -- Clipboard mode, loads async to reduce startup time
 vim.schedule(function()

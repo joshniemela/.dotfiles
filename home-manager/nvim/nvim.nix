@@ -10,7 +10,7 @@
       owner = "bluz71";
       repo = "vim-moonfly-colors";
       rev = "master";
-      sha256 = "sha256-c+WHqece0Pb8oc2i/km0Spvo8JM3/0JnAJLkvPhAUHk=";
+      sha256 = "sha256-8IYqHHsItetjZ9kBzoOPyNzPeFMjHe49myWq/JqL7qo=";
     };
   };
 in {
@@ -33,6 +33,7 @@ in {
       nodePackages.prettier
       ruff
 
+      # Required for telescope-nvim
       ripgrep
     ];
     viAlias = true;
@@ -45,9 +46,9 @@ in {
       luafile ${./treesitter.lua}
       luafile ${./cmp.lua}
       luafile ${./lsp.lua}
+      luafile ${./telescope.lua}
+      luafile ${./harpoon.lua}
     '';
-    #luafile ${./telescope.lua}
-    #luafile ${./harpoon.lua}
 
     #luafile ${./snippets.lua}
     plugins = with pkgs.vimPlugins; [
@@ -78,12 +79,12 @@ in {
       #which-key-nvim
       #plenary-nvim
       #haskell-tools-nvim
-      #vim-nix
-      #julia-vim
+      julia-vim
 
-      ## new nvim
-      #telescope-nvim
-      #harpoon
+      telescope-nvim
+      oil-nvim
+      harpoon2
+      nvim-web-devicons
 
       (nvim-treesitter.withPlugins (p:
         with p; [

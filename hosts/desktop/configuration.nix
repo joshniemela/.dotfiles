@@ -16,7 +16,7 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
@@ -51,11 +51,11 @@
     xkb.layout = "dk";
     videoDrivers = ["nvidia"];
 
-    displayManager = {
-      lightdm.enable = true;
-      defaultSession = "none+xmonad";
-    };
+    displayManager.lightdm.enable = true;
   };
+
+  services.displayManager.defaultSession = "none+xmonad";
+
   networking.firewall.enable = false;
 
   # PROGRAMS

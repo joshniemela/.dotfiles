@@ -6,4 +6,5 @@ ignore = Name .*
 ignorenot = Name .git
 ignore = Name Games
 ignore = Name nosync
+ignore = Name target
 perms=0

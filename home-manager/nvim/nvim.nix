@@ -22,6 +22,7 @@ in {
 
       # Language servers
       sumneko-lua-language-server # Lua Language Server
+      svelte-language-server # Svelte Language Server
       pyright # Python Language Server
       nil # Nix Language Server
       #haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
@@ -98,6 +99,7 @@ in {
           rust
           c
           vimdoc
+          svelte
         ]))
 
       nvim-treesitter-context

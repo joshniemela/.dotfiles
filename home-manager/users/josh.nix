@@ -15,7 +15,7 @@
     # ../../home-manager/code.nix # Enable vscode and packages emacs is my friend now
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../home-manager/nvim/nvim.nix
-    ../../home-manager/emacs
+    #../../home-manager/emacs
     ../../home-manager/languages/julia/default.nix
     ../../home-manager/languages/rust.nix
   ];

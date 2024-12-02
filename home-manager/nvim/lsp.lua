@@ -80,7 +80,10 @@ lspconfig.pyright.setup({})
 lspconfig.julials.setup({})
 
 -- TypeScript LSP
--- lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
+
+-- Svelte LSP
+lspconfig.svelte.setup({})
 
 require("conform").setup({
 	formatters_by_ft = {

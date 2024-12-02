@@ -24,7 +24,6 @@
       p7zip
       fastfetch # system info
       thunderbird # email
-      evolution # also email
       unison # for syncing
       libreoffice # office suite
       viewnior # image viewer

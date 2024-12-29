@@ -26,7 +26,6 @@
       # p10k breaks without these fonts
       nerd-fonts.fira-code
       nerd-fonts.meslo-lg
-
       dmenu
       ncdu
       insomnia

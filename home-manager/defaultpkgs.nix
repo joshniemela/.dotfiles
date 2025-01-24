@@ -35,6 +35,7 @@
       darktable # photo editor
       lxappearance # for changing gtk theme
       texlive.combined.scheme-full # for latex
+      typst # for writing
       pandoc
       chromium
       imagemagick # Used for conversion of image formats
@@ -46,7 +47,6 @@
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
-      aider-chat
 
       baobab
       wget
@@ -54,6 +54,10 @@
       pandoc
       inkscape
       shellcheck
+
+      # work
+      aider-chat
+      remmina
     ];
   };
   services.flameshot.enable = true;

@@ -100,6 +100,9 @@ in {
           c
           vimdoc
           svelte
+          typescript
+          javascript
+          css
         ]))
 
       nvim-treesitter-context

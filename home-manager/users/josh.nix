@@ -33,7 +33,7 @@
     ];
   };
   services = {
-    easyeffects.enable = true;
+    easyeffects.enable = false;
   };
 
   programs = {

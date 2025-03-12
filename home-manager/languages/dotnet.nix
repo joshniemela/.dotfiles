@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  dotnetfhs = pkgs.buildFHSUserEnv {
+  dotnetfhs = pkgs.buildFHSEnv {
     name = "dotnet_x11";
     targetPkgs = pkgs:
       (with pkgs; [

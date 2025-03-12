@@ -10,7 +10,7 @@
       owner = "bluz71";
       repo = "vim-moonfly-colors";
       rev = "master";
-      sha256 = "sha256-rkk59mLnlB0vRRSV45ysLFPm4TxpedU+DBh7CQlVRDc=";
+      sha256 = "sha256-H04+mXexrmBJyJm5lbBk8016uuykjd+IHlkqbu3X4LQ=";
     };
   };
 in {
@@ -98,6 +98,7 @@ in {
           clojure
           rust
           c
+          fsharp
           vimdoc
           svelte
           typescript

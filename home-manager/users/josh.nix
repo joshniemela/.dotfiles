@@ -17,6 +17,7 @@
     ../../home-manager/nvim/nvim.nix
     #../../home-manager/emacs
     ../../home-manager/languages/julia/default.nix
+    ../../home-manager/languages/dotnet.nix
     ../../home-manager/languages/rust.nix
   ];
 

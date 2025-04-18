@@ -10,7 +10,7 @@
       owner = "bluz71";
       repo = "vim-moonfly-colors";
       rev = "master";
-      sha256 = "sha256-U7lantIADJuP5K1YMZobGolNa5xPkdZKL3lPnFMfXqg=";
+      sha256 = "sha256-YzQIZVWgATEf/9RueBXsP369KtXnoldk019SPfwUprM=";
     };
   };
 in {

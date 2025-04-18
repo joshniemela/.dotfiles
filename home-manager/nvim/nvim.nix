@@ -10,7 +10,7 @@
       owner = "bluz71";
       repo = "vim-moonfly-colors";
       rev = "master";
-      sha256 = "sha256-8IYqHHsItetjZ9kBzoOPyNzPeFMjHe49myWq/JqL7qo=";
+      sha256 = "sha256-U7lantIADJuP5K1YMZobGolNa5xPkdZKL3lPnFMfXqg=";
     };
   };
 in {
@@ -22,6 +22,7 @@ in {
 
       # Language servers
       sumneko-lua-language-server # Lua Language Server
+      svelte-language-server # Svelte Language Server
       pyright # Python Language Server
       nil # Nix Language Server
       #haskell-language-server disabled due to haskell-tools-nvim containing HLS itself
@@ -97,7 +98,12 @@ in {
           clojure
           rust
           c
+          fsharp
           vimdoc
+          svelte
+          typescript
+          javascript
+          css
         ]))
 
       nvim-treesitter-context

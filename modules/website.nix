@@ -74,5 +74,15 @@
           + "proxy_pass_header Authorization;";
       };
     };
+    virtualHosts."argmin.dk" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:4242";
+        extraConfig =
+          "proxy_ssl_server_name on;"
+          + "proxy_pass_header Authorization;";
+      };
+    };
   };
 }

@@ -15,7 +15,7 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
@@ -28,7 +28,7 @@
 
   zramSwap = {
     enable = true;
-    memoryPercent = 25;
+    memoryPercent = 15;
   };
   services = {
     blueman.enable = true;
@@ -52,10 +52,14 @@
 
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
+      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
     };
   };
 
   services.libinput.enable = true;
+  services.fwupd.enable = true;
 
   services.displayManager = {
     defaultSession = "none+xmonad";

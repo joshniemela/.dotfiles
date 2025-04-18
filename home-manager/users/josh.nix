@@ -15,15 +15,18 @@
     # ../../home-manager/code.nix # Enable vscode and packages emacs is my friend now
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
     ../../home-manager/nvim/nvim.nix
-    ../../home-manager/emacs
+    #../../home-manager/emacs
     ../../home-manager/languages/julia/default.nix
+    ../../home-manager/languages/dotnet.nix
     ../../home-manager/languages/rust.nix
   ];
 
   home = {
     packages = with pkgs; [
       font-awesome # Iconscode
-      (nerdfonts.override {fonts = ["FiraCode" "Meslo"];}) # Powerline breaks without this
+      # p10k breaks without these fonts
+      nerd-fonts.fira-code
+      nerd-fonts.meslo-lg
       dmenu
       ncdu
       insomnia
@@ -31,7 +34,7 @@
     ];
   };
   services = {
-    easyeffects.enable = true;
+    easyeffects.enable = false;
   };
 
   programs = {

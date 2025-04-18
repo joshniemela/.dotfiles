@@ -6,14 +6,14 @@
   home = {
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
 
-    file."jdks/openjdk8".source = pkgs.openjdk8;
+    #file."jdks/openjdk8".source = pkgs.openjdk8;
 
     packages = with pkgs; [
       zig
 
       discord
 
-      prismlauncher # minecraft launcher
+      #prismlauncher # minecraft launcher
 
       # correction
 
@@ -24,7 +24,7 @@
       p7zip
       fastfetch # system info
       thunderbird # email
-      evolution # also email
+      #evolution # also email
       unison # for syncing
       libreoffice # office suite
       viewnior # image viewer
@@ -35,6 +35,7 @@
       darktable # photo editor
       lxappearance # for changing gtk theme
       texlive.combined.scheme-full # for latex
+      typst # for writing
       pandoc
       chromium
       imagemagick # Used for conversion of image formats
@@ -46,7 +47,6 @@
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
-      aider-chat
 
       baobab
       wget
@@ -54,6 +54,10 @@
       pandoc
       inkscape
       shellcheck
+
+      # work
+      aider-chat
+      remmina
     ];
   };
   services.flameshot.enable = true;

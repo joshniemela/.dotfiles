@@ -45,18 +45,7 @@
     virtualHosts."disku.jniemela.dk" = {
       enableACME = true;
       forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://localhost:5000";
-        extraConfig =
-          "proxy_ssl_server_name on;"
-          + "proxy_pass_header Authorization;";
-      };
-      locations."/api" = {
-        proxyPass = "http://localhost:3000";
-        extraConfig =
-          "proxy_ssl_server_name on;"
-          + "proxy_pass_header Authorization;";
-      };
+      locations."/".return = "301 https://kucourses.dk$request_uri";
     };
     virtualHosts."kucourses.dk" = {
       enableACME = true;
@@ -74,6 +63,7 @@
           + "proxy_pass_header Authorization;";
       };
     };
+
     virtualHosts."jniemela.dk" = {
       enableACME = true;
       forceSSL = true;

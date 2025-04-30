@@ -5,23 +5,15 @@
 }: {
   home = {
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
-
-    file."jdks/openjdk8".source = pkgs.openjdk8;
-
     packages = with pkgs; [
-      zig
-
       discord
 
       prismlauncher # minecraft launcher
-
-      # correction
 
       jq
       cmake
       gnumake
       nodejs
-      p7zip
       fastfetch # system info
       thunderbird # email
       #evolution # also email
@@ -34,7 +26,6 @@
       tree # for viewing directory structure
       darktable # photo editor
       lxappearance # for changing gtk theme
-      texlive.combined.scheme-full # for latex
       typst # for writing
       chromium
       imagemagick # Used for conversion of image formats
@@ -47,7 +38,6 @@
       bat # better cat
       btop # better htop
 
-      baobab
       wget
       xorg.xev
       pandoc
@@ -55,7 +45,6 @@
       shellcheck
 
       # work
-      aider-chat
       remmina
     ];
   };

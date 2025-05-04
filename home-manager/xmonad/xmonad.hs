@@ -98,8 +98,7 @@ myKeys c =
           ]
         ++ subKeys
           "Scratchpads"
-          [ ((myModMask, xK_b), addName "Open sagemath" $ namedScratchpadAction myScratchPads "sage"),
-            ((myModMask, xK_Return), addName "Open terminal" $ namedScratchpadAction myScratchPads "term")
+          [((myModMask, xK_Return), addName "Open terminal" $ namedScratchpadAction myScratchPads "term")
           ]
 
 showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
@@ -153,14 +152,10 @@ main = do
             myConfig statusPipe
 
 myScratchPads =
-  [ NS "sage" spawnSage findSage manageSage,
+  [
     NS "term" spawnTerm findTerm manageTerm
   ]
   where
-    spawnSage = myTerminal ++ " --class=sage -e sage"
-    findSage = className =? "sage"
-    manageSage = defaultFloating
-
     spawnTerm = myTerminal ++ " --class=term"
     findTerm = className =? "term"
     manageTerm = defaultFloating

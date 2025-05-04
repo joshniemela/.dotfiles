@@ -84,6 +84,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   users.josh = import ./home-manager/users/josh.nix;
+                  backupFileExtension = "backup";
                 };
               }
             ];

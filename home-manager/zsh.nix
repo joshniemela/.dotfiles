@@ -59,6 +59,10 @@
       ls = "ls --color='always'";
       grep = "grep --color='always'";
       "..." = "../..";
+      "...." = "../../..";
+      "....." = "../../../..";
+      "......" = "../../../../..";
+      "......." = "../../../../../..";
     };
 
     # p10k Home manager config: https://github.com/nix-community/home-manager/issues/1338#issuecomment-651807792

@@ -46,6 +46,8 @@
 
       # work
       remmina
+
+      pass
     ];
   };
   services.flameshot.enable = true;

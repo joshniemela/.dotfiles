@@ -26,22 +26,13 @@
       ls = "ls --color='always'";
       grep = "grep --color='always'";
       "..." = "../..";
+      "...." = "../../..";
+      "....." = "../../../..";
     };
 
-    # p10k Home manager config: https://github.com/nix-community/home-manager/issues/1338#issuecomment-651807792
-    initExtraBeforeCompInit = ''
-      # p10k instant prompt
-      local P10K_INSTANT_PROMPT="${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
+    initContent = ''
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
 
-      # Custom completions
-      # TODO: get rid of it?
-      fpath+=("$XDG_DATA_HOME/zsh/completions")
-
-      # correction
-    '';
-
-    initExtra = ''
       # Powerlevel10k config
       typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=
       typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=2

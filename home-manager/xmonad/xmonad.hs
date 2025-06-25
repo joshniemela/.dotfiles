@@ -1,4 +1,4 @@
-import Data.Map qualified as M
+import qualified Data.Map as M
 import System.Directory
 import System.IO
 import XMonad
@@ -10,9 +10,9 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.Fullscreen
-import XMonad.Layout.ToggleLayouts qualified as T (ToggleLayout (Toggle), toggleLayouts)
+import qualified XMonad.Layout.ToggleLayouts as T (ToggleLayout (Toggle), toggleLayouts)
 import XMonad.Prompt.RunOrRaise
-import XMonad.StackSet qualified as W
+import qualified XMonad.StackSet as W
 import XMonad.Util.NamedActions
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run
@@ -43,6 +43,7 @@ myKeys c =
           ((myModMask .|. shiftMask, xK_Return), addName "Open terminal" $ spawn myTerminal),
           ((myModMask .|. shiftMask, xK_c), addName "Close window" kill),
           ((myModMask, xK_p), addName "Open dmenu" $ spawn "dmenu_run -sb '#402F65'"),
+          ((myModMask .|. shiftMask, xK_p), addName "Open passmenu" $ spawn "passmenu -sb '#D16328'"),
           -- If emacs is not running, open emacs, otherwise focus emacs
           ((myModMask, xK_less), addName "Open emacs" $ (raiseMaybe . spawn) "emacsclient -c -a '' -n" (className =? "Emacs"))
         ]
@@ -98,7 +99,7 @@ myKeys c =
           ]
         ++ subKeys
           "Scratchpads"
-          [((myModMask, xK_Return), addName "Open terminal" $ namedScratchpadAction myScratchPads "term")
+          [ ((myModMask, xK_Return), addName "Open terminal" $ namedScratchpadAction myScratchPads "term")
           ]
 
 showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
@@ -152,8 +153,7 @@ main = do
             myConfig statusPipe
 
 myScratchPads =
-  [
-    NS "term" spawnTerm findTerm manageTerm
+  [ NS "term" spawnTerm findTerm manageTerm
   ]
   where
     spawnTerm = myTerminal ++ " --class=term"

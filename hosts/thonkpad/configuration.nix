@@ -118,4 +118,46 @@
       DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     };
   };
+
+  systemd.timers."battery-notifier" = {
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnBootSec = "1min";
+      OnUnitActiveSec = "1min";
+      Unit = "battery-notifier.service";
+    };
+  };
+
+  systemd.services.battery-notifier = {
+    environment = {
+      DISPLAY = ":0";
+      DBUS_SESSION_BUS_ADDRESS = "unix:path=/run/user/1000/bus";
+    };
+    script = ''
+      battery_result=$(${pkgs.acpi}/bin/acpi -b)
+
+      battery_percent=$(echo $battery_result | grep -Eo '[0-9]+%' | sed 's/%//')
+
+      battery_remaining=$(echo $battery_result | grep -Eo '[0-9]+:[0-9]+:[0-9]+')
+
+      battery_status=$(echo $battery_result | grep -Eio 'remaining|charged')
+
+
+      if [ "$battery_status" == "remaining" ]; then
+          if [ $battery_percent -le 35 ] && [ $battery_percent -gt 25 ]; then
+              ${pkgs.dunst}/bin/dunstify -a system -t 9000 -r 1337 -u normal "Low battery" "$battery_percent% remaining\n $battery_remaining"
+
+          elif [ $battery_percent -le 25 ] && [ $battery_percent -gt 15 ]; then
+              ${pkgs.dunst}/bin/dunstify -a system -t 9000 -r 1337 -u critical "Low battery" "$battery_percent% remaining\n $battery_remaining"
+
+          elif [ $battery_percent -le 15 ]; then
+              ${pkgs.dunst}/bin/dunstify -a system -t 9000 -r 1337 -u low "CRITICALLY LOW BATTERY" "$battery_percent% remaining\n $battery_remaining"
+          fi
+      fi
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "josh";
+    };
+  };
 }

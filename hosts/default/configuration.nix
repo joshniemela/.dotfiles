@@ -73,6 +73,11 @@
       };
     };
     services.pcscd.enable = true;
+
+    services.autorandr = {
+      enable = true;
+    };
+
     environment.defaultPackages = [
       pkgs.perl
       pkgs.strace

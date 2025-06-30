@@ -42,11 +42,8 @@
     firefox.enable = true;
 
     home-manager.enable = true;
-    autorandr = {
-      enable = true;
-      profiles = import ../../home-manager/autorandr/desktop.nix;
-    };
   };
+
   home.stateVersion = "22.05";
 
   dconf.settings = {

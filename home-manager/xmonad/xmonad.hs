@@ -144,7 +144,7 @@ myConfig statusPipe =
     }
 
 main = do
-  statusPipe <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+  statusPipe <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobar.hs"
   xmonad $
     docks $
       ewmhFullscreen $

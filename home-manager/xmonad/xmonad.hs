@@ -43,9 +43,7 @@ myKeys c =
           ((myModMask .|. shiftMask, xK_Return), addName "Open terminal" $ spawn myTerminal),
           ((myModMask .|. shiftMask, xK_c), addName "Close window" kill),
           ((myModMask, xK_p), addName "Open dmenu" $ spawn "dmenu_run -sb '#402F65'"),
-          ((myModMask .|. shiftMask, xK_p), addName "Open passmenu" $ spawn "passmenu -sb '#D16328'"),
-          -- If emacs is not running, open emacs, otherwise focus emacs
-          ((myModMask, xK_less), addName "Open emacs" $ (raiseMaybe . spawn) "emacsclient -c -a '' -n" (className =? "Emacs"))
+          ((myModMask .|. shiftMask, xK_p), addName "Open passmenu" $ spawn "passmenu -sb '#D16328'")
         ]
         ++ subtitle "Switching workspaces"
         :

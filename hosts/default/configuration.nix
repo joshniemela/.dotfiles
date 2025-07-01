@@ -78,6 +78,8 @@
       enable = true;
     };
 
+    services.earlyoom.enable = true;
+
     environment.defaultPackages = [
       pkgs.perl
       pkgs.strace

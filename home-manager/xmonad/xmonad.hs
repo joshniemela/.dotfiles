@@ -70,15 +70,17 @@ myKeys c =
                         XS.put newSet
 
                         screens <- gets (W.screens . windowset)
+                        let currentWs = map (W.tag . W.workspace) screens
 
-                        let targetWs = case newSet of
-                                Personal -> myPersonalWorkspaces
-                                Work -> myWorkWorkspaces
+                        OtherScreenWorkspaces storedWs <- XS.get
 
-                            workspaces = take (length screens) targetWs
+                        XS.put (OtherScreenWorkspaces currentWs)
+
+                        -- We need this check since in the beginning we might have 9 workspaces
+                        let workspaces = take (length screens) storedWs
 
                         -- For each screen, focus it and greedyView its new workspace
-                        forM_ (zip screens workspaces) $ \(s, ws) -> do
+                        forM_ (zip screens (reverse workspaces)) $ \(s, ws) -> do
                             windows (W.view (W.tag (W.workspace s))) -- focus the screen
                             windows (W.greedyView ws)
                    )
@@ -203,8 +205,6 @@ myScratchPads =
     findTerm = className =? "term"
     manageTerm = defaultFloating
 
-data WorkspacesType = Personal | Work deriving (Show, Read, Eq)
-
 switch :: WorkspacesType -> WorkspacesType
 switch Personal = Work
 switch Work = Personal
@@ -219,8 +219,19 @@ filterByPrefix prefix wrapFunc ws =
         then wrapFunc ws
         else ""
 
+-- Keep track of which set of workspaces we are in
+data WorkspacesType = Personal | Work deriving (Show, Read, Eq)
 instance ExtensionClass WorkspacesType where
     initialValue = Personal
+    extensionType = PersistentExtension
+
+-- Keep track of which worksapce belongs to which screen
+-- Initial value is work, since it's the opposite of personal which is the default state
+-- Note we just give it all 9 workspaces since we do not know anything about the screens
+-- at this point of the program
+data OtherScreenWorkspaces = OtherScreenWorkspaces [String] deriving (Show, Read, Eq)
+instance ExtensionClass OtherScreenWorkspaces where
+    initialValue = OtherScreenWorkspaces myWorkWorkspaces
     extensionType = PersistentExtension
 
 handleWorkspaceKey :: Int -> (WorkspaceId -> WindowSet -> WindowSet) -> X ()

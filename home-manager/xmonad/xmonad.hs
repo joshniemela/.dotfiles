@@ -61,24 +61,25 @@ myKeys c =
               (W.shift, shiftMask, "Move client to workspace ")],
             (i, k) <- zip [1..9] [xK_1 .. xK_9]
         ]
-
         ++
-
         [ ((myModMask .|. shiftMask, xK_z), addName "Swap workspace sets" $ do
             currentSet <- XS.get
             let newSet = switch currentSet
             XS.put newSet
-
+        
             screens <- gets (W.screens . windowset)
-
+        
             let targetWs = case newSet of
                   Personal -> myPersonalWorkspaces
                   Work     -> myWorkWorkspaces
-
-            forM_ (zip [0 ..] screens) $ \(i, s) -> do
-              let ws = targetWs !! i
-              windows (W.view ws))
-        ]
+        
+                workspaces = take (length screens) targetWs
+        
+            -- For each screen, focus it and greedyView its new workspace
+            forM_ (zip screens workspaces) $ \(s, ws) -> do
+              windows (W.view (W.tag (W.workspace s))) -- focus the screen
+              windows (W.greedyView ws)
+          )]
         ++ subtitle "Switching screens"
         :
         -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3

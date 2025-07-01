@@ -63,7 +63,7 @@ myKeys c =
             , (i, k) <- zip [1 .. 9] [xK_1 .. xK_9]
             ]
             ++ [
-                   ( (myModMask .|. shiftMask, xK_z)
+                   ( (myModMask, xK_z)
                    , addName "Swap workspace sets" $ do
                         currentSet <- XS.get
                         let newSet = switch currentSet
@@ -81,6 +81,17 @@ myKeys c =
                         forM_ (zip screens workspaces) $ \(s, ws) -> do
                             windows (W.view (W.tag (W.workspace s))) -- focus the screen
                             windows (W.greedyView ws)
+                   )
+               ,
+                   ( (myModMask .|. shiftMask, xK_z)
+                   , addName "Move client to next workspace set" $ do
+                        currentSet <- XS.get
+                        -- The this is either p1 or w1, it is the opposite of our current set
+                        let newWs = case currentSet of
+                                Personal -> "w1"
+                                Work -> "p1"
+
+                        windows (W.shift newWs)
                    )
                ]
             ++ subtitle "Switching screens"

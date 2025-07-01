@@ -13,10 +13,13 @@ import XMonad.Layout.Fullscreen
 import qualified XMonad.Layout.ToggleLayouts as T (ToggleLayout (Toggle), toggleLayouts)
 import XMonad.Prompt.RunOrRaise
 import qualified XMonad.StackSet as W
+import qualified XMonad.Util.ExtensibleState as XS
 import XMonad.Util.NamedActions
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
+import Data.List (isPrefixOf)
+import Control.Monad (forM_)
 
 myTerminal = "kitty"
 
@@ -24,7 +27,10 @@ myBrowser = "firefox"
 
 myFocusFollowsMouse = True
 
-myWorkspaces = map show [1 .. 9]
+myPersonalWorkspaces = map (\ws -> "p" ++ show ws) [1 .. 9]
+myWorkWorkspaces = map (\ws -> "w" ++ show ws) [1 .. 9]
+
+myWorkspaces = myPersonalWorkspaces ++ myWorkWorkspaces
 
 myFocusedBorderColor = "#D16328"
 
@@ -49,9 +55,29 @@ myKeys c =
         :
         -- mod-[1..9] %! Switch to workspace N
         -- mod-shift-[1..9] %! Move client to workspace N
-        [ ((m .|. myModMask, k), addName (n ++ i) $ windows $ f i)
-          | (f, m, n) <- [(W.greedyView, 0, "Switch to workspace "), (W.shift, shiftMask, "Move client to workspace ")],
-            (i, k) <- zip (XMonad.workspaces c) [xK_1 .. xK_9]
+        [ ((m .|. myModMask, k), addName (n ++ show i) $ handleWorkspaceKey i f)
+          | (f, m, n) <- [
+              (W.greedyView, 0, "Switch to workspace "), 
+              (W.shift, shiftMask, "Move client to workspace ")],
+            (i, k) <- zip [1..9] [xK_1 .. xK_9]
+        ]
+
+        ++
+
+        [ ((myModMask .|. shiftMask, xK_z), addName "Swap workspace sets" $ do
+            currentSet <- XS.get
+            let newSet = switch currentSet
+            XS.put newSet
+
+            screens <- gets (W.screens . windowset)
+
+            let targetWs = case newSet of
+                  Personal -> myPersonalWorkspaces
+                  Work     -> myWorkWorkspaces
+
+            forM_ (zip [0 ..] screens) $ \(i, s) -> do
+              let ws = targetWs !! i
+              windows (W.view ws))
         ]
         ++ subtitle "Switching screens"
         :
@@ -107,14 +133,18 @@ showKeybindings x = addName "Show Keybindings" $ io $ do
   hClose h
   return ()
 
-myLogHook h =
+myLogHook h = do
+  state <- XS.get
+  let filterWorkspaceByState = filterByPrefix (prefix state)
+
   dynamicLogWithPP $
     def
       { ppLayout = wrap "(<fc=#e4b63c>" "</fc>)",
+        ppHidden = filterWorkspaceByState id,
         -- , ppSort = getSortByXineramaRule  -- Sort left/right screens on the left, non-empty workspaces after those
         ppTitleSanitize = const "", -- Also about window's title
-        ppVisible = wrap "(" ")", -- Non-focused (but still visible) screen
-        ppCurrent = wrap "<fc=#b8473d>[</fc><fc=#7cac7a>" "</fc><fc=#b8473d>]</fc>", -- Non-focused (but still visible) screen
+        ppVisible = filterWorkspaceByState (wrap "(" ")"), -- Non-focused (but still visible) screen
+        ppCurrent = wrap "<fc=#b8473d>[</fc><fc=#7cac7a>" "</fc><fc=#b8473d>]</fc>", -- Focused screen
         ppOutput = hPutStrLn h
       }
 
@@ -157,3 +187,40 @@ myScratchPads =
     spawnTerm = myTerminal ++ " --class=term"
     findTerm = className =? "term"
     manageTerm = defaultFloating
+
+
+data WorkspacesType = Personal | Work deriving (Show, Read, Eq)
+
+switch :: WorkspacesType -> WorkspacesType
+switch Personal = Work
+switch Work = Personal
+
+prefix :: WorkspacesType -> String
+prefix Personal = "p"
+prefix Work = "w"
+
+filterByPrefix :: String -> (String -> String) -> String -> String
+filterByPrefix prefix wrapFunc ws =
+  if prefix `isPrefixOf` ws
+    then wrapFunc ws
+    else ""
+
+instance ExtensionClass WorkspacesType where
+  initialValue = Personal
+  extensionType = PersistentExtension
+
+
+
+
+
+handleWorkspaceKey :: Int -> (WorkspaceId -> WindowSet -> WindowSet) -> X ()
+handleWorkspaceKey i action = do
+  currentSet <- XS.get
+  let workspaces = case currentSet of
+        Personal -> myPersonalWorkspaces
+        Work     -> myWorkWorkspaces
+  let targetWs = workspaces !! (i - 1)
+  windows $ action targetWs
+
+
+

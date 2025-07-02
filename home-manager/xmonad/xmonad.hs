@@ -1,9 +1,10 @@
 import Control.Monad (forM_)
-import Data.List (isPrefixOf)
+import Data.List (isPrefixOf, sortOn)
 import qualified Data.Map as M
 import System.Directory
 import System.IO
 import XMonad
+import XMonad.Actions.OnScreen (greedyViewOnScreen)
 import XMonad.Actions.WindowGo
 import XMonad.Actions.WithAll
 import XMonad.Hooks.DynamicLog
@@ -69,7 +70,8 @@ myKeys c =
                         let newSet = switch currentSet
                         XS.put newSet
 
-                        screens <- gets (W.screens . windowset)
+                        screens <- sortOn W.screen <$> gets (W.screens . windowset)
+                        ws <- gets windowset
                         let currentWs = map (W.tag . W.workspace) screens
 
                         OtherScreenWorkspaces storedWs <- XS.get
@@ -80,9 +82,8 @@ myKeys c =
                         let workspaces = take (length screens) storedWs
 
                         -- For each screen, focus it and greedyView its new workspace
-                        forM_ (zip screens (reverse workspaces)) $ \(s, ws) -> do
-                            windows (W.view (W.tag (W.workspace s))) -- focus the screen
-                            windows (W.greedyView ws)
+                        forM_ (zip screens workspaces) $ \(s, ws) -> do
+                            windows (greedyViewOnScreen (W.screen s) ws)
                    )
                ,
                    ( (myModMask .|. shiftMask, xK_z)

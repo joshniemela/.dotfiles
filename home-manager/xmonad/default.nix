@@ -14,6 +14,7 @@
         cabal-install
         ghc
         zenity
+        fourmolu
       ];
 
       xsession = {

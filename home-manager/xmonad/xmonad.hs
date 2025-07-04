@@ -24,7 +24,7 @@ import XMonad.Util.SpawnOnce
 
 myTerminal = "kitty"
 
-myBrowser = "firefox"
+myBrowser = "vivaldi"
 
 myFocusFollowsMouse = True
 

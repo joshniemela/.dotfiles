@@ -31,6 +31,9 @@
       ncdu
       insomnia
       brightnessctl
+
+      firefox-devedition
+      vivaldi
     ];
   };
   services = {
@@ -39,7 +42,6 @@
 
   programs = {
     nushell.enable = true;
-    firefox.enable = true;
 
     home-manager.enable = true;
   };

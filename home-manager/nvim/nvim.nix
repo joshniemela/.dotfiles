@@ -36,6 +36,9 @@ in {
 
       # Required for telescope-nvim
       ripgrep
+
+      # Debuggers
+      vscode-js-debug
     ];
     viAlias = true;
     vimAlias = true;
@@ -49,6 +52,7 @@ in {
       luafile ${./lsp.lua}
       luafile ${./telescope.lua}
       luafile ${./harpoon.lua}
+      luafile ${./debug.lua}
     '';
 
     #luafile ${./snippets.lua}
@@ -57,6 +61,12 @@ in {
       rainbow-delimiters-nvim
       lualine-nvim
       nvim-colorizer-lua
+
+      nvim-dap
+      nvim-dap-view
+      nvim-dap-ui
+      nvim-dap-virtual-text
+      nvim-dap-vscode-js
 
       # Theme
       moonfly-nvim

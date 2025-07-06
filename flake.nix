@@ -7,6 +7,8 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nvf.url = "github:notashelf/nvf";
+
     webcord.url = "github:fufexan/webcord-flake"; # foss discord
 
     tex2nix.url = "github:Mic92/tex2nix";
@@ -74,6 +76,7 @@
 
           desktop = lib.nixosSystem {
             inherit system;
+
             modules = [
               ./hosts/desktop/configuration.nix
 
@@ -85,6 +88,9 @@
                   useUserPackages = true;
                   users.josh = import ./home-manager/users/josh.nix;
                   backupFileExtension = "backup";
+                  extraSpecialArgs = {
+                    inherit inputs;
+                  };
                 };
               }
             ];
@@ -101,6 +107,10 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   users.josh = import ./home-manager/users/josh.nix;
+                  backupFileExtension = "backup";
+                  extraSpecialArgs = {
+                    inherit inputs;
+                  };
                 };
               }
             ];
@@ -117,6 +127,10 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   users.josh = import ./home-manager/users/josh.nix;
+                  backupFileExtension = "backup";
+                  extraSpecialArgs = {
+                    inherit inputs;
+                  };
                 };
               }
             ];

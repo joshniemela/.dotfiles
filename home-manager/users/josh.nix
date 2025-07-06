@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -14,11 +13,12 @@
     ../../home-manager/dunst.nix # Enable dunst
     # ../../home-manager/code.nix # Enable vscode and packages emacs is my friend now
     ../../home-manager/defaultpkgs.nix # Packages across laptop and desktop
-    ../../home-manager/nvim/nvim.nix
+    #../../home-manager/nvim/old_nvim.nix
     #../../home-manager/emacs
     ../../home-manager/languages/julia/default.nix
     ../../home-manager/languages/dotnet.nix
     ../../home-manager/languages/rust.nix
+    ../../home-manager/nvim
   ];
 
   home = {

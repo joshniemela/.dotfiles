@@ -5,6 +5,7 @@
 
     ./themes/moonfly.nix
     ./treesitter.nix
+    ./utility.nix
   ];
   programs.nvf = {
     enable = true;
@@ -13,9 +14,6 @@
       enableLuaLoader = true;
       statusline.lualine.enable = true;
       ui.colorizer.enable = true;
-
-      keymaps = [
-      ];
 
       globals = {
         mapleader = " ";

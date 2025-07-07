@@ -11,6 +11,7 @@
     ./treesitter.nix
     ./utility.nix
     ./lsp.nix
+    ./debug.nix
   ];
 
   programs.nvf = {

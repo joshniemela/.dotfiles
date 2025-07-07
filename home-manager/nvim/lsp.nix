@@ -46,15 +46,6 @@
       '';
     };
 
-    debugger = {
-      nvim-dap.enable = true;
-
-      nvim-dap.ui = {
-        enable = true;
-        autoStart = true;
-      };
-    };
-
     languages = {
       lua.enable = true;
       nix.enable = true;
@@ -70,6 +61,7 @@
       rust.enable = true;
       haskell.enable = true;
 
+      enableDAP = true;
       enableTreesitter = true;
       enableFormat = true;
       enableExtraDiagnostics = true;
@@ -85,5 +77,27 @@
     ];
 
     git.enable = true;
+
+    luaConfigRC.dap-svelte = ''
+      local dap = require("dap")
+      dap.adapters.firefox = {
+        type = "executable",
+        command = "${pkgs.nodejs}/bin/node",
+        args = { "${pkgs.vscode-extensions.firefox-devtools.vscode-firefox-debug}/share/vscode/extensions/firefox-devtools.vscode-firefox-debug/dist/adapter.bundle.js" },
+      }
+
+      dap.configurations.svelte = {
+        {
+          name = "Debug with Firefox",
+          type = "firefox",
+          request = "launch",
+          reAttach = true,
+          url = "http://localhost:3000",
+          webRoot = "''${workspaceFolder}",
+          firefoxExecutable = "${pkgs.firefox-devedition}/bin/firefox-devedition"
+        }
+      }
+    '';
   };
+
 }

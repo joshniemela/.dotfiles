@@ -1,4 +1,8 @@
-{ lib, inputs, ... }:
+{
+  lib,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.nvf.homeManagerModules.default
@@ -6,7 +10,9 @@
     ./themes/moonfly.nix
     ./treesitter.nix
     ./utility.nix
+    ./lsp.nix
   ];
+
   programs.nvf = {
     enable = true;
     settings.vim = {

@@ -6,7 +6,8 @@
 
 Keybindings for `nvim-cmp`:
 
-- `<Tab>`: Used by Supermaven for completion and accepting the current LSP completion
+- `<Tab>`: Used by Supermaven for completion and accepting the current LSP
+  completion
 - `<C-Tab>`: Used by Supermaven to hide the completion menu
 - `<C-Space>`: Used by Supermaven to trigger next-word completion
 - `<C-e>`: Used by LSP to hide the completion menu
@@ -39,31 +40,34 @@ Keybindings for `harpoon`:
 
 Keybinding for `oil.nvim`:
 
-- `<->`: Open Oil menu
+- `-`: Open Oil menu
 
 ### LSP
 
 Keybindings for LSP:
 
-- `gd`: Go to definition
-- `gD`: Go to declaration
-- `gr`: Go to references
-- `gi`: Go to implementation
-- `K`: Show documentation
-- `<C-k>`: Show signature help
-- `<space>wa`: Add workspace folder
-- `<space>wr`: Remove workspace folder
-- `<space>wl`: List workspace folders
-- `<space>D`: Go to type definition
-- `<space>rn`: Rename symbol
-- `<space>ca`: Code action
-- `<space>f`: Format buffer
+- `<leader>lgd`: Go to definition
+- `<leader>lgD`: Go to declaration
+- `<leader>lgt`: Go to type
+- `<leader>lgi`: List implementations
+- `<leader>lgr`: List references
+- `<leader>lH`: Document highlight
+- `<leader>lS`: List document symbols
+- `<leader>lwa`: Add workspace folder
+- `<leader>lwr`: Remove workspace folder
+- `<leader>lwl`: List workspace folders
+- `<leader>lws`: List workspace symbols
+- `<leader>lh`: Trigger hover
+- `<leader>ls`: Signature help
+- `<leader>ln`: Rename symbol
+- `<leader>la`: Code action
+- `<leader>lf`: Format
+- `<leader>ltf`: Toggle format on save
 
 ### LSP Diagnostics
 
 Keybindings for LSP diagnostics:
 
-- `<space>e`: Open diagnostic float
-- `dp`: Go to previous diagnostic
-- `dn`: Go to next diagnostic
-- `<space>q`: Set diagnostic location list
+- `<leader>le`: Open diagnostic float
+- `<leader>lgn`: go to next diagnostic
+- `<leader>lgp`: go to previous diagnostic

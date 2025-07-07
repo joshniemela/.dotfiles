@@ -1,7 +1,6 @@
 {
   programs.nvf.settings.vim = {
     luaConfigRC.highlights = ''
-
       local highlight = {
       	"RoyalPurple",
       	"EggplantPurple",

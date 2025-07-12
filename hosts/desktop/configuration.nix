@@ -29,7 +29,19 @@
       }
     ];
 
-    firewall.enable = false;
+    firewall = rec {
+
+      # Used by kdeconnect
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = allowedTCPPortRanges;
+
+      enable = true;
+    };
   };
 
   zramSwap = {
@@ -70,6 +82,11 @@
 
   # PROGRAMS
   programs = {
+    kdeconnect = {
+      enable = true;
+      package = pkgs.valent;
+    };
+
     iotop.enable = true;
     dconf.enable = true;
     steam.enable = true;

@@ -1,10 +1,8 @@
 {
-  lib,
-  config,
   pkgs,
-  out,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/thunar.nix
@@ -20,10 +18,9 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
-
   networking = {
     hostName = "desktop";
-    nameservers = ["8.8.8.8"];
+    nameservers = [ "8.8.8.8" ];
     defaultGateway = "192.168.1.1";
     interfaces.eth0.ipv4.addresses = [
       {
@@ -31,6 +28,8 @@
         prefixLength = 24;
       }
     ];
+
+    firewall.enable = false;
   };
 
   zramSwap = {
@@ -38,25 +37,36 @@
     memoryPercent = 25;
   };
 
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "josh";
-  };
-
-  services.xserver = {
-    enable = true;
-    windowManager.xmonad = {
+  services = {
+    displayManager.autoLogin = {
       enable = true;
+      user = "josh";
     };
-    xkb.layout = "dk";
-    videoDrivers = ["nvidia"];
 
-    displayManager.lightdm.enable = true;
+    xserver = {
+      enable = true;
+      windowManager.xmonad = {
+        enable = true;
+      };
+      xkb.layout = "dk";
+      videoDrivers = [ "nvidia" ];
+
+      displayManager.lightdm.enable = true;
+    };
+
+    displayManager.defaultSession = "none+xmonad";
+    printing.enable = true;
+    openssh.enable = true;
+    gnome.gnome-keyring.enable = true;
+
+    # Put this into a separate module
+    postgresql = {
+      enable = true;
+
+      extensions = with pkgs.postgresql_16.pkgs; [ pgvector ];
+      package = pkgs.postgresql_16;
+    };
   };
-
-  services.displayManager.defaultSession = "none+xmonad";
-
-  networking.firewall.enable = false;
 
   # PROGRAMS
   programs = {
@@ -65,31 +75,23 @@
     steam.enable = true;
     zsh.enable = true;
   };
-  users.extraGroups.vboxusers.members = ["josh"];
-  services.printing.enable = true;
-  services.openssh.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  users.users.josh = {
-    isNormalUser = true;
-    extraGroups = ["wheel"];
-    initialPassword = "1234";
-    shell = pkgs.zsh;
-  };
 
-  # Put this into a separate module
-  services.postgresql = {
-    enable = true;
-
-    extensions = with pkgs.postgresql_16.pkgs; [pgvector];
-    package = pkgs.postgresql_16;
+  users = {
+    extraGroups.vboxusers.members = [ "josh" ];
+    users.josh = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+      initialPassword = "1234";
+      shell = pkgs.zsh;
+    };
   };
 
   # Environment
   environment = {
-    pathsToLink = ["/libexec"]; # links /libexec from derivations to /run/current-system/sw, used for i3
+    pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
-      TERMINAL = ["kitty"];
-      EDITOR = ["vi"];
+      TERMINAL = [ "kitty" ];
+      EDITOR = [ "vi" ];
     };
   };
 }

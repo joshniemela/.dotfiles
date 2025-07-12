@@ -2,39 +2,39 @@
 
 ## Current Modules
 
-### nvim-cmp
-
-Keybindings for `nvim-cmp`:
-
-- `<Tab>`: Used by Supermaven for completion and accepting the current LSP
-  completion
-- `<C-Tab>`: Used by Supermaven to hide the completion menu
-- `<C-Space>`: Used by Supermaven to trigger next-word completion
-- `<C-e>`: Used by LSP to hide the completion menu
-- `<C-n>`: Used by LSP to go to the next item in the completion menu
-- `<C-p>`: Used by LSP to go to the previous item in the completion menu
-- `<C-j>`: Used by LSP to scroll down in the completion menu
-- `<C-k>`: Used by LSP to scroll up in the completion menu
-- `<CR>`: Used by LSP to select the current item in the completion menu
-
 ### telescope
 
 Keybindings for `telescope`:
 
+- `<leader>fp`: Find projects
 - `<leader>ff`: Find files
-- `<leader>fg`: Find Git files
-- `<leader>fs`: Find with live grep
-- `<leader>fb`: Find buffers
-- `<leader>fh`: Find Harpoon links
+- `<leader>fg`: Live grep
+- `<leader>fb`: Buffers
+- `<leader>fh`: Help tags
+- `<leader>ft`: Open
+- `<leader>fr`: Resume (previous search)
 
-### harpoon
+#### Git-related
 
-Keybindings for `harpoon`:
+- `<leader>fvcw`: Git commits
+- `<leader>fvcb`: Git buffer commits
+- `<leader>fvb`: Git branches
+- `<leader>fvs`: Git status
+- `<leader>fvx`: Git stash
 
-- `<leader>a`: Add Harpoon link
-- `<C-e>`: Open quick menu
-- `<leader>1` to `<leader>5`: Open Harpoon link by index
-- `<leader>fh`: Find Harpoon links (also accessible via `telescope`)
+#### LSP-related
+
+- `<leader>flsb`: LSP Document Symbols
+- `<leader>flsw`: LSP Workspace Symbols
+- `<leader>flr`: LSP References
+- `<leader>fli`: LSP Implementations
+- `<leader>flD`: LSP Definitions
+- `<leader>flt`: LSP Type Definitions
+- `<leader>fld`: Diagnostics
+
+#### Other
+
+- `<leader>fs`: Treesitter
 
 ### oil.nvim
 

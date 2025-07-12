@@ -12,6 +12,7 @@
     ./treesitter.nix
     ./utility.nix
     ./lsp.nix
+    ./telescope.nix
   ];
 
   programs.nvf = {
@@ -19,7 +20,35 @@
     settings.vim = {
       preventJunkFiles = true;
       enableLuaLoader = true;
-      statusline.lualine.enable = true;
+      statusline.lualine = {
+        enable = true;
+
+        activeSection.b = [
+          ''
+            {
+              "filetype",
+              colored = true,
+              icon_only = true,
+              icon = { align = 'left' }
+            }
+          ''
+          ''
+            {
+              "filename",
+              path=1,
+              symbols = {modified = ' ', readonly = ' '},
+              separator = {right = ''}
+            }
+          ''
+          ''
+            {
+              "",
+              draw_empty = true,
+              separator = { left = '', right = '' }
+            }
+          ''
+        ];
+      };
       ui.colorizer.enable = true;
 
       globals = {

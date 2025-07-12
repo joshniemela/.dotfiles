@@ -8,6 +8,7 @@
     inputs.nvf.homeManagerModules.default
 
     ./themes/moonfly.nix
+    ./visual.nix
     ./treesitter.nix
     ./utility.nix
     ./lsp.nix

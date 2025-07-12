@@ -25,6 +25,18 @@
       };
     };
 
+    git.gitsigns = {
+      enable = true;
+      codeActions.enable = true;
+
+      setupOpts = {
+        current_line_blame = true;
+        current_line_blame_opts = {
+          delay = 100;
+        };
+      };
+    };
+
     keymaps = [
       {
         key = "-";

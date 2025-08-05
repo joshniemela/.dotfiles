@@ -1,9 +1,14 @@
 { pkgs, ... }:
 {
   programs.nvf.settings.vim = {
-    projects.project-nvim = {
-      enable = true;
-      manualMode = false;
+    projects = {
+      project-nvim = {
+        setupOpts = {
+          manual_mode = false;
+        };
+        enable = true;
+
+      };
     };
     telescope = {
       enable = true;

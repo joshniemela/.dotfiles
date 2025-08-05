@@ -1,8 +1,8 @@
 {
   pkgs,
-  tex2nix,
   ...
-}: {
+}:
+{
   home = {
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
     packages = with pkgs; [
@@ -22,7 +22,9 @@
       pavucontrol # audio control
       xournalpp # for signing pdfs
       tree # for viewing directory structure
-      darktable # photo editor
+
+      # disabled because it depends on libsoup 2 which has vulnerabilities
+      #darktable # photo editor
       lxappearance # for changing gtk theme
       typst # for writing
       chromium

@@ -48,14 +48,18 @@
         "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
 
         "$mainMod, W, layoutmsg, swapwithmaster"
+
+        # NixOS build keybinds
+        "$mainMod SHIFT, s, exec, kitty --hold=no -e switchSystem"
+        "$mainMod SHIFT, t, exec, kitty -e testSystem"
       ];
 
       binde = [
         # Move focus
-        "$mainMod, h, resizeactive, 10 0"
+        "$mainMod, h, resizeactive, 20 0"
         "$mainMod, j, layoutmsg, cycleprev"
         "$mainMod, k, layoutmsg, cyclenext"
-        "$mainMod, l, resizeactive, -10 0"
+        "$mainMod, l, resizeactive, -20 0"
       ];
 
       bindel = [
@@ -65,7 +69,6 @@
         ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 15%+"
         ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 15%-"
-
       ];
 
       windowrule = [
@@ -89,8 +92,10 @@
         kb_layout = "dk";
 
         follow_mouse = 1;
-        repeat_delay = 150;
-        repeat_rate = 30;
+        repeat_delay = 220;
+        repeat_rate = 25;
+
+        sensitivity = 0.5;
       };
 
     };
@@ -100,5 +105,51 @@
   programs = {
     kitty.enable = true;
     fuzzel.enable = true;
+
+    waybar = {
+      enable = true;
+      systemd.enable = true;
+
+      settings = [
+        {
+          height = 20;
+          layer = "top";
+          position = "bottom";
+          tray = {
+            spacing = 10;
+          };
+
+          modules-left = [ ];
+          modules-center = [ ];
+          modules-right = [
+            "battery"
+            "clock"
+          ];
+
+          battery = {
+            format = "{capacity}% {icon}";
+            format-alt = "{time} {icon}";
+            format-charging = "{capacity}% ";
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
+            format-plugged = "{capacity}% ";
+            states = {
+              critical = 15;
+              warning = 30;
+            };
+          };
+
+          clock = {
+            format = "Week {:%V %F (%a) %T}";
+            tooltip = false;
+          };
+        }
+      ];
+    };
   };
 }

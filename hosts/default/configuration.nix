@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
   ];
   options.dotfiles = {
@@ -33,8 +34,8 @@
     };
 
     hardware = lib.mkMerge [
-      (lib.mkIf (!config.dotfiles.headless) {graphics.enable = true;})
-      {enableRedistributableFirmware = true;}
+      (lib.mkIf (!config.dotfiles.headless) { graphics.enable = true; })
+      { enableRedistributableFirmware = true; }
     ];
     systemd = {
       services.clear-log = {
@@ -46,17 +47,17 @@
       };
 
       timers.clear-log = {
-        wantedBy = ["timers.target"];
-        partOf = ["clear-log.service"];
+        wantedBy = [ "timers.target" ];
+        partOf = [ "clear-log.service" ];
         timerConfig.OnCalendar = "weekly UTC";
       };
     };
 
     i18n.defaultLocale = lib.mkDefault "en_DK.UTF-8";
     console = lib.mkMerge [
-      (lib.mkIf config.dotfiles.headless {keyMap = "dk";})
-      (lib.mkIf (!config.dotfiles.headless) {useXkbConfig = true;})
-      {font = lib.mkDefault "Lat2-Terminus16";}
+      (lib.mkIf config.dotfiles.headless { keyMap = "dk"; })
+      (lib.mkIf (!config.dotfiles.headless) { useXkbConfig = true; })
+      { font = lib.mkDefault "Lat2-Terminus16"; }
     ];
 
     time.timeZone = lib.mkDefault "Europe/Copenhagen";
@@ -89,14 +90,14 @@
       (pkgs.writeShellScriptBin "switchSystem" ''
         set -e
         pushd $HOME/.dotfiles
-        sudo nixos-rebuild switch --use-remote-sudo --flake .#
+        doas nixos-rebuild switch --sudo --flake .#
         popd
       '')
 
       (pkgs.writeShellScriptBin "testSystem" ''
         set -e
         pushd $HOME/.dotfiles
-        sudo nixos-rebuild test --use-remote-sudo --flake .#
+        doas nixos-rebuild test --sudo --flake .#
         popd
       '')
 

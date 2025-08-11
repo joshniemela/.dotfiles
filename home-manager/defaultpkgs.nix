@@ -2,7 +2,8 @@
   pkgs,
   tex2nix,
   ...
-}: {
+}:
+{
   home = {
     file.".unison/default.prf".source = ../configs/unison.prf; # File used for unison, TODO MAKE MODULE
     packages = with pkgs; [
@@ -35,6 +36,7 @@
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
+      thunderbird
 
       wget
       xorg.xev

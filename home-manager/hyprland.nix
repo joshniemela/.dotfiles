@@ -1,5 +1,15 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  gtk = {
+    enable = true;
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -8,7 +18,7 @@
       "$mainMod" = "ALT";
       "$terminal" = "kitty";
       "$fileManager" = "thunar";
-      "$menu" = "fuzzel";
+      "$menu" = "fuzzel -b 202020EE -t 928374FF -m D1632BFF -s 3C3836FF -C D1632BFF -M EE8844FF -r 0";
 
       monitor = ",highres,auto,1";
 
@@ -52,14 +62,17 @@
         # NixOS build keybinds
         "$mainMod SHIFT, s, exec, kitty --hold=no -e switchSystem"
         "$mainMod SHIFT, t, exec, kitty -e testSystem"
+
+        ", PRINT, exec, hyprshot -m region"
+        "$mainMod, PRINT, exec, hyprshot -m window"
       ];
 
       binde = [
         # Move focus
-        "$mainMod, h, resizeactive, 20 0"
+        "$mainMod, h, resizeactive, -20 0"
         "$mainMod, j, layoutmsg, cycleprev"
         "$mainMod, k, layoutmsg, cyclenext"
-        "$mainMod, l, resizeactive, -20 0"
+        "$mainMod, l, resizeactive, 20 0"
       ];
 
       bindel = [
@@ -74,6 +87,20 @@
       windowrule = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+
+        "workspace 2, class:^(Vivaldi-stable)$"
+
+        # The remmina client goes to 10, any windows it opens go to 5
+        "workspace 10, class:^(org\.remmina\.Remmina)$, title: ^Remmina Remote Desktop Client$"
+        "workspace 6, class:^(org\.remmina\.Remmina)$, title: negative:^Remmina Remote Desktop Client$"
+        "workspace 10, class:^\.virt-manager-wrapped$, title: ^Virtual Machine Manager$"
+        "workspace 5, class:^\.virt-manager-wrapped$, title: .*QEMU/KVM$"
+      ];
+
+      exec-once = [
+        "vivaldi"
+        "virt-manager"
+        "remmina"
       ];
 
       general = {
@@ -82,7 +109,7 @@
         gaps_in = 2;
         gaps_out = 0;
 
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.active_border" = "rgba(D1632BEE) rgba(402F65EE) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
 
         resize_on_border = false;
@@ -112,15 +139,20 @@
 
       settings = [
         {
-          height = 20;
+          height = 26;
           layer = "top";
           position = "bottom";
           tray = {
             spacing = 10;
           };
 
-          modules-left = [ ];
-          modules-center = [ ];
+          modules-left = [
+          ];
+          modules-center = [
+            "custom/weather"
+            "custom/server_ping"
+            "memory"
+          ];
           modules-right = [
             "battery"
             "clock"
@@ -148,8 +180,86 @@
             format = "Week {:%V %F (%a) %T}";
             tooltip = false;
           };
+
+          memory = {
+            interval = 10;
+            format = "{used:0.1f}G/{total:0.1f}G";
+          };
+
+          "custom/server_ping" = {
+            format = "jniemela.dk: {}";
+            interval = 10;
+            on-click = "kitty -e ssh jniemela.dk";
+            exec = "/home/josh/.config/waybar/script/server_ping.sh";
+            return-type = "json";
+          };
+
+          "custom/weather" = {
+            format = "{}";
+            interval = 120;
+            exec = "/home/josh/.config/waybar/script/weather.sh";
+            return-type = "json";
+          };
         }
       ];
+
+      style =
+        ''
+          widget > * {
+            margin: 0 16px 0 0;
+          }
+
+          #custom-weather {
+            background-repeat: no-repeat;
+            background-position: 0% 50%;
+            background-size: 28px 28px;
+            padding-left: 28px;
+          }
+
+          .up {
+            color: #00FF00;
+          }
+          .down {
+            color: #FF0000;
+          }
+        ''
+        + builtins.readFile ./weather-icons.css;
+    };
+  };
+  home.packages = with pkgs; [
+    hyprshot
+  ];
+  home.file = {
+
+    ".config/waybar/script/server_ping.sh" = {
+      text = ''
+        #!/bin/sh
+
+        if ping -c 1 -W 1 jniemela.dk >/dev/null; then
+            printf '{"text":"Up","class":"up"}'
+        else
+            printf '{"text":"Down","class":"down"}'
+        fi
+      '';
+      executable = true;
+    };
+
+    ".config/waybar/script/weather.sh" = {
+      text = ''
+        response=$(curl -s \
+          -H "User-Agent: myweatherapp/1.0 you@example.com" \
+          "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=55.6761&lon=12.5683")
+
+        symbol_code=$(echo "$response" | jq -r '.properties.timeseries[0].data.next_1_hours.summary.symbol_code')
+        temp=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.air_temperature')
+        humidity=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.relative_humidity')
+
+        pressure_raw=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.air_pressure_at_sea_level')
+        pressure=$(echo "$pressure_raw" | awk '{printf "%d\n", $1 + 0.5}')
+
+        printf '{"text":"%s°C, %s%%, %shPa","class":"%s"}\n' "$temp" "$humidity" "$pressure" "$symbol_code"
+      '';
+      executable = true;
     };
   };
 }

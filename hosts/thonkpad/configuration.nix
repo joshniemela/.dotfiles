@@ -3,7 +3,8 @@
   pkgs,
   out,
   ...
-} @ args: {
+}@args:
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/doas.nix # enable doas
@@ -22,7 +23,7 @@
 
   networking = {
     hostName = "thonkpad";
-    nameservers = ["8.8.8.8"];
+    nameservers = [ "8.8.8.8" ];
     networkmanager.enable = true;
   };
 
@@ -61,14 +62,6 @@
   services.libinput.enable = true;
   services.fwupd.enable = true;
 
-  services.displayManager = {
-    defaultSession = "none+xmonad";
-    autoLogin = {
-      enable = true;
-      user = "josh";
-    };
-  };
-
   services.xserver = {
     enable = true;
     xkb.layout = "dk";
@@ -76,17 +69,13 @@
       xterm.enable = false;
     };
 
-    displayManager.lightdm.enable = true;
-
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-    };
   };
   hardware.bluetooth.enable = true;
 
   # PROGRAMS
   programs = {
+    hyprland.enable = true;
+
     zsh.enable = true;
     git = {
       enable = true;
@@ -104,23 +93,26 @@
 
   users.users.josh = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     initialPassword = "1234";
     shell = pkgs.zsh;
   };
 
   # Environment
   environment = {
-    pathsToLink = ["/libexec"]; # links /libexec from derivations to /run/current-system/sw, used for i3
+    pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw, used for i3
     variables = {
-      TERMINAL = ["kitty"];
-      EDITOR = ["vi"];
+      TERMINAL = [ "kitty" ];
+      EDITOR = [ "vi" ];
       DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     };
   };
 
   systemd.timers."battery-notifier" = {
-    wantedBy = ["timers.target"];
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       OnBootSec = "1min";
       OnUnitActiveSec = "1min";

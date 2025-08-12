@@ -61,8 +61,8 @@
         "$mainMod, W, layoutmsg, swapwithmaster"
 
         # NixOS build keybinds
-        "$mainMod SHIFT, s, exec, kitty --hold=no -e switchSystem"
-        "$mainMod SHIFT, t, exec, kitty -e testSystem"
+        "$mainMod SHIFT, n, exec, kitty -e testSystem"
+        "$mainMod SHIFT, m, exec, kitty --hold=no -e switchSystem"
 
         ", PRINT, exec, hyprshot -m region"
         "$mainMod, PRINT, exec, hyprshot -m window"
@@ -146,21 +146,22 @@
           };
 
           modules-left = [
+            "custom/server_ping"
           ];
           modules-center = [
-            "custom/weather"
-            "custom/server_ping"
             "memory"
+            "disk"
+            "battery"
           ];
           modules-right = [
-            "battery"
+            "custom/weather"
             "clock"
           ];
 
           battery = {
-            format = "{capacity}% {icon}";
-            format-alt = "{time} {icon}";
-            format-charging = "{capacity}% ";
+            format = "{icon} {capacity}%";
+            format-alt = "{icon} {time}";
+            format-charging = " {capacity}%";
             format-icons = [
               ""
               ""
@@ -168,7 +169,7 @@
               ""
               ""
             ];
-            format-plugged = "{capacity}% ";
+            format-plugged = " {capacity}%";
             states = {
               critical = 15;
               warning = 30;
@@ -176,17 +177,24 @@
           };
 
           clock = {
+            interval = 1;
             format = "Week {:%V %F (%a) %T}";
             tooltip = false;
           };
 
           memory = {
             interval = 10;
-            format = "{used:0.1f}G/{total:0.1f}G";
+            format = "  {used:0.1f}/{total:0.1f}GiB";
+          };
+
+          disk = {
+            interval = 10;
+            format = " {specific_used:0.1f}/{specific_used:0.1f}GiB";
+            unit = "GiB";
           };
 
           "custom/server_ping" = {
-            format = "jniemela.dk: {}";
+            format = "  jniemela.dk {}";
             interval = 10;
             on-click = "kitty -e ssh jniemela.dk";
             exec = "/home/josh/.config/waybar/script/server_ping.sh";
@@ -205,7 +213,7 @@
       style =
         ''
           widget > * {
-            margin: 0 16px 0 0;
+            margin: 0 8px 0 8px;
           }
 
           #custom-weather {
@@ -238,9 +246,9 @@
           #!/bin/sh
 
           if ping -c 1 -W 1 jniemela.dk >/dev/null; then
-              printf '{"text":"Up","class":"up"}'
+              printf '{"text":"","class":"up"}'
           else
-              printf '{"text":"Down","class":"down"}'
+              printf '{"text":"","class":"down"}'
           fi
         '';
         executable = true;

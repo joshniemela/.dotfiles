@@ -28,6 +28,7 @@
         "$mainMod, M, exit"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, R, exec, $menu"
+        "$mainMod SHIFT, R, exec, $HOME/.config/hypr/script/fuzzel_pass.sh $menu"
 
         # Scratchpad
         "$mainMod, S, togglespecialworkspace, magic"
@@ -127,8 +128,6 @@
 
     };
   };
-  # Hint Electron apps to use Wayland:
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
   programs = {
     kitty.enable = true;
     fuzzel.enable = true;
@@ -226,40 +225,64 @@
         + builtins.readFile ./weather-icons.css;
     };
   };
-  home.packages = with pkgs; [
-    hyprshot
-  ];
-  home.file = {
+  home = {
+    # Hint Electron apps to use Wayland:
+    sessionVariables.NIXOS_OZONE_WL = "1";
+    packages = with pkgs; [
+      hyprshot
+    ];
+    file = {
 
-    ".config/waybar/script/server_ping.sh" = {
-      text = ''
-        #!/bin/sh
+      ".config/waybar/script/server_ping.sh" = {
+        text = ''
+          #!/bin/sh
 
-        if ping -c 1 -W 1 jniemela.dk >/dev/null; then
-            printf '{"text":"Up","class":"up"}'
-        else
-            printf '{"text":"Down","class":"down"}'
-        fi
-      '';
-      executable = true;
-    };
+          if ping -c 1 -W 1 jniemela.dk >/dev/null; then
+              printf '{"text":"Up","class":"up"}'
+          else
+              printf '{"text":"Down","class":"down"}'
+          fi
+        '';
+        executable = true;
+      };
 
-    ".config/waybar/script/weather.sh" = {
-      text = ''
-        response=$(curl -s \
-          -H "User-Agent: myweatherapp/1.0 you@example.com" \
-          "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=55.6761&lon=12.5683")
+      ".config/waybar/script/weather.sh" = {
+        text = ''
+          response=$(curl -s \
+            -H "User-Agent: myweatherapp/1.0 you@example.com" \
+            "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=55.6761&lon=12.5683")
 
-        symbol_code=$(echo "$response" | jq -r '.properties.timeseries[0].data.next_1_hours.summary.symbol_code')
-        temp=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.air_temperature')
-        humidity=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.relative_humidity')
+          symbol_code=$(echo "$response" | jq -r '.properties.timeseries[0].data.next_1_hours.summary.symbol_code')
+          temp=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.air_temperature')
+          humidity=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.relative_humidity')
 
-        pressure_raw=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.air_pressure_at_sea_level')
-        pressure=$(echo "$pressure_raw" | awk '{printf "%d\n", $1 + 0.5}')
+          pressure_raw=$(echo "$response" | jq -r '.properties.timeseries[0].data.instant.details.air_pressure_at_sea_level')
+          pressure=$(echo "$pressure_raw" | awk '{printf "%d\n", $1 + 0.5}')
 
-        printf '{"text":"%s°C, %s%%, %shPa","class":"%s"}\n' "$temp" "$humidity" "$pressure" "$symbol_code"
-      '';
-      executable = true;
+          printf '{"text":"%s°C, %s%%, %shPa","class":"%s"}\n' "$temp" "$humidity" "$pressure" "$symbol_code"
+        '';
+        executable = true;
+      };
+      ".config/hypr/script/fuzzel_pass.sh" = {
+        text = ''
+          menu_cmd="$1"
+
+          shopt -s nullglob globstar
+
+          prefix=$HOME/.password-store
+          password_files=("$prefix"/**/*.gpg)
+          password_files=("''${password_files[@]#"$prefix"/}")
+          password_files=("''${password_files[@]%.gpg}")
+
+          password=$(printf '%s\n' "''${password_files[@]}" | $menu_cmd --dmenu "$@")
+
+          [[ -n $password ]] || exit
+
+          pass show -c "$password" 2>/dev/null
+
+        '';
+        executable = true;
+      };
     };
   };
 }

@@ -35,16 +35,16 @@
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
         # Switch workspace
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+        "$mainMod, 1, focusworkspaceoncurrentmonitor, 1"
+        "$mainMod, 2, focusworkspaceoncurrentmonitor, 2"
+        "$mainMod, 3, focusworkspaceoncurrentmonitor, 3"
+        "$mainMod, 4, focusworkspaceoncurrentmonitor, 4"
+        "$mainMod, 5, focusworkspaceoncurrentmonitor, 5"
+        "$mainMod, 6, focusworkspaceoncurrentmonitor, 6"
+        "$mainMod, 7, focusworkspaceoncurrentmonitor, 7"
+        "$mainMod, 8, focusworkspaceoncurrentmonitor, 8"
+        "$mainMod, 9, focusworkspaceoncurrentmonitor, 9"
+        "$mainMod, 0, focusworkspaceoncurrentmonitor, 10"
 
         # Move active window to workspace
         "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
@@ -59,6 +59,7 @@
         "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
 
         "$mainMod, W, layoutmsg, swapwithmaster"
+        "$mainMod SHIFT, W, swapactiveworkspaces, 0 1"
 
         # NixOS build keybinds
         "$mainMod SHIFT, n, exec, kitty -e testSystem"
@@ -74,6 +75,9 @@
         "$mainMod, j, layoutmsg, cycleprev"
         "$mainMod, k, layoutmsg, cyclenext"
         "$mainMod, l, resizeactive, 20 0"
+
+        "$mainMod SHIFt, j, focusmonitor, 0"
+        "$mainMod SHIFT, k, focusmonitor, 1"
       ];
 
       bindel = [
@@ -189,7 +193,7 @@
 
           disk = {
             interval = 10;
-            format = " {specific_used:0.1f}/{specific_used:0.1f}GiB";
+            format = "  {specific_used:0.1f}/{specific_total:0.1f}GiB";
             unit = "GiB";
           };
 
@@ -213,7 +217,7 @@
       style =
         ''
           widget > * {
-            margin: 0 8px 0 8px;
+            margin: 0 12px 0 12px;
           }
 
           #custom-weather {

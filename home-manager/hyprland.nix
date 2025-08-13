@@ -167,11 +167,11 @@
             format-alt = "{icon} {time}";
             format-charging = " {capacity}%";
             format-icons = [
-              ""
-              ""
-              ""
-              ""
-              ""
+              " "
+              " "
+              " "
+              " "
+              " "
             ];
             format-plugged = " {capacity}%";
             states = {

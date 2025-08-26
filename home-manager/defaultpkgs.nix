@@ -47,6 +47,8 @@
       # work
       remmina
 
+      vintagestory
+
       pass
     ];
   };

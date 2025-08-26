@@ -30,6 +30,7 @@
       config.allowUnfree = true;
       config.permittedInsecurePackages = [
         "electron-27.3.11"
+        "dotnet-runtime-7.0.20"
       ];
     };
 

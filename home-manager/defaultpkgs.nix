@@ -47,7 +47,7 @@
       # work
       remmina
 
-      vintagestory
+      vintagestoryPackages.latest
 
       pass
     ];

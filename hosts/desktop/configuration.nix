@@ -61,7 +61,6 @@
         enable = true;
       };
       xkb.layout = "dk";
-      videoDrivers = [ "nvidia" ];
 
       displayManager.lightdm.enable = true;
     };

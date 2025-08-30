@@ -23,20 +23,19 @@
       xournalpp # for signing pdfs
       tree # for viewing directory structure
 
-      # disabled because it depends on libsoup 2 which has vulnerabilities
-      #darktable # photo editor
-      lxappearance # for changing gtk theme
       typst # for writing
       chromium
       imagemagick # Used for conversion of image formats
       ffmpeg # for converting videos
-      xclip # for copying to clipboard
 
       simplescreenrecorder
       zip # for compressing files
       unzip # for uncompressing files
       bat # better cat
       btop # better htop
+      thunderbird
+
+      wl-clipboard
 
       wget
       xorg.xev
@@ -52,7 +51,6 @@
       pass
     ];
   };
-  services.flameshot.enable = true;
 
   programs = {
     tmux = {

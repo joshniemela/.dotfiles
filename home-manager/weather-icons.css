@@ -1,0 +1,331 @@
+.clearsky_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/clearsky_day.svg");
+}
+
+.clearsky_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/clearsky_night.svg");
+}
+
+.clearsky_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/clearsky_polartwilight.svg");
+}
+
+.cloudy {
+  background-image: url("/home/josh/.config/waybar/weather-icons/cloudy.svg");
+}
+
+.fair_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/fair_day.svg");
+}
+
+.fair_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/fair_night.svg");
+}
+
+.fair_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/fair_polartwilight.svg");
+}
+
+.fog {
+  background-image: url("/home/josh/.config/waybar/weather-icons/fog.svg");
+}
+
+.heavyrainandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavyrainandthunder.svg");
+}
+
+.heavyrainshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavyrainshowersandthunder_day.svg");
+}
+
+.heavyrainshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavyrainshowersandthunder_night.svg");
+}
+
+.heavyrainshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavyrainshowersandthunder_polartwilight.svg");
+}
+
+.heavyrainshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavyrainshowers_day.svg");
+}
+
+.heavyrainshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavyrainshowers_night.svg");
+}
+
+.heavyrainshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavyrainshowers_polartwilight.svg");
+}
+
+.heavyrain {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavyrain.svg");
+}
+
+.heavysleetandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysleetandthunder.svg");
+}
+
+.heavysleetshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysleetshowersandthunder_day.svg");
+}
+
+.heavysleetshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysleetshowersandthunder_night.svg");
+}
+
+.heavysleetshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysleetshowersandthunder_polartwilight.svg");
+}
+
+.heavysleetshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysleetshowers_day.svg");
+}
+
+.heavysleetshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysleetshowers_night.svg");
+}
+
+.heavysleetshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysleetshowers_polartwilight.svg");
+}
+
+.heavysleet {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysleet.svg");
+}
+
+.heavysnowandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysnowandthunder.svg");
+}
+
+.heavysnowshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysnowshowersandthunder_day.svg");
+}
+
+.heavysnowshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysnowshowersandthunder_night.svg");
+}
+
+.heavysnowshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysnowshowersandthunder_polartwilight.svg");
+}
+
+.heavysnowshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysnowshowers_day.svg");
+}
+
+.heavysnowshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysnowshowers_night.svg");
+}
+
+.heavysnowshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysnowshowers_polartwilight.svg");
+}
+
+.heavysnow {
+  background-image: url("/home/josh/.config/waybar/weather-icons/heavysnow.svg");
+}
+
+.lightrainandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightrainandthunder.svg");
+}
+
+.lightrainshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightrainshowersandthunder_day.svg");
+}
+
+.lightrainshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightrainshowersandthunder_night.svg");
+}
+
+.lightrainshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightrainshowersandthunder_polartwilight.svg");
+}
+
+.lightrainshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightrainshowers_day.svg");
+}
+
+.lightrainshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightrainshowers_night.svg");
+}
+
+.lightrainshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightrainshowers_polartwilight.svg");
+}
+
+.lightrain {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightrain.svg");
+}
+
+.lightsleetandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsleetandthunder.svg");
+}
+
+.lightsleetshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsleetshowers_day.svg");
+}
+
+.lightsleetshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsleetshowers_night.svg");
+}
+
+.lightsleetshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsleetshowers_polartwilight.svg");
+}
+
+.lightsleet {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsleet.svg");
+}
+
+.lightsnowandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsnowandthunder.svg");
+}
+
+.lightsnowshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsnowshowers_day.svg");
+}
+
+.lightsnowshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsnowshowers_night.svg");
+}
+
+.lightsnowshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsnowshowers_polartwilight.svg");
+}
+
+.lightsnow {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightsnow.svg");
+}
+
+.lightssleetshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightssleetshowersandthunder_day.svg");
+}
+
+.lightssleetshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightssleetshowersandthunder_night.svg");
+}
+
+.lightssleetshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightssleetshowersandthunder_polartwilight.svg");
+}
+
+.lightssnowshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightssnowshowersandthunder_day.svg");
+}
+
+.lightssnowshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightssnowshowersandthunder_night.svg");
+}
+
+.lightssnowshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/lightssnowshowersandthunder_polartwilight.svg");
+}
+
+.partlycloudy_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/partlycloudy_day.svg");
+}
+
+.partlycloudy_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/partlycloudy_night.svg");
+}
+
+.partlycloudy_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/partlycloudy_polartwilight.svg");
+}
+
+.rainandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/rainandthunder.svg");
+}
+
+.rainshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/rainshowersandthunder_day.svg");
+}
+
+.rainshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/rainshowersandthunder_night.svg");
+}
+
+.rainshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/rainshowersandthunder_polartwilight.svg");
+}
+
+.rainshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/rainshowers_day.svg");
+}
+
+.rainshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/rainshowers_night.svg");
+}
+
+.rainshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/rainshowers_polartwilight.svg");
+}
+
+.rain {
+  background-image: url("/home/josh/.config/waybar/weather-icons/rain.svg");
+}
+
+.sleetandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/sleetandthunder.svg");
+}
+
+.sleetshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/sleetshowersandthunder_day.svg");
+}
+
+.sleetshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/sleetshowersandthunder_night.svg");
+}
+
+.sleetshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/sleetshowersandthunder_polartwilight.svg");
+}
+
+.sleetshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/sleetshowers_day.svg");
+}
+
+.sleetshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/sleetshowers_night.svg");
+}
+
+.sleetshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/sleetshowers_polartwilight.svg");
+}
+
+.sleet {
+  background-image: url("/home/josh/.config/waybar/weather-icons/sleet.svg");
+}
+
+.snowandthunder {
+  background-image: url("/home/josh/.config/waybar/weather-icons/snowandthunder.svg");
+}
+
+.snowshowersandthunder_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/snowshowersandthunder_day.svg");
+}
+
+.snowshowersandthunder_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/snowshowersandthunder_night.svg");
+}
+
+.snowshowersandthunder_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/snowshowersandthunder_polartwilight.svg");
+}
+
+.snowshowers_day {
+  background-image: url("/home/josh/.config/waybar/weather-icons/snowshowers_day.svg");
+}
+
+.snowshowers_night {
+  background-image: url("/home/josh/.config/waybar/weather-icons/snowshowers_night.svg");
+}
+
+.snowshowers_polartwilight {
+  background-image: url("/home/josh/.config/waybar/weather-icons/snowshowers_polartwilight.svg");
+}
+
+.snow {
+  background-image: url("/home/josh/.config/waybar/weather-icons/snow.svg");
+}

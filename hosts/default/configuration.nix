@@ -90,14 +90,14 @@
       (pkgs.writeShellScriptBin "switchSystem" ''
         set -e
         pushd $HOME/.dotfiles
-        sudo nixos-rebuild switch --sudo --flake .#
+        doas nixos-rebuild switch --sudo --flake .#
         popd
       '')
 
       (pkgs.writeShellScriptBin "testSystem" ''
         set -e
         pushd $HOME/.dotfiles
-        sudo nixos-rebuild test --sudo --flake .#
+        doas nixos-rebuild test --sudo --flake .#
         popd
       '')
 

@@ -106,6 +106,7 @@
         "vivaldi"
         "virt-manager"
         "remmina"
+        "waybar"
       ];
 
       general = {
@@ -138,7 +139,6 @@
 
     waybar = {
       enable = true;
-      systemd.enable = true;
 
       settings = [
         {
@@ -214,27 +214,26 @@
         }
       ];
 
-      style =
-        ''
-          widget > * {
-            margin: 0 12px 0 12px;
-          }
+      style = ''
+        widget > * {
+          margin: 0 12px 0 12px;
+        }
 
-          #custom-weather {
-            background-repeat: no-repeat;
-            background-position: 0% 50%;
-            background-size: 28px 28px;
-            padding-left: 28px;
-          }
+        #custom-weather {
+          background-repeat: no-repeat;
+          background-position: 0% 50%;
+          background-size: 28px 28px;
+          padding-left: 28px;
+        }
 
-          .up {
-            color: #00FF00;
-          }
-          .down {
-            color: #FF0000;
-          }
-        ''
-        + builtins.readFile ./weather-icons.css;
+        .up {
+          color: #00FF00;
+        }
+        .down {
+          color: #FF0000;
+        }
+      ''
+      + builtins.readFile ./weather-icons.css;
     };
   };
   home = {

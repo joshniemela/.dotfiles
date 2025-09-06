@@ -17,6 +17,10 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernelParams = [
+      "radeon.cik_support=0"
+      "amdgpu.cik_support=1"
+    ];
   };
   networking = {
     hostName = "desktop";
@@ -57,15 +61,11 @@
 
     xserver = {
       enable = true;
-      windowManager.xmonad = {
-        enable = true;
-      };
       xkb.layout = "dk";
 
       displayManager.lightdm.enable = true;
     };
 
-    displayManager.defaultSession = "none+xmonad";
     printing.enable = true;
     openssh.enable = true;
     gnome.gnome-keyring.enable = true;
@@ -81,6 +81,7 @@
 
   # PROGRAMS
   programs = {
+    hyprland.enable = true;
     kdeconnect = {
       enable = true;
       package = pkgs.valent;
